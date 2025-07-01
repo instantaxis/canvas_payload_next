@@ -1,0 +1,1371 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Initialize Project Structure and Dependencies",
+        "description": "Set up Next.js project with TypeScript, configure essential dependencies, and establish folder structure according to PRD specifications.",
+        "details": "1. Create Next.js 14 project: `npx create-next-app@latest --typescript --tailwind --app`\n2. Install core dependencies:\n   - shadcn-ui: `npx shadcn-ui@latest init`\n   - @tanstack/react-query@5.x\n   - @hookform/resolvers@3.x\n   - zod@3.x\n   - zustand@4.x\n3. Configure dark theme in tailwind.config.ts\n4. Set up folder structure:\n   - /src/app (Next.js routes)\n   - /src/components\n   - /src/features\n   - /src/hooks\n   - /src/lib\n   - /src/styles\n   - /src/types\n   - /src/schemas",
+        "testStrategy": "1. Verify all dependencies install correctly\n2. Validate TypeScript configuration\n3. Test folder structure matches PRD\n4. Ensure development server starts successfully",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Initialize Next.js Project with TypeScript",
+            "description": "Create a new Next.js project with TypeScript support using create-next-app",
+            "dependencies": [],
+            "details": "Run 'npx create-next-app@latest' with TypeScript flag, configure tsconfig.json for strict mode, and set up initial environment variables",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Install Core Dependencies",
+            "description": "Install and configure essential project dependencies",
+            "dependencies": [
+              1
+            ],
+            "details": "Install Payload CMS, TanStack Query, React Hook Form, Zod, and required dev dependencies. Update package.json with correct versions",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Set Up Configuration Files",
+            "description": "Create and configure essential configuration files for the project",
+            "dependencies": [
+              2
+            ],
+            "details": "Set up payload.config.ts, next.config.js, .env files, and TypeScript path aliases. Configure ESLint and Prettier",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Create Project Folder Structure",
+            "description": "Establish the recommended folder structure for the application",
+            "dependencies": [
+              3
+            ],
+            "details": "Create directories for components, hooks, utils, types, api, collections, and pages following Payload 3.0 patterns",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Verify Project Setup",
+            "description": "Test and verify the initial project setup",
+            "dependencies": [
+              4
+            ],
+            "details": "Run build process, verify TypeScript compilation, test Payload connection, and ensure all dependencies are working correctly",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Configure Payload CMS and Database Integration",
+        "description": "Set up Payload CMS 3.0 with Supabase PostgreSQL integration and configure initial collections following best practices.",
+        "status": "pending",
+        "dependencies": [
+          1
+        ],
+        "priority": "high",
+        "details": "1. Install Payload: `npm install @payloadcms/payload@3.x`\n2. Configure Supabase connection:\n   - Install `@supabase/supabase-js@2.x`\n   - Set up environment variables\n3. Initialize Payload config with best practices:\n```typescript\nconst config: PayloadConfig = {\n  collections: [],\n  db: {\n    type: 'postgres',\n    url: process.env.SUPABASE_URL\n  },\n  auth: {\n    tokenExpiration: 7200, // recommended 2 hours\n    cookies: {\n      secure: process.env.NODE_ENV === 'production',\n      sameSite: 'lax',\n      httpOnly: true\n    },\n    useRESTAPI: true // enable client-side authentication with REST API\n  },\n  typescript: {\n    outputFile: 'payload-types.ts'\n  },\n  serverURL: process.env.SERVER_URL,\n  uploads: {\n    collections: ['uploads'] // for QR feedback media attachments\n  },\n  realtime: {\n    enabled: true, // enable WebSocket real-time updates\n    collections: ['employeeRatings']\n  }\n}\n```\n4. Use Payload's built-in type generation: `npx payload generate:types`\n5. Implement type-safe collections using generics\n6. Set up local API utilization for server components\n7. Implement device-based authentication for hotspot logins\n8. Follow latest Next.js 15 integration patterns with Payload CMS",
+        "testStrategy": "1. Verify Payload admin panel accessibility\n2. Test database connection\n3. Validate environment variables\n4. Confirm JWT and cookie configuration with HttpOnly and secure flags\n5. Test client-side authentication via REST API\n6. Validate type-safe collections and generated types\n7. Test device-based authentication workflows\n8. Verify uploads collection handles QR feedback media\n9. Confirm real-time updates via WebSockets for employee ratings\n10. Ensure Next.js 15 integration follows recommended patterns",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Set up MongoDB Database Configuration",
+            "description": "Configure MongoDB connection settings and initialize database for Payload CMS",
+            "status": "pending",
+            "dependencies": [],
+            "details": "Create MongoDB Atlas cluster, set up connection string, configure database access credentials, implement connection error handling, test database connectivity",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Initialize Payload CMS Project Structure",
+            "description": "Set up basic Payload CMS project structure with TypeScript configuration",
+            "status": "pending",
+            "dependencies": [
+              1
+            ],
+            "details": "Initialize project with payload create, configure tsconfig.json, set up project folders (collections, fields, hooks), implement proper type definitions",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Configure Environment Variables",
+            "description": "Set up environment configuration for different deployment stages",
+            "status": "pending",
+            "dependencies": [
+              2
+            ],
+            "details": "Create .env files for development/production, implement environment variable validation, set up secure key management, configure deployment-specific settings",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Implement Authentication System",
+            "description": "Set up user authentication and authorization system with client-side REST API and device-based authentication",
+            "status": "pending",
+            "dependencies": [
+              2,
+              3
+            ],
+            "details": "Configure JWT authentication with HttpOnly cookies, implement user roles and permissions, set up password policies, create login/logout endpoints, implement session management, add device-based authentication for hotspot logins",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Create Initial Collections Schema",
+            "description": "Define and implement initial collection structures with TypeScript and generics",
+            "status": "pending",
+            "dependencies": [
+              2
+            ],
+            "details": "Create collection types, implement field validations with Zod, set up relationships between collections, configure access control, implement hooks, use uploads collection for QR feedback media attachments",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Set up TanStack Query Integration",
+            "description": "Implement data fetching layer with TanStack Query",
+            "status": "pending",
+            "dependencies": [
+              4,
+              5
+            ],
+            "details": "Configure query client, implement custom hooks for data fetching, set up cache management, implement optimistic updates, handle error states",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Implement Form Handling",
+            "description": "Set up React Hook Form with Zod validation",
+            "status": "pending",
+            "dependencies": [
+              5,
+              6
+            ],
+            "details": "Create form schemas with Zod, implement form components with React Hook Form, set up field validation, handle form submission, implement error handling",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Configure Error Handling System",
+            "description": "Implement comprehensive error handling across the application",
+            "status": "pending",
+            "dependencies": [
+              6,
+              7
+            ],
+            "details": "Set up error boundary components, implement error logging, create error handling utilities, configure error notifications, implement recovery mechanisms",
+            "testStrategy": ""
+          },
+          {
+            "id": 9,
+            "title": "Implement Real-Time Updates with WebSockets",
+            "description": "Add real-time update capabilities for employee ratings using WebSockets",
+            "status": "pending",
+            "dependencies": [
+              5
+            ],
+            "details": "Configure WebSocket server integration, implement subscription handlers for employee ratings collection, ensure real-time data synchronization in admin and client apps",
+            "testStrategy": "Test real-time updates propagation on employee ratings changes"
+          },
+          {
+            "id": 10,
+            "title": "Integrate Payload CMS with Next.js 15",
+            "description": "Follow latest Next.js 15 integration patterns with Payload CMS",
+            "status": "pending",
+            "dependencies": [
+              2
+            ],
+            "details": "Implement server components using local Payload API, configure middleware for authentication, optimize Payload usage with Next.js 15 features",
+            "testStrategy": "Verify Next.js 15 server components correctly consume Payload API and authentication flows"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Implement Authentication System",
+        "description": "Develop authentication flow using Payload CMS v3 with Next.js 15 integration, leveraging HTTP-only cookies as primary authentication strategy and JWT tokens as fallback.",
+        "status": "pending",
+        "dependencies": [
+          2
+        ],
+        "priority": "high",
+        "details": "1. Implement HTTP-only cookies as primary authentication strategy for XSS protection with secure cookie settings including tokenExpiration, secure flags, and sameSite strict.\n2. Configure Next.js middleware for route protection using Payload's /api/users/me endpoint.\n3. Implement role-based access control (RBAC) using Payload's access control hooks.\n4. Create PermissionGate component for frontend role enforcement.\n5. Set up login/logout handlers with credentials: 'include' for cookie management.\n6. Implement useAuth hook with TanStack Query for session state management and session revalidation using SWR patterns.\n7. Configure CORS headers in Payload for seamless Next.js integration.\n8. Add JWT implementation as fallback for non-browser clients.\n9. Implement password lockout policies and rate limiting for enhanced security.\n10. Create custom auth strategy support to enable future Firebase integration.",
+        "testStrategy": "1. Test login/logout flow with HTTP-only cookies and credentials: 'include'.\n2. Verify secure cookie settings including token expiration, secure flags, and sameSite strict.\n3. Validate Next.js middleware route protection using Payload's /api/users/me endpoint.\n4. Test role-based access control enforcement both backend (Payload hooks) and frontend (PermissionGate component).\n5. Verify JWT fallback authentication for non-browser clients.\n6. Test password lockout policies and rate limiting effectiveness.\n7. Validate session revalidation using SWR patterns.\n8. Confirm CORS headers are correctly configured for Next.js integration.\n9. Ensure custom auth strategy support is extensible for Firebase integration.",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Setup Authentication Configuration",
+            "description": "Create authentication configuration files and environment variables for JWT secrets, token expiration, and security settings",
+            "status": "pending",
+            "dependencies": [],
+            "details": "Define JWT secret keys, token expiration times, password requirements, and other security parameters in a type-safe configuration",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implement User Registration Flow",
+            "description": "Create registration endpoint and form with email/password validation using React Hook Form and Zod",
+            "status": "pending",
+            "dependencies": [
+              1
+            ],
+            "details": "Build registration form component, implement Zod validation schema, handle form submission with TanStack Query mutation",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Implement Login Flow",
+            "description": "Create login endpoint and form with proper credential validation and JWT token generation",
+            "status": "pending",
+            "dependencies": [
+              1
+            ],
+            "details": "Build login form component, implement credential verification, generate and return JWT tokens, handle login errors",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Setup JWT Middleware",
+            "description": "Create middleware for JWT verification and user authentication on protected routes",
+            "status": "pending",
+            "dependencies": [
+              1,
+              3
+            ],
+            "details": "Implement JWT verification middleware, handle token extraction from headers, validate token expiration and signature",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Implement Password Reset Flow",
+            "description": "Create password reset endpoints and forms with email verification",
+            "status": "pending",
+            "dependencies": [
+              1,
+              3
+            ],
+            "details": "Build password reset request form, implement email verification, create reset token handling, build password update form",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Setup Authentication Context",
+            "description": "Create React context for managing authentication state and user information",
+            "status": "pending",
+            "dependencies": [
+              3,
+              4
+            ],
+            "details": "Implement AuthContext with user state, login/logout methods, token management, and proper TypeScript types",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Implement Protected Routes",
+            "description": "Create route protection components and logic using React Router",
+            "status": "pending",
+            "dependencies": [
+              4,
+              6
+            ],
+            "details": "Build ProtectedRoute component, implement route guards, handle unauthorized access redirects",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Setup Error Handling",
+            "description": "Implement comprehensive error handling for authentication flows",
+            "status": "pending",
+            "dependencies": [
+              2,
+              3,
+              5
+            ],
+            "details": "Create error boundary components, implement error handling utilities, define error types and messages",
+            "testStrategy": ""
+          },
+          {
+            "id": 9,
+            "title": "Implement Session Management",
+            "description": "Create session handling logic for token refresh and expiration",
+            "status": "pending",
+            "dependencies": [
+              4,
+              6
+            ],
+            "details": "Implement token refresh logic, handle session timeouts, manage token storage securely",
+            "testStrategy": ""
+          },
+          {
+            "id": 10,
+            "title": "Security Hardening",
+            "description": "Implement additional security measures and best practices",
+            "status": "pending",
+            "dependencies": [
+              1,
+              4,
+              9
+            ],
+            "details": "Add rate limiting, implement CSRF protection, secure cookie handling, XSS prevention measures",
+            "testStrategy": ""
+          },
+          {
+            "id": 11,
+            "title": "Integrate Next.js Middleware for Route Protection",
+            "description": "Implement Next.js 15 middleware to protect routes by verifying authentication status via Payload's /api/users/me endpoint",
+            "status": "pending",
+            "dependencies": [
+              4
+            ],
+            "details": "Create middleware that intercepts requests, validates HTTP-only cookies, fetches user session from Payload API, and redirects unauthorized users",
+            "testStrategy": "Test middleware correctly protects routes and redirects unauthorized access."
+          },
+          {
+            "id": 12,
+            "title": "Configure Secure HTTP-only Cookies",
+            "description": "Set up secure cookie settings including tokenExpiration, secure flags, and sameSite strict for authentication cookies",
+            "status": "pending",
+            "dependencies": [
+              1
+            ],
+            "details": "Configure Payload and Next.js to use HTTP-only cookies with appropriate security flags to prevent XSS and CSRF attacks",
+            "testStrategy": "Verify cookies have correct flags and expire as configured."
+          },
+          {
+            "id": 13,
+            "title": "Implement useAuth Hook with TanStack Query and SWR",
+            "description": "Create useAuth hook that manages session state using TanStack Query and supports session revalidation with SWR patterns",
+            "status": "pending",
+            "dependencies": [
+              6
+            ],
+            "details": "Implement hook to fetch current user session, handle login/logout, and revalidate session periodically or on focus",
+            "testStrategy": "Test session state updates and revalidation behavior."
+          },
+          {
+            "id": 14,
+            "title": "Implement Role-Based Access Control (RBAC) with Payload Hooks",
+            "description": "Use Payload CMS access control hooks to enforce RBAC on backend resources",
+            "status": "pending",
+            "dependencies": [
+              1
+            ],
+            "details": "Define roles and permissions in Payload, implement access control hooks to restrict data access accordingly",
+            "testStrategy": "Verify access restrictions based on user roles."
+          },
+          {
+            "id": 15,
+            "title": "Create PermissionGate Component",
+            "description": "Develop frontend PermissionGate component to enforce role-based access control in UI",
+            "status": "pending",
+            "dependencies": [
+              6,
+              14
+            ],
+            "details": "Component checks user roles and permissions to conditionally render children or redirect/deny access",
+            "testStrategy": "Test component hides or shows UI elements based on user permissions."
+          },
+          {
+            "id": 16,
+            "title": "Configure CORS Headers for Next.js Integration",
+            "description": "Set up CORS headers in Payload CMS to allow requests from Next.js frontend",
+            "status": "pending",
+            "dependencies": [
+              1
+            ],
+            "details": "Configure allowed origins, methods, and headers to enable secure cross-origin requests",
+            "testStrategy": "Verify CORS headers are correctly set and requests succeed."
+          },
+          {
+            "id": 17,
+            "title": "Add JWT Fallback Authentication",
+            "description": "Implement JWT token authentication fallback for non-browser clients that cannot use cookies",
+            "status": "pending",
+            "dependencies": [
+              4
+            ],
+            "details": "Support JWT token extraction from headers and validation for API clients without cookie support",
+            "testStrategy": "Test API access using JWT tokens without cookies."
+          },
+          {
+            "id": 18,
+            "title": "Implement Password Lockout and Rate Limiting",
+            "description": "Add security measures including password lockout policies and rate limiting to prevent brute force attacks",
+            "status": "pending",
+            "dependencies": [
+              10
+            ],
+            "details": "Configure Payload and API endpoints to track failed login attempts, lock accounts temporarily, and limit request rates",
+            "testStrategy": "Verify lockout triggers after threshold and rate limiting blocks excessive requests."
+          },
+          {
+            "id": 19,
+            "title": "Create Custom Auth Strategy Support",
+            "description": "Design authentication system extensible to support future custom strategies such as Firebase integration",
+            "status": "pending",
+            "dependencies": [
+              6
+            ],
+            "details": "Abstract authentication logic to allow plugging in alternative auth providers and strategies",
+            "testStrategy": "Validate ability to add and switch custom auth strategies."
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Set Up Form Infrastructure",
+        "description": "Implement core form handling infrastructure using React Hook Form and Zod validation.",
+        "details": "1. Create base form components:\n```typescript\nconst FormWrapper = <T extends FieldValues>({ schema, onSubmit, children }: FormProps<T>) => {\n  const form = useForm<T>({\n    resolver: zodResolver(schema),\n    mode: 'onChange'\n  });\n  return (\n    <Form {...form}>\n      <form onSubmit={form.handleSubmit(onSubmit)}>{children}</form>\n    </Form>\n  );\n};\n```\n2. Implement field components with ShadCN\n3. Create form validation schemas\n4. Set up error handling utilities",
+        "testStrategy": "1. Test form validation\n2. Verify error handling\n3. Test field components\n4. Validate form submission",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Set up Form Component Base Structure",
+            "description": "Create the base form component architecture using React Hook Form and TypeScript",
+            "dependencies": [],
+            "details": "Initialize form component with React Hook Form\nDefine TypeScript interfaces for form data\nCreate basic form wrapper component\nSetup form context provider",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implement Zod Validation Schema",
+            "description": "Define comprehensive validation schemas using Zod for form fields",
+            "dependencies": [
+              1
+            ],
+            "details": "Create validation schema for all form fields\nDefine custom validation rules\nImplement error message templates\nIntegrate schema with React Hook Form",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Develop Form Field Components",
+            "description": "Create reusable form field components with proper typing",
+            "dependencies": [
+              1,
+              2
+            ],
+            "details": "Build input field component\nCreate select field component\nImplement checkbox and radio components\nAdd proper TypeScript types for all components",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Implement Error Handling System",
+            "description": "Set up comprehensive error handling for form validation and submission",
+            "dependencies": [
+              2
+            ],
+            "details": "Create error boundary component\nImplement field-level error display\nAdd form-level error handling\nSetup error message formatting",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Setup TanStack Query Integration",
+            "description": "Integrate TanStack Query for form data fetching and submission",
+            "dependencies": [
+              1
+            ],
+            "details": "Configure TanStack Query client\nSetup query hooks for data fetching\nImplement mutation hooks for form submission\nAdd loading states handling",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Add Form Submission Logic",
+            "description": "Implement form submission handling with proper error management",
+            "dependencies": [
+              4,
+              5
+            ],
+            "details": "Create submission handler function\nImplement success/error notifications\nAdd loading state management\nSetup retry logic for failed submissions",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Implement Form State Management",
+            "description": "Add comprehensive form state management and field tracking",
+            "dependencies": [
+              3,
+              6
+            ],
+            "details": "Setup form state persistence\nImplement dirty state tracking\nAdd form reset functionality\nCreate form state debug tools",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Implement Data Fetching Layer",
+        "description": "Set up TanStack Query v5 infrastructure for data fetching with SSR hydration, optimistic updates, caching, and Next.js 15 best practices.",
+        "status": "pending",
+        "dependencies": [
+          2,
+          3
+        ],
+        "priority": "high",
+        "details": "1. Configure QueryClient with factory pattern:\n```typescript\nconst queryClient = getQueryClient({\n  defaultOptions: {\n    queries: {\n      staleTime: 60000, // 1 minute\n      gcTime: 300000, // 5 minutes\n      retry: 1\n    }\n  }\n});\n```\n2. Implement SSR hydration using HydrationBoundary and dehydrate patterns, including pending queries to prevent SSR mismatches\n3. Create shared QueryClient factory utility `getQueryClient` for consistent client instances\n4. Use type-safe queries with Payload CMS generated types\n5. Implement optimistic updates with rollback support using onMutate, onError, and onSettled lifecycle hooks\n6. Sync authentication state with query invalidation\n7. Add optimistic UI patterns for file uploads\n8. Prefetch data in Next.js server components using dedicated QueryClient instances\n9. Configure `shouldDehydrateQuery` for optimal SSR performance\n10. Maintain consistent query key management and cache invalidation strategies",
+        "testStrategy": "1. Test SSR hydration and dehydration correctness including pending queries\n2. Validate query caching and staleTime/gcTime behavior\n3. Verify optimistic updates with rollback on error\n4. Test authentication sync triggers query invalidation\n5. Validate optimistic UI for file uploads\n6. Test prefetching in server components\n7. Confirm error handling and rollback scenarios\n8. Validate pagination and type safety with Payload CMS types",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Query Client Initialization",
+            "description": "Set up QueryClient with global configurations",
+            "status": "pending",
+            "dependencies": [],
+            "details": "Create QueryClient instance with default options:\n- Set `staleTime` to 30 seconds (prevents unnecessary refetches)\n- Configure `gcTime` (replaces `cacheTime`) for garbage collection\n- Enable `contextSharing` for microfrontend compatibility\n- Implement `defaultOptions` for global callbacks",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Query Key Management",
+            "description": "Establish consistent query key patterns",
+            "status": "pending",
+            "dependencies": [
+              1
+            ],
+            "details": "Implement serializable query keys using arrays:\n- Include entity type and identifiers (e.g. `['todos', 5]`)\n- Use query key factories for type safety\n- Avoid string concatenation for invalidation reliability",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Mutation Handler Setup",
+            "description": "Configure mutation lifecycle hooks",
+            "status": "pending",
+            "dependencies": [
+              1,
+              2
+            ],
+            "details": "Implement `useMutation` with:\n- `onMutate` for optimistic updates\n- `onError` for rollback logic\n- `onSettled` for post-mutation cleanup\n- `retry` and `retryDelay` strategies",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Optimistic Update Implementation",
+            "description": "Apply immediate UI updates for mutations",
+            "status": "pending",
+            "dependencies": [
+              3
+            ],
+            "details": "In `onMutate` callback:\n1. Cancel outgoing queries for same data\n2. Snapshot current state\n3. Return rollback function\n4. Update cache immediately using `queryClient.setQueryData`",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Error Boundary Integration",
+            "description": "Centralize error handling",
+            "status": "pending",
+            "dependencies": [
+              1
+            ],
+            "details": "Configure global callbacks:\n- `queryClient.setDefaultOptions` for queries/mutations\n- Implement `onError` to handle API errors centrally\n- Use `useErrorBoundary` for component-level error propagation",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Cache Invalidation Strategy",
+            "description": "Manage data freshness post-mutation",
+            "status": "pending",
+            "dependencies": [
+              2,
+              3
+            ],
+            "details": "After successful mutations:\n- Use `invalidateQueries` with predicate functions\n- Implement `refetchType: 'active'` for immediate updates\n- Combine with `cancelQueries` for race condition prevention",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Testing Implementation",
+            "description": "Validate query/mutation behaviors",
+            "status": "pending",
+            "dependencies": [
+              1,
+              3,
+              5
+            ],
+            "details": "Create test harness with:\n- `QueryClientProvider` wrapper\n- `renderHook` for mutation testing\n- Mock API responses\n- Validate optimistic rollbacks and error states\n- Use `waitFor` for async state transitions",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "SSR Hydration and Dehydration Setup",
+            "description": "Implement SSR hydration using HydrationBoundary and dehydrate including pending queries",
+            "status": "pending",
+            "dependencies": [
+              1
+            ],
+            "details": "Use TanStack Query v5's HydrationBoundary component and `dehydrate` method:\n- Include pending queries in dehydration to prevent SSR mismatches\n- Configure `shouldDehydrateQuery` for optimal SSR performance\n- Integrate with Next.js 15 server and client components for seamless hydration",
+            "testStrategy": "Test SSR hydration correctness and ensure no mismatch warnings during hydration"
+          },
+          {
+            "id": 9,
+            "title": "QueryClient Factory Utility",
+            "description": "Create shared QueryClient factory `getQueryClient`",
+            "status": "pending",
+            "dependencies": [
+              1
+            ],
+            "details": "Implement a utility function to create and return a QueryClient instance:\n- Apply default options with staleTime: 60000 and gcTime: 300000\n- Ensure singleton pattern or per-request instance as needed for SSR\n- Support contextSharing if applicable",
+            "testStrategy": "Validate consistent QueryClient instances and configuration across app"
+          },
+          {
+            "id": 10,
+            "title": "Type-safe Queries with Payload CMS Types",
+            "description": "Integrate Payload CMS generated types for query and mutation hooks",
+            "status": "pending",
+            "dependencies": [
+              2,
+              3
+            ],
+            "details": "Use Payload CMS TypeScript types to enforce type safety:\n- Define query keys and payload types\n- Ensure mutations and optimistic updates respect types\n- Improve developer experience and reduce runtime errors",
+            "testStrategy": "Verify type correctness in queries and mutations; catch type errors during development"
+          },
+          {
+            "id": 11,
+            "title": "Authentication Sync with Query Invalidation",
+            "description": "Invalidate queries on authentication state changes",
+            "status": "pending",
+            "dependencies": [
+              6
+            ],
+            "details": "Implement logic to:\n- Detect authentication state changes (login/logout)\n- Invalidate relevant queries to refresh data\n- Ensure UI reflects current auth state promptly",
+            "testStrategy": "Test query invalidation triggers on auth changes and UI updates accordingly"
+          },
+          {
+            "id": 12,
+            "title": "File Upload Optimistic UI Patterns",
+            "description": "Implement optimistic UI updates for file uploads",
+            "status": "pending",
+            "dependencies": [
+              3,
+              4
+            ],
+            "details": "Extend mutation handlers to support file upload scenarios:\n- Show immediate UI feedback on upload start\n- Rollback on upload failure\n- Update cache with uploaded file metadata on success",
+            "testStrategy": "Validate optimistic UI during file uploads and rollback on errors"
+          },
+          {
+            "id": 13,
+            "title": "Prefetching in Next.js Server Components",
+            "description": "Use dedicated QueryClient instances to prefetch data in server components",
+            "status": "pending",
+            "dependencies": [
+              9
+            ],
+            "details": "Implement data prefetching patterns:\n- Create QueryClient per request in server components\n- Prefetch queries before rendering\n- Pass dehydrated state to client for hydration",
+            "testStrategy": "Test data availability on initial render and hydration correctness"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Create Dynamic Form Builder",
+        "description": "Develop system for dynamically generating forms based on Payload collections, integrating latest React Hook Form v7 and Zod validation best practices.",
+        "status": "pending",
+        "dependencies": [
+          4,
+          5
+        ],
+        "priority": "medium",
+        "details": "1. Implement TypeScript integration with Zod schemas as single source of truth for form validation.\n2. Create a field registry pattern to dynamically generate form fields from Payload CMS configurations.\n3. Use type-safe form hooks with zodResolver and generics for robust form handling.\n4. Optimize performance with isolated re-renders using useFormContext, debounced validation, and virtualized field arrays.\n5. Integrate TanStack Query for optimistic form submission with rollback capabilities.\n6. Add structured error mapping from Zod to field-specific messages and handle server-side validation sync with Payload CMS errors.\n7. Implement file upload integration using react-dropzone and Controller.\n8. Generate dynamic validation schemas from Payload field configurations.\n9. Enhance testing strategies to cover validation logic and form submission flows comprehensively.",
+        "testStrategy": "1. Test dynamic field rendering with field registry pattern.\n2. Verify type-safe validation rules using Zod schemas.\n3. Test debounced and virtualized validation updates.\n4. Validate optimistic form submission and rollback with TanStack Query.\n5. Ensure structured error mapping from Zod and server-side error synchronization.\n6. Test file upload integration with react-dropzone.\n7. Perform end-to-end tests covering dynamic validation schema generation and form submission.",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Define TypeScript Interfaces",
+            "description": "Create TypeScript interfaces for field configuration and form data",
+            "status": "pending",
+            "dependencies": [],
+            "details": "Define FieldConfig interface with properties: name (string), label (string), type (enum: 'text', 'number', 'select', etc.), validationRules (Zod schema), and options (for select fields). Create FormData interface representing the final form structure.",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Set Up React Hook Form",
+            "description": "Initialize form with useForm hook",
+            "status": "pending",
+            "dependencies": [
+              1
+            ],
+            "details": "Import useForm from react-hook-form. Initialize with defaultValues and resolver set to zodResolver. Define handleSubmit function for form submission.",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Create Zod Validation Schema",
+            "description": "Build dynamic Zod schema from field configurations",
+            "status": "pending",
+            "dependencies": [
+              1
+            ],
+            "details": "Implement function that maps FieldConfig[] to Zod schema. For each field, apply validationRules with optional chaining. Use Zod's object method to combine all field validations.",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Design Field Configuration Loader",
+            "description": "Fetch field configurations from Payload CMS",
+            "status": "pending",
+            "dependencies": [
+              1
+            ],
+            "details": "Create service to fetch Payload collections. Map API response to FieldConfig[]. Handle nested fields through recursive parsing. Implement error handling for failed requests.",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Build Dynamic Field Renderer",
+            "description": "Create component to render fields based on type",
+            "status": "pending",
+            "dependencies": [
+              1,
+              2
+            ],
+            "details": "Implement switch-case component that returns appropriate input (text, number, select) based on field.type. Use Controller from react-hook-form to wrap each input with control={control} and name={field.name}.",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Implement Validation Mapping",
+            "description": "Connect Zod schema to form validation",
+            "status": "pending",
+            "dependencies": [
+              2,
+              3
+            ],
+            "details": "Pass Zod schema to zodResolver in useForm initialization. Ensure validation triggers onBlur and onChange. Map Zod error messages to corresponding fields.",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Handle Dynamic Field Arrays",
+            "description": "Implement addable/removable field groups",
+            "status": "pending",
+            "dependencies": [
+              2,
+              5
+            ],
+            "details": "Use useFieldArray from react-hook-form. Implement functions for append/remove fields. Ensure unique keys for rendered components. Add UI controls for field management.",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Create Form Generator Component",
+            "description": "Assemble dynamic form from configurations",
+            "status": "pending",
+            "dependencies": [
+              4,
+              5,
+              6
+            ],
+            "details": "Component that accepts FieldConfig[] as prop. Map through configurations to render DynamicFieldRenderer for each. Wrap in form tag with onSubmit={handleSubmit}.",
+            "testStrategy": ""
+          },
+          {
+            "id": 9,
+            "title": "Implement Conditional Logic",
+            "description": "Add field dependencies and visibility rules",
+            "status": "pending",
+            "dependencies": [
+              2,
+              5
+            ],
+            "details": "Use watch from react-hook-form to track field values. Implement shouldRender function that checks conditions against watched values. Conditionally render fields based on rules.",
+            "testStrategy": ""
+          },
+          {
+            "id": 10,
+            "title": "Add Error Handling",
+            "description": "Display validation errors",
+            "status": "pending",
+            "dependencies": [
+              2,
+              5,
+              6
+            ],
+            "details": "Extract errors from formState. Map errors to corresponding fields. Display error messages below each field using helperText pattern. Style errors for visibility.",
+            "testStrategy": ""
+          },
+          {
+            "id": 11,
+            "title": "Optimize Performance",
+            "description": "Implement memoization and virtualization",
+            "status": "pending",
+            "dependencies": [
+              5,
+              8
+            ],
+            "details": "Memoize field components with React.memo. Virtualize long forms with react-window. Debounce validation where appropriate. Use useCallback for event handlers. Use useFormContext to isolate re-renders.",
+            "testStrategy": ""
+          },
+          {
+            "id": 12,
+            "title": "Document Component API",
+            "description": "Create usage documentation",
+            "status": "pending",
+            "dependencies": [
+              1,
+              8
+            ],
+            "details": "Document props: fieldConfigs (FieldConfig[]), onSubmit (function), defaultValues (object). Include examples for different field types. Provide TypeScript usage examples.",
+            "testStrategy": ""
+          },
+          {
+            "id": 13,
+            "title": "Implement Field Registry Pattern",
+            "description": "Create a registry to map Payload CMS field types to React components",
+            "status": "pending",
+            "dependencies": [
+              5
+            ],
+            "details": "Develop a centralized field registry that registers and returns React components based on Payload field types. Ensure extensibility for custom field types and integration with Controller for form control.",
+            "testStrategy": "Test registry returns correct components for given field types and supports dynamic registration."
+          },
+          {
+            "id": 14,
+            "title": "Integrate TanStack Query for Form Submission",
+            "description": "Use TanStack Query to handle optimistic updates and rollback on form submission",
+            "status": "pending",
+            "dependencies": [
+              8
+            ],
+            "details": "Implement form submission using useMutation from TanStack Query. Enable optimistic UI updates with rollback on failure. Sync server-side validation errors with form error state.",
+            "testStrategy": "Test optimistic updates and rollback behavior on submission success and failure."
+          },
+          {
+            "id": 15,
+            "title": "Implement File Upload Integration",
+            "description": "Add file upload support using react-dropzone and Controller",
+            "status": "pending",
+            "dependencies": [
+              5,
+              2
+            ],
+            "details": "Integrate react-dropzone for file input fields. Wrap dropzone component with Controller for form state management. Handle file validation and preview.",
+            "testStrategy": "Test file selection, validation, and form state synchronization."
+          },
+          {
+            "id": 16,
+            "title": "Add Structured Error Mapping and Server Sync",
+            "description": "Map Zod validation errors and synchronize with Payload CMS server errors",
+            "status": "pending",
+            "dependencies": [
+              6,
+              14
+            ],
+            "details": "Implement structured error mapping from Zod to field-specific messages. Handle server-side validation errors returned from Payload CMS and map them to form fields for display.",
+            "testStrategy": "Test error mapping for client and server validation errors."
+          },
+          {
+            "id": 17,
+            "title": "Generate Dynamic Validation Schema from Payload Config",
+            "description": "Create dynamic Zod schemas based on Payload field configurations",
+            "status": "pending",
+            "dependencies": [
+              3,
+              4
+            ],
+            "details": "Implement logic to parse Payload field configurations and generate corresponding Zod validation schemas dynamically, supporting all relevant field types and validation rules.",
+            "testStrategy": "Test schema generation covers all field types and validation scenarios."
+          },
+          {
+            "id": 18,
+            "title": "Enhance Testing Strategy",
+            "description": "Add comprehensive tests for validation and form submission",
+            "status": "pending",
+            "dependencies": [
+              3,
+              14,
+              16,
+              17
+            ],
+            "details": "Develop unit and integration tests covering dynamic validation, optimistic submission, error handling, and file uploads. Include tests for performance optimizations and conditional logic.",
+            "testStrategy": "Ensure high coverage and reliability of form builder features."
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Implement File Upload System",
+        "description": "Create drag-and-drop file upload system with Payload integration.",
+        "details": "1. Set up react-dropzone:\n```typescript\nconst FileUpload = () => {\n  const onDrop = useCallback((acceptedFiles: File[]) => {\n    // Handle upload logic\n  }, []);\n  const { getRootProps, getInputProps } = useDropzone({ onDrop });\n  // Render upload zone\n};\n```\n2. Configure Payload upload hooks\n3. Add progress indicators\n4. Implement file validation",
+        "testStrategy": "1. Test file upload flow\n2. Verify file validation\n3. Test progress indication\n4. Validate error handling",
+        "priority": "medium",
+        "dependencies": [
+          2,
+          4
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Design Drag-and-Drop UI Component",
+            "description": "Create a React component with drag-and-drop functionality using react-dropzone",
+            "dependencies": [],
+            "details": "Implement accessible dropzone with file type validation and preview thumbnails. Use TypeScript for props: `onDrop: (files: File[]) => void` and `accept: string`.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implement File Selection Handler",
+            "description": "Create file selection logic with validation",
+            "dependencies": [
+              1
+            ],
+            "details": "Handle file selection via button click and drag events. Validate file size (<10MB) and type (image/*, application/pdf). Return validation errors.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Configure Payload CMS Media Collection",
+            "description": "Set up media collection in Payload CMS",
+            "dependencies": [],
+            "details": "Define media collection with upload:true and cloud storage adapter (S3/Uploadthing). Configure imageSizes for thumbnails and access control [1][3][5].",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Build Upload API Handler",
+            "description": "Create API route for file processing",
+            "dependencies": [
+              3
+            ],
+            "details": "Implement endpoint using Payload's create API. Handle multipart/form-data with file streaming. Return signed URLs for cloud storage [1][5].",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Implement Progress Tracking",
+            "description": "Add real-time upload progress UI",
+            "dependencies": [
+              1,
+              4
+            ],
+            "details": "Use axios onUploadProgress event. Create progress bar component with % display. Track per-file progress in state.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Design Error Handling System",
+            "description": "Implement error states and recovery",
+            "dependencies": [
+              2,
+              4
+            ],
+            "details": "Handle network errors, file validation failures, and server errors. Implement retry logic and error toasts with clear messages.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Create File Preview Component",
+            "description": "Display selected files before upload",
+            "dependencies": [
+              1,
+              2
+            ],
+            "details": "Show thumbnails for images, icons for documents. Include remove button and file metadata (name, size). Use react-pdf for PDF previews.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Implement Payload API Integration",
+            "description": "Connect frontend to Payload API",
+            "dependencies": [
+              3,
+              4
+            ],
+            "details": "Use payload REST API for uploads. Include authentication headers. Handle response with media document ID and URLs [1][3].",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Develop Collection Management",
+        "description": "Implement CRUD operations for Payload collections with relationship handling.",
+        "details": "1. Create collection hooks:\n```typescript\nexport const useCollection = <T>(collection: string) => {\n  return useQuery<T[]>(['collection', collection], () =>\n    fetch(`/api/collections/${collection}`).then(res => res.json())\n  );\n};\n```\n2. Set up relationship handling\n3. Implement batch operations\n4. Add sorting and filtering\n<info added on 2025-07-01T23:20:40.309Z>\nIncorporate TypeScript generics to enforce strong typing for collection documents and relationships, defining base interfaces for reusable fields such as timestamps and user roles. Implement bidirectional relationship management using Payload CMS hooks to maintain data integrity, especially for linked entities like employees and locations. Centralize access control logic in reusable functions to streamline permission checks for roles such as admin and location manager, applying these in collection access configurations. Enhance validation by combining field-level validators with collection hooks to enforce complex business rules, providing clear and contextual error messages. Apply these best practices to ensure robust CRUD operations with relationship handling, batch operations, sorting, and filtering in the restaurant management system collections.\n</info added on 2025-07-01T23:20:40.309Z>",
+        "testStrategy": "1. Test CRUD operations\n2. Verify relationship handling\n3. Test batch operations\n4. Validate filters and sorts",
+        "priority": "medium",
+        "dependencies": [
+          5
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Design Data Models and Relationships",
+            "description": "Define the data models and their relationships to support CRUD operations and complex querying.",
+            "dependencies": [],
+            "details": "Identify entities, their attributes, and relationships (one-to-one, one-to-many, many-to-many). Create ER diagrams or schema definitions.\n<info added on 2025-07-01T23:21:45.543Z>\nExpand the subtask to include the design of TypeScript interfaces such as TimestampedDocument and UserDocument using generics to ensure type safety and reusability. Conduct a thorough analysis of existing collections including Users, Locations, Reviews, and EmployeeRatings to identify and document relationship patterns. Map bidirectional relationships like employee-location, review-location, and rating-employee, and create a comprehensive relationship diagram illustrating these connections. Define role-based access control patterns for each collection, specifying permissions for admin, manager, and employee roles, and compile an access control matrix. Identify and document validation requirements based on business rules, such as enforcing rating values between 1 and 5 and requiring comments for low ratings. Deliverables include TypeScript interfaces for all collections, a relationship diagram, an access control matrix by role, and detailed validation rules documentation.\n</info added on 2025-07-01T23:21:45.543Z>",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implement CRUD Operations",
+            "description": "Develop Create, Read, Update, and Delete functionalities for each data model.",
+            "dependencies": [
+              1
+            ],
+            "details": "Write API endpoints or service methods to handle CRUD operations ensuring data integrity and validation.\n<info added on 2025-07-01T23:21:57.511Z>\nImplement collection configurations using TypeScript generics to define precise field types for Users, Locations, Reviews, and EmployeeRatings collections. Integrate CRUD lifecycle hooks including beforeChange, afterChange, and beforeValidate to enforce data integrity and trigger necessary validations. Develop reusable access control functions such as isAdmin and isLocationManager to manage role-based permissions across collections. Add custom field-level validation functions with clear error messages, focusing on rating validation in Reviews and performance flags in EmployeeRatings. Structure API endpoints following RESTful conventions to handle collection operations efficiently, ensuring secure and consistent data handling aligned with Payload 3.0 best practices.\n</info added on 2025-07-01T23:21:57.511Z>",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Develop Relationship Handling Logic",
+            "description": "Implement logic to manage and enforce relationships between data models during CRUD operations.",
+            "dependencies": [
+              2
+            ],
+            "details": "Ensure cascading updates/deletes, relationship constraints, and proper linking/unlinking of related entities.\n<info added on 2025-07-01T23:22:08.696Z>\nImplement bidirectional relationship management using Payload CMS afterChange hooks to automatically maintain consistency between related entities. Specifically, create hooks for Employee ↔ Location, Review ↔ Location, EmployeeRating ↔ Employee, and User ↔ multiple collections relationships. Ensure cascading updates and deletes propagate correctly to maintain referential integrity across collections. Optimize relationship operations with efficient queries to minimize performance impact. Use Payload's relationship field types and hooks to handle linking and unlinking of related entities during create, update, and delete actions.\n</info added on 2025-07-01T23:22:08.696Z>",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Design Filtering and Querying System",
+            "description": "Create a flexible filtering system to support advanced queries across related data models.",
+            "dependencies": [
+              1
+            ],
+            "details": "Define filter parameters, query syntax, and support for nested and relational filters.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Implement Filtering and Querying Logic",
+            "description": "Develop the backend logic to process filtering requests and return accurate results.",
+            "dependencies": [
+              4,
+              3
+            ],
+            "details": "Optimize queries for performance, handle edge cases, and ensure compatibility with relationship handling.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Test and Optimize System",
+            "description": "Perform thorough testing of CRUD operations, relationship handling, and filtering system, followed by optimization.",
+            "dependencies": [
+              5
+            ],
+            "details": "Write unit and integration tests, identify bottlenecks, and improve performance and reliability.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Implement Role-Based UI Components",
+        "description": "Create UI components and layouts with role-based visibility control.",
+        "details": "1. Create PermissionGate component:\n```typescript\nconst PermissionGate = ({ roles, children }: PermissionGateProps) => {\n  const { user } = useAuth();\n  if (!roles.includes(user?.role)) return null;\n  return <>{children}</>;\n};\n```\n2. Implement role-based navigation\n3. Add conditional rendering utilities\n4. Create protected layouts",
+        "testStrategy": "1. Test role-based access\n2. Verify component visibility\n3. Test navigation guards\n4. Validate layout protection",
+        "priority": "medium",
+        "dependencies": [
+          3
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Design Permission Components",
+            "description": "Create reusable permission components that handle access control based on user roles and permissions.",
+            "dependencies": [],
+            "details": "Define the interface and props for permission components, implement logic to check user roles and permissions, and ensure components render children conditionally.\n<info added on 2025-07-01T23:22:33.930Z>\nImplement modern React permission components following best practices: create a PermissionGate component using TypeScript generics for type safety and the compound component pattern to allow flexible composition; develop usePermissions and useRole hooks to access and manage permission and role data; establish a Permission Context with React Context API to manage permission state globally; build helper functions for conditional role and permission checks to simplify rendering logic. Ensure integration with the existing authentication system to support granular permissions beyond roles. Add error boundaries to handle permission-related errors gracefully and include loading states to manage asynchronous permission checks effectively. Define comprehensive TypeScript interfaces for all components and hooks to ensure type safety and maintainability.\n</info added on 2025-07-01T23:22:33.930Z>",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implement Role-Based Routing",
+            "description": "Set up routing logic that restricts access to routes based on user roles.",
+            "dependencies": [
+              1
+            ],
+            "details": "Integrate permission components with the routing system, define role-based route guards, and configure routes to redirect unauthorized users appropriately.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Develop Protected Layouts",
+            "description": "Create layout components that wrap protected routes and enforce access control.",
+            "dependencies": [
+              1
+            ],
+            "details": "Design layout components that check permissions before rendering content, include fallback UI for unauthorized access, and ensure consistent UI across protected pages.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Integrate Permission Components with Protected Layouts",
+            "description": "Combine permission components with protected layouts to centralize access control logic.",
+            "dependencies": [
+              1,
+              3
+            ],
+            "details": "Ensure permission components are used within protected layouts to manage visibility and access, and test integration for various role scenarios.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Test Role-Based Routing and Access Control",
+            "description": "Perform comprehensive testing of permission components, role-based routing, and protected layouts.",
+            "dependencies": [
+              2,
+              4
+            ],
+            "details": "Write unit and integration tests to verify correct access control behavior, test edge cases for unauthorized access, and validate redirection and UI rendering.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Set Up Testing Infrastructure",
+        "description": "Configure and implement testing setup with Vitest and Playwright.",
+        "details": "1. Configure Vitest:\n```typescript\n// vitest.config.ts\nexport default defineConfig({\n  test: {\n    environment: 'jsdom',\n    setupFiles: ['./tests/setup.ts']\n  }\n});\n```\n2. Set up Playwright\n3. Create test utilities\n4. Implement CI test running",
+        "testStrategy": "1. Verify test configuration\n2. Test utility functions\n3. Validate E2E setup\n4. Confirm CI integration",
+        "priority": "medium",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Setup Testing Frameworks",
+            "description": "Install and configure the necessary testing frameworks for the project, such as Jest, Mocha, or Jasmine.",
+            "dependencies": [],
+            "details": "Choose appropriate testing frameworks based on the project requirements. Install them via package managers and configure initial test scripts and environment settings.\n<info added on 2025-07-01T23:23:00.141Z>\nReview and optimize the existing vitest.config.mts and vitest.setup.ts files to tailor the configuration specifically for the Canvas application. Verify and adjust playwright.config.ts to ensure it supports comprehensive E2E testing for Canvas. Configure testing frameworks to cover Payload CMS collections, Next.js API routes, React components, and database integration tests. Set up isolated test environments by configuring test databases and implementing mock services to facilitate reliable and independent test execution. Focus on enhancing and integrating these configurations within the payload-backend directory without reinstalling frameworks.\n</info added on 2025-07-01T23:23:00.141Z>",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Create Testing Utilities",
+            "description": "Develop reusable utility functions and helpers to support writing and running tests efficiently.",
+            "dependencies": [
+              1
+            ],
+            "details": "Implement common test utilities such as mock data generators, custom assertions, and setup/teardown helpers to streamline test development.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Integrate Testing Frameworks with CI Pipeline",
+            "description": "Configure the continuous integration system to run tests automatically on code commits and pull requests.",
+            "dependencies": [
+              1
+            ],
+            "details": "Set up CI configuration files (e.g., GitHub Actions, Jenkins, Travis CI) to execute the test suites and report results during the build process.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Validate and Document Testing and CI Setup",
+            "description": "Run initial test suites through the CI pipeline to validate the setup and document the testing and CI integration process.",
+            "dependencies": [
+              2,
+              3
+            ],
+            "details": "Perform test runs to ensure everything works as expected. Create documentation outlining how to write tests, use utilities, and understand the CI testing workflow.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "title": "Implement Error Handling and Monitoring",
+        "description": "Set up global error handling, logging, and monitoring systems.",
+        "details": "1. Configure error boundary:\n```typescript\nclass ErrorBoundary extends React.Component<Props, State> {\n  static getDerivedStateFromError(error: Error) {\n    return { hasError: true, error };\n  }\n  // Implement error UI\n}\n```\n2. Set up Sentry integration\n3. Add error logging\n4. Implement toast notifications",
+        "testStrategy": "1. Test error catching\n2. Verify error reporting\n3. Test notification system\n4. Validate logging",
+        "priority": "medium",
+        "dependencies": [
+          1,
+          3,
+          5
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Define Error Boundaries and Setup",
+            "description": "Identify critical components and areas where error boundaries need to be implemented to catch exceptions effectively.",
+            "dependencies": [],
+            "details": "Analyze the application architecture to determine where error boundaries should be placed to isolate errors and prevent cascading failures.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implement Error Boundary Components",
+            "description": "Develop and integrate error boundary components based on the defined setup to catch and handle errors gracefully.",
+            "dependencies": [
+              1
+            ],
+            "details": "Create reusable error boundary components or middleware that can catch errors and provide fallback UI or recovery options.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Integrate Monitoring Tools",
+            "description": "Set up monitoring tools to track and log errors captured by the error boundaries for analysis and alerting.",
+            "dependencies": [
+              2
+            ],
+            "details": "Choose appropriate monitoring services (e.g., Sentry, New Relic) and configure them to receive error reports and performance metrics.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Develop Notification System",
+            "description": "Create a notification system to alert relevant stakeholders when critical errors occur.",
+            "dependencies": [
+              3
+            ],
+            "details": "Implement notification channels such as email, SMS, or messaging apps to send alerts based on error severity and frequency.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Test and Validate Error Handling Workflow",
+            "description": "Conduct comprehensive testing to ensure error boundaries, monitoring, and notification systems work seamlessly together.",
+            "dependencies": [
+              4
+            ],
+            "details": "Perform unit, integration, and end-to-end tests to validate error capture, logging, and alerting mechanisms under various failure scenarios.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "title": "Configure CI/CD Pipeline",
+        "description": "Set up deployment pipeline with GitHub Actions and Vercel.",
+        "details": "1. Create GitHub Actions workflow:\n```yaml\nname: CI/CD\non:\n  push:\n    branches: [main, develop]\n  pull_request:\n    branches: [main]\njobs:\n  build-and-test:\n    runs-on: ubuntu-latest\n    steps:\n      # Define build and test steps\n```\n2. Configure Vercel deployment\n3. Set up environment secrets\n4. Implement deployment checks",
+        "testStrategy": "1. Test CI pipeline\n2. Verify deployment process\n3. Validate environment setup\n4. Test rollback procedures",
+        "priority": "medium",
+        "dependencies": [
+          10,
+          11
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Define Deployment Workflow Requirements",
+            "description": "Gather and document the specific requirements and goals for the deployment workflow including target environments, deployment frequency, and rollback strategies.",
+            "dependencies": [],
+            "details": "Meet with stakeholders to understand deployment needs and constraints. Identify key stages such as build, test, deploy, and notify.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Set Up Environment Configuration",
+            "description": "Configure the deployment environments including development, staging, and production with necessary environment variables and secrets management.",
+            "dependencies": [
+              1
+            ],
+            "details": "Create environment-specific configuration files or use environment management tools. Ensure secure handling of sensitive data.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Design and Implement CI/CD Pipeline",
+            "description": "Create the continuous integration and continuous deployment pipeline based on the defined workflow requirements and environment configurations.",
+            "dependencies": [
+              1,
+              2
+            ],
+            "details": "Use CI/CD tools like Jenkins, GitHub Actions, or GitLab CI to automate build, test, and deployment steps.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Integrate Automated Testing",
+            "description": "Incorporate automated testing into the deployment workflow to ensure code quality and functionality before deployment.",
+            "dependencies": [
+              3
+            ],
+            "details": "Add unit, integration, and end-to-end tests to the pipeline. Configure test runners and reporting tools.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Validate Deployment Workflow",
+            "description": "Perform end-to-end testing of the deployment workflow to verify that all stages execute correctly and environments are properly configured.",
+            "dependencies": [
+              4
+            ],
+            "details": "Run test deployments to staging and production environments. Monitor logs and fix any issues encountered.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Document Deployment and Testing Procedures",
+            "description": "Create comprehensive documentation covering the deployment workflow, environment setup, and testing integration for future reference and team onboarding.",
+            "dependencies": [
+              5
+            ],
+            "details": "Include step-by-step guides, configuration details, troubleshooting tips, and contact points for support.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      }
+    ],
+    "metadata": {
+      "created": "2025-07-01T23:13:03.567Z",
+      "updated": "2025-07-01T23:13:03.568Z",
+      "description": "Tasks for master context"
+    }
+  }
+}

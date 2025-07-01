@@ -1,0 +1,144 @@
+# Product Requirements Document (PRD): Canvas Forms (Payload 3.0 + Next.js)
+
+## 1. Introduction
+
+Canvas Forms is a form-centric application built with:
+- **Frontend:** Next.js (React) + ShadCN UI (dark theme)
+- **Backend:** Payload 3.0 CMS
+- **Database:** Supabase PostgreSQL
+- **LLM Context:** `llm_context/` library for architecture patterns, UI components, state management, and integration guides
+
+This PRD defines functional requirements, architecture, and best practices optimized for the current tech stack.
+
+## 2. Core Principles
+
+1. **Modularity & Conventions**  
+   - Feature-based folders in `src/`  
+   - File-based routing in Next.js `app/` directory  
+   - Shared utilities and hooks under `src/lib/`
+
+2. **Type Safety & Validation**  
+   - Strict TypeScript across frontend and backend  
+   - Zod schemas for client-side & server-side validation  
+   - React Hook Form + `@hookform/resolvers/zod`
+
+3. **Performance & UX**  
+   - Next.js SSR/ISR for key pages  
+   - TanStack Query for data fetching & cache management  
+   - Optimistic updates, granular loading states  
+   - Accessibility (ARIA, keyboard nav, WCAG compliance)
+
+4. **Security & Auth**  
+   - Payload CMS authentication (JWT via HttpOnly cookies)  
+   - CSRF protection on API routes  
+   - Role-based access control in Payload collections & UI (`PermissionGate` component)
+
+5. **Consistency & Patterns**  
+   - UI patterns, forms, state management, and data-layer best practices in `llm_context/`  
+   - Collaborators should reference `llm_context/` for code examples and integration guides
+
+## 3. Technology Stack & References
+
+| Layer                   | Technology                                 | Context Folder                       |
+|-------------------------|--------------------------------------------|--------------------------------------|
+| Frontend Framework      | Next.js (app router)                       | `llm_context/payload3/README.md`     |
+| UI Components           | ShadCN UI + Tailwind CSS                   | `llm_context/ui_patterns/README.md`  |
+| Data Fetching           | TanStack Query                             | `llm_context/tanstack/README.md`     |
+| Forms & Validation      | React Hook Form + Zod                      | `llm_context/forms/README.md`        |
+| State Management        | Zustand (`persist`, auth)                  | `llm_context/state_management/README.md` |
+| CMS & API               | Payload 3.0 CMS (REST & GraphQL)           | `llm_context/payload3/README.md`     |
+| Database                | Supabase PostgreSQL                        | `llm_context/mcp_tools/README.md`    |
+| Testing                 | Playwright (E2E), Vitest (unit/integration)|                                      |
+| CI/CD & Deployment      | GitHub Actions → Vercel (frontend + CMS)   |                                      |
+
+## 4. Functional Requirements
+
+### 4.1. Authentication & Authorization
+- **Sign up / Login / Logout** via Payload CMS endpoints
+- **Token handling**: Secure JWT in HttpOnly cookies
+- **Role definitions**: Administrator, Store Manager, Shift Manager, User
+- **Route guards**: Next.js middleware + `beforeLoad` in TanStack Router
+- **UI gating**: `<PermissionGate roles={...}>`
+
+### 4.2. Form Flows
+- **Dynamic forms**: Driven by Payload collections (fields, relationships)
+- **Validation**: Zod schemas enforced client & server
+- **Drag-and-drop uploads**: `react-dropzone` + Payload upload hooks
+- **Real-time feedback**: Debounced async checks (e.g., unique values)
+- **Error / Success states**: Inline feedback, toast notifications
+
+### 4.3. Data Management
+- **Queries & mutations** via TanStack Query + custom hooks (`useFetchContacts`, etc.)
+- **Optimistic updates** for CRUD operations
+- **Pagination**: Cursor-based for large lists
+- **Caching**: Cache invalidation on mutations
+
+### 4.4. CMS Collections & Relationships
+Leverage Payload 3.0 for content models:
+- Contacts, DietaryRestrictions, DrinkMenuItems, …
+- Define relationships with foreign keys in Supabase
+- Zod validation rules in collection configs
+- Access controls per collection field
+
+## 5. Architecture & Folder Structure
+
+```
+/src
+  /app                # Next.js file-based routes
+  /components         # Shared UI components
+  /features           # Feature modules (forms, ratings, reports)
+  /hooks              # Custom React hooks
+  /lib                # Utilities, API clients
+  /styles             # Global styles, theme
+  /types              # Shared TypeScript types
+  /schemas            # Zod schemas for forms & API
+/tests                # Playwright & Vitest tests
+```
+
+## 6. Testing & Quality
+
+- **Unit & Integration**: Vitest + React Testing Library  
+- **E2E**: Playwright covering critical user flows  
+- **Lint & Format**: ESLint + Prettier, enforced in CI  
+- **Performance & Accessibility Audits**: Browser-tools-MCP (`runPerformanceAudit`, `runAccessibilityAudit`)
+
+## 7. Deployment & CI/CD
+
+1. **Branches**: `main`, `develop`, `feature/*`  
+2. **Pull Requests**: Conventional commits, code review  
+3. **CI**: Run lint, tests, build on GitHub Actions  
+4. **Deploy**: Vercel for frontend & Payload serverless functions  
+5. **Environments**: Staging & production with separate Supabase instances  
+6. **Monitoring**: Sentry or similar for error tracking
+
+## 8. Next Steps & Milestones
+
+1. **Environment Setup**  
+   - Configure `.env` files, Supabase branch via supabase-mcp-server  
+   - Install dependencies, verify llm_context references
+
+2. **Payload CMS & Database**  
+   - Define/optimize collection schemas  
+   - Sync Supabase schema & validate via supabase-mcp-server
+
+3. **Frontend Foundation**  
+   - Scaffold Next.js `app/` routes, layouts, and global styles  
+   - Integrate auth flow and TanStack Query provider
+
+4. **Form Module**  
+   - Implement core form components, dynamic field rendering  
+   - Validate CRUD operations end-to-end
+
+5. **Feature Buildout**  
+   - Employee Ratings, Dynamic Questions, File Uploads  
+   - Role-based UI gating and permissions
+
+6. **Testing & Release**  
+   - Complete Playwright tests  
+   - CI/CD pipeline and initial staging deployment  
+   - Final QA, accessibility & performance audits  
+   - Production deployment
+
+---
+
+**Reference**: Always consult the `llm_context/` library for patterns, best practices, and integration guides.

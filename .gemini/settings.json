@@ -1,0 +1,28 @@
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"]
+    },
+    "browsertools": {
+      "command": "npx",
+      "args": ["-y", "browsertools-mcp"]
+    },
+    "puppeteer": {
+      "command": "npx",
+      "args": ["-y", "puppeteer-mcp"]
+    },
+    "magic-ui": {
+      "command": "npx",
+      "args": ["-y", "magic-ui-mcp"]
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "brave-search-mcp"]
+    },
+    "taskmaster": {
+      "command": "npx",
+      "args": ["-y", "--package=task-master-ai", "task-master-ai"]
+    }
+  }
+}
