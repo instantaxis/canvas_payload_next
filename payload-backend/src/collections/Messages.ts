@@ -1,7 +1,10 @@
 /**
  * @description Messages collection configuration.
  */
-export const Messages: CollectionConfig = {
+import type { CollectionConfig } from 'payload';
+import { isAdminOrManager, isAdmin } from '../access';
+
+export const Messages = {
   slug: 'messages',
   admin: {
     useAsTitle: 'subject',
@@ -27,7 +30,7 @@ export const Messages: CollectionConfig = {
       ],
       defaultValue: 'new',
       admin: {
-        position: 'sidebar'
+        position: 'sidebar' as const
       }
     },
     {
@@ -164,7 +167,7 @@ export const Messages: CollectionConfig = {
        * @param {string} args.operation - The operation being performed (e.g., 'create', 'update').
        * @returns {object} The modified data.
        */
-      ({ data, operation }) => {
+      ({ data, operation: _operation }: { data: any; operation: string }) => {
         // Auto-set response_date when response_sent is marked true
         if (data.response_sent && !data.response_date) {
           data.response_date = new Date().toISOString()
@@ -186,9 +189,9 @@ export const Messages: CollectionConfig = {
        * @param {string} args.operation - The operation being performed (e.g., 'create', 'update').
        * @returns {void}
        */
-      ({ doc, operation }) => {
+      ({ doc, operation: _operation }: { doc: any; operation: string }) => {
         // Send notification to assigned staff member
-        if (operation === 'create' && doc.assigned_to) {
+        if (_operation === 'create' && doc.assigned_to) {
           // TODO: Implement email notification system
           console.log(`New message assigned to user ${doc.assigned_to}`)
         }

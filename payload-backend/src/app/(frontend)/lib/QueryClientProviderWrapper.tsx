@@ -15,6 +15,11 @@ interface QueryClientProviderWrapperProps {
  * @param {QueryClientProviderWrapperProps} { children }
  * @returns {React.ReactElement}
  */
+/**
+ * @description Provides a QueryClient to the application and persists its state.
+ * @param {QueryClientProviderWrapperProps} { children }
+ * @returns {React.ReactElement}
+ */
 export const QueryClientProviderWrapper: React.FC<QueryClientProviderWrapperProps> = ({
   children,
 }) => {

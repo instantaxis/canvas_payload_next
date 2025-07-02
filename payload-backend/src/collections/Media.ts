@@ -1,6 +1,6 @@
 import { CollectionConfig } from 'payload';
 import { isAuthenticated, isOwnerOrAdmin } from '../access';
-import { s3Adapter } from '@payloadcms/storage-s3';
+import s3Adapter from '@payloadcms/storage-s3';
 
 export const Media: CollectionConfig = {
   slug: 'media',

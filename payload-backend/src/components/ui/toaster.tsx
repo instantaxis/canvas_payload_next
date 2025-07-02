@@ -10,6 +10,10 @@ import {
 } from '@/components/ui/toast'
 import { useToast } from '@/components/ui/use-toast'
 
+/**
+ * @description Renders a toaster component to display toasts.
+ * @returns {React.ReactElement}
+ */
 export function Toaster() {
   const { toasts } = useToast()
 

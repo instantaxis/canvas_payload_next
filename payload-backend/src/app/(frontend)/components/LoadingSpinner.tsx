@@ -3,6 +3,10 @@
 
 import React from 'react';
 
+/**
+ * @description A simple loading spinner component.
+ * @returns {React.ReactElement}
+ */
 export const LoadingSpinner: React.FC = () => {
   return (
     <div className="flex items-center justify-center h-full">

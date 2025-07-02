@@ -17,6 +17,9 @@ type ToastProps = {
   // props
 }
 
+/**
+ * @description Defines the types of actions that can be performed on toasts.
+ */
 const actionTypes = {
   ADD_TOAST: 'ADD_TOAST',
   UPDATE_TOAST: 'UPDATE_TOAST',
@@ -26,6 +29,10 @@ const actionTypes = {
 
 let count = 0
 
+/**
+ * @description Generates a unique ID for a toast.
+ * @returns {string}
+ */
 function genId() {
   count = (count + 1) % 100
   return count.toString()
@@ -57,6 +64,11 @@ interface State {
 
 const toastTimeouts = new Map<string, ReturnType<typeof setTimeout>>()
 
+/**
+ * @description Adds a toast to the remove queue after a delay.
+ * @param {string} toastId
+ * @returns {void}
+ */
 const addToRemoveQueue = (toastId: string) => {
   if (toastTimeouts.has(toastId)) {
     return
@@ -73,6 +85,12 @@ const addToRemoveQueue = (toastId: string) => {
   toastTimeouts.set(toastId, timeout)
 }
 
+/**
+ * @description Reducer function for managing toast state.
+ * @param {State} state
+ * @param {Action} action
+ * @returns {State}
+ */
 export const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case 'ADD_TOAST':
@@ -132,6 +150,11 @@ const listeners: Array<(state: State) => void> = []
 
 let memoryState: State = { toasts: [] }
 
+/**
+ * @description Dispatches an action to update the toast state.
+ * @param {Action} action
+ * @returns {void}
+ */
 function dispatch(action: Action) {
   memoryState = reducer(memoryState, action)
   listeners.forEach(listener => {
@@ -141,6 +164,11 @@ function dispatch(action: Action) {
 
 type Toast = Omit<ToasterToast, 'id'>
 
+/**
+ * @description Displays a toast notification.
+ * @param {Toast} props
+ * @returns {{ id: string; dismiss: () => void; update: (props: ToasterToast) => void }}
+ */
 function toast(props: Toast) {
   const id = genId()
 
@@ -170,6 +198,10 @@ function toast(props: Toast) {
   }
 }
 
+/**
+ * @description A hook to access and manage toast notifications.
+ * @returns {State & { toast: (props: Toast) => { id: string; dismiss: () => void; update: (props: ToasterToast) => void }; dismiss: (toastId?: string) => void }}
+ */
 function useToast() {
   const [state, setState] = React.useState<State>(memoryState)
 

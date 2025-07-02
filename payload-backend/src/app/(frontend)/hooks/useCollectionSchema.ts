@@ -1,6 +1,9 @@
 
 import { useQuery } from '@tanstack/react-query';
 
+/**
+ * @description Interface for a Payload field, defining its properties and admin configurations.
+ */
 export interface PayloadField {
   name: string;
   type: string;

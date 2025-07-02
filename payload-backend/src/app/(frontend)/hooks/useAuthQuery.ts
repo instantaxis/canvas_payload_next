@@ -37,6 +37,11 @@ export const useAuthQuery = <TQueryFnData = unknown, TError = unknown, TData = T
   const token = Cookies.get('payload-token'); // Assuming the token is stored in a cookie named 'payload-token'
   const isAuthenticated = !!token;
 
+  /**
+   * @description Authenticated query function that adds authorization headers.
+   * @param {{ queryKey: TQueryKey; signal?: AbortSignal }} context
+   * @returns {Promise<TQueryFnData>}
+   */
   const authenticatedQueryFn: typeof queryFn = async (context) => {
     const headers: HeadersInit = {};
     if (token) {

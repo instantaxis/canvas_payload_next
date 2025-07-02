@@ -11,6 +11,10 @@ import { useCrudMutation } from '@/app/(frontend)/hooks/useCrudMutation';
  * @description The user registration page.
  * @returns {React.ReactElement}
  */
+/**
+ * @description The user registration page.
+ * @returns {React.ReactElement}
+ */
 export default function RegisterPage() {
   const { mutate, isPending } = useCrudMutation(registerUserAction, {
     onSuccess: (data) => {
@@ -27,7 +31,7 @@ export default function RegisterPage() {
         });
       }
     },
-    onError: (error: any) => {
+    onError: (error: Error) => {
       toast({
         title: 'Registration failed',
         description: error.message || 'An error occurred during registration.',
@@ -36,7 +40,12 @@ export default function RegisterPage() {
     },
   });
 
-  const onSubmit = async (data: any) => {
+  /**
+   * @description Handles the form submission for user registration.
+   * @param {FieldValues} data - The form data.
+   * @returns {Promise<void>}
+   */
+  const onSubmit = async (data: FieldValues) => {
     const formData = new FormData();
     for (const key in data) {
       formData.append(key, data[key]);
