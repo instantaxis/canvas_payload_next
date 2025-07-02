@@ -1,6 +1,9 @@
 import { CollectionConfig } from 'payload';
 import { isAdmin, isAdminOrManager } from '../access';
 
+/**
+ * @description Drink Subcategories collection configuration.
+ */
 export const DrinkSubcategories: CollectionConfig = {
   slug: 'drinkSubcategories',
   admin: {

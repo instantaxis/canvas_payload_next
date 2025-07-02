@@ -1,6 +1,9 @@
 import type { CollectionConfig } from 'payload'
 import { isAdmin, isAdminOrManager, isAdminOrHasLocationAccess } from '../access';
 
+/**
+ * @description Upgrades collection configuration.
+ */
 export const Upgrades: CollectionConfig = {
   slug: 'upgrades',
   admin: {

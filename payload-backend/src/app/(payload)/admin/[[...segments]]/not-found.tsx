@@ -15,9 +15,19 @@ type Args = {
   }>
 }
 
+/**
+ * @description Generates metadata for the not found page.
+ * @param {Args} { params, searchParams }
+ * @returns {Promise<Metadata>}
+ */
 export const generateMetadata = ({ params, searchParams }: Args): Promise<Metadata> =>
   generatePageMetadata({ config, params, searchParams })
 
+/**
+ * @description The not found page component.
+ * @param {Args} { params, searchParams }
+ * @returns {React.ReactElement}
+ */
 const NotFound = ({ params, searchParams }: Args) =>
   NotFoundPage({ config, params, searchParams, importMap })
 

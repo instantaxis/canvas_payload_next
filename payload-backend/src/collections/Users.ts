@@ -3,6 +3,9 @@ import { Access, PayloadRequest } from 'payload';
 import { User } from '../payload-types';
 import { isAdmin, isAdminOrSelf, canManageUsers } from '../access';
 
+/**
+ * @description Users collection configuration.
+ */
 const Users: CollectionConfig = {
   slug: 'users',
   auth: {
@@ -188,6 +191,14 @@ const Users: CollectionConfig = {
   ],
   hooks: {
     beforeChange: [
+      /**
+       * @description Hook to set default role for new users.
+       * @param {object} args
+       * @param {object} args.data - The data being saved.
+       * @param {object} args.req - The Payload request object.
+       * @param {string} args.operation - The operation being performed (e.g., 'create', 'update').
+       * @returns {object} The modified data.
+       */
       ({ data, req, operation }) => {
         if (operation === 'create') {
           // Set default role for new users

@@ -1,23 +1,29 @@
-import { headers as getHeaders } from 'next/headers.js'
-import Image from 'next/image'
-import { getPayload } from 'payload'
-import React from 'react'
-import { fileURLToPath } from 'url'
+'use client';
 
-import config from '@/payload.config'
-import './styles.css'
+import Image from 'next/image';
+import React from 'react';
+import { fileURLToPath } from 'url';
+import './styles.css';
+import { useAuthQuery } from './hooks/useAuthQuery';
 
 /**
  * @description The home page for the frontend application.
- * @returns {Promise<React.ReactElement>}
+ * @returns {React.ReactElement}
  */
-export default async function HomePage() {
-  const headers = await getHeaders()
-  const payloadConfig = await config
-  const payload = await getPayload({ config: payloadConfig })
-  const { user } = await payload.auth({ headers })
+export default function HomePage() {
+  const { data: user, isLoading, isError } = useAuthQuery(
+    ['currentUser'],
+    async ({ signal }) => {
+      const response = await fetch('/api/users/me', { signal });
+      if (!response.ok) {
+        throw new Error('Failed to fetch user data');
+      }
+      return response.json();
+    },
+    { requireAuth: false } // This page can be viewed by unauthenticated users
+  );
 
-  const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
+  const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`;
 
   return (
     <div className="home">
@@ -31,12 +37,14 @@ export default async function HomePage() {
             width={65}
           />
         </picture>
-        {!user && <h1>Welcome to your new project.</h1>}
-        {user && <h1>Welcome back, {user.email}</h1>}
+        {isLoading && <h1>Loading user data...</h1>}
+        {isError && <h1>Error loading user data.</h1>}
+        {!isLoading && !isError && !user && <h1>Welcome to your new project.</h1>}
+        {!isLoading && !isError && user && <h1>Welcome back, {user.email}</h1>}
         <div className="links">
           <a
             className="admin"
-            href={payloadConfig.routes.admin}
+            href="/admin"
             rel="noopener noreferrer"
             target="_blank"
           >
@@ -59,5 +67,5 @@ export default async function HomePage() {
         </a>
       </div>
     </div>
-  )
+  );
 }

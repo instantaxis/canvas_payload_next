@@ -1,5 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+/**
+ * @description Sets CORS headers for API routes.
+ * @param {NextRequest} request
+ * @param {NextResponse} response
+ * @returns {NextResponse}
+ */
 export function setCorsHeaders(request: NextRequest, response: NextResponse) {
   if (request.nextUrl.pathname.startsWith('/api/')) {
     response.headers.set('Access-Control-Allow-Origin', process.env.PAYLOAD_PUBLIC_SERVER_URL || '*');

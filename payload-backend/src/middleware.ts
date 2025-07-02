@@ -5,6 +5,12 @@ import { checkAuthentication } from './middleware/authentication';
 import { applyRateLimiting } from './middleware/rateLimiting';
 
 // Restaurant management system middleware
+/**
+ * @description Main middleware function for the application.
+ * Applies security headers, CORS, authentication, and rate limiting.
+ * @param {NextRequest} request
+ * @returns {NextResponse}
+ */
 export function middleware(request: NextRequest) {
   let response = NextResponse.next();
 

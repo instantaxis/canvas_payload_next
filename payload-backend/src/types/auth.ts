@@ -1,3 +1,6 @@
+/**
+ * @description Represents a user in the restaurant management system.
+ */
 export interface RestaurantUser {
   id: string
   email: string
@@ -22,6 +25,15 @@ export interface RestaurantUser {
   updatedAt: string
 }
 
+/**
+ * @description Defines the possible roles a user can have.
+ */
 export type UserRole = 'admin' | 'store_manager' | 'shift_manager' | 'foh_employee' | 'boh_employee' | 'user'
+/**
+ * @description Defines the possible statuses for a user.
+ */
 export type UserStatus = 'active' | 'inactive' | 'on_leave' | 'terminated'
+/**
+ * @description Defines the possible employment types for a user.
+ */
 export type EmploymentType = 'full_time' | 'part_time' | 'seasonal' | 'contract'

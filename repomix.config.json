@@ -1,0 +1,55 @@
+{
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.json",
+    "**/*.md",
+    "**/*.yml",
+    "**/*.yaml",
+    "**/*.env.example",
+    "**/*.config.*",
+    "**/*.mjs",
+    "**/*.mts"
+  ],
+  "ignore": {
+    "useGitignore": true,
+    "useDefaultPatterns": true,
+    "customPatterns": [
+      "node_modules/**",
+      ".git/**",
+      "dist/**",
+      "build/**",
+      ".next/**",
+      "coverage/**",
+      "*.log",
+      "*.lock",
+      "pnpm-lock.yaml",
+      "yarn.lock",
+      "package-lock.json",
+      ".env",
+      ".env.local",
+      ".env.production",
+      "**/.DS_Store",
+      "**/Thumbs.db",
+      "**/*.min.js",
+      "**/*.min.css",
+      "**/payload-types.ts",
+      "**/*.d.ts",
+      "repomix-output.*"
+    ]
+  },
+  "output": {
+    "filePath": "repomix-output.xml",
+    "style": "xml",
+    "headerText": "Canvas Payload v3 Restaurant Management System - Complete Codebase",
+    "removeComments": false,
+    "removeEmptyLines": false,
+    "topFilesLength": 12,
+    "showLineNumbers": true
+  },
+  "security": {
+    "enableSecurityCheck": true
+  }
+}

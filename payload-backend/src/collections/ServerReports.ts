@@ -1,6 +1,9 @@
 import { CollectionConfig } from 'payload';
 import { isAdmin, isAdminOrManager, isFohEmployee } from '../access';
 
+/**
+ * @description Server Reports collection configuration.
+ */
 export const ServerReports: CollectionConfig = {
   slug: 'serverReports',
   admin: {

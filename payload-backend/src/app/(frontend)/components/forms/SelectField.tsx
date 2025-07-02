@@ -16,6 +16,11 @@ interface SelectFieldProps extends React.SelectHTMLAttributes<HTMLSelectElement>
   labelClassName?: string;
 }
 
+/**
+ * @description A reusable select field component that integrates with react-hook-form.
+ * @param {SelectFieldProps} props
+ * @returns {React.ReactElement}
+ */
 export const SelectField = ({
   name,
   label,

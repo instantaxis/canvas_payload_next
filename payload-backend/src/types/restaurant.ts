@@ -4,6 +4,9 @@
  */
 
 // Base types for all entities
+/**
+ * @description Base interface for all entities with common fields.
+ */
 export interface BaseEntity {
   id: string
   createdAt: string
@@ -11,6 +14,9 @@ export interface BaseEntity {
 }
 
 // User and Authentication Types
+/**
+ * @description Represents a user in the system.
+ */
 export interface User extends BaseEntity {
   email: string
   firstName: string
@@ -21,8 +27,14 @@ export interface User extends BaseEntity {
   profileImage?: string
 }
 
+/**
+ * @description Defines the possible roles a user can have.
+ */
 export type UserRole = 'admin' | 'manager' | 'employee'
 
+/**
+ * @description Represents an authentication session.
+ */
 export interface AuthSession {
   user: User
   token: string
@@ -30,6 +42,9 @@ export interface AuthSession {
 }
 
 // Employee Management Types
+/**
+ * @description Represents an employee in the system.
+ */
 export interface Employee extends BaseEntity {
   userId: string
   employeeId: string
@@ -42,6 +57,9 @@ export interface Employee extends BaseEntity {
   schedule?: WorkSchedule[]
 }
 
+/**
+ * @description Represents an emergency contact for an employee.
+ */
 export interface EmergencyContact {
   name: string
   relationship: string
@@ -49,6 +67,9 @@ export interface EmergencyContact {
   email?: string
 }
 
+/**
+ * @description Represents a work schedule for an employee.
+ */
 export interface WorkSchedule {
   dayOfWeek: number // 0-6 (Sunday-Saturday)
   startTime: string // HH:MM format
@@ -57,6 +78,9 @@ export interface WorkSchedule {
 }
 
 // Rating and Performance Types
+/**
+ * @description Represents an employee performance rating.
+ */
 export interface EmployeeRating extends BaseEntity {
   employeeId: string
   raterId: string // Manager or admin who gave the rating
@@ -69,12 +93,18 @@ export interface EmployeeRating extends BaseEntity {
   goals?: string[]
 }
 
+/**
+ * @description Defines the period for a rating.
+ */
 export interface RatingPeriod {
   startDate: string
   endDate: string
   type: 'weekly' | 'monthly' | 'quarterly' | 'annual'
 }
 
+/**
+ * @description Represents a category within a rating.
+ */
 export interface RatingCategory {
   name: string
   score: number // 1-10 scale
@@ -82,7 +112,9 @@ export interface RatingCategory {
   comments?: string
 }
 
-// Standard rating categories for restaurant employees
+/**
+ * @description Standard rating categories for restaurant employees.
+ */
 export const RATING_CATEGORIES = {
   CUSTOMER_SERVICE: 'Customer Service',
   TEAMWORK: 'Teamwork & Collaboration',
@@ -97,6 +129,9 @@ export const RATING_CATEGORIES = {
 } as const
 
 // Report Types
+/**
+ * @description Represents a manager's report.
+ */
 export interface ManagerReport extends BaseEntity {
   managerId: string
   reportType: ReportType
@@ -107,6 +142,9 @@ export interface ManagerReport extends BaseEntity {
   attachments?: string[]
 }
 
+/**
+ * @description Defines the types of reports.
+ */
 export type ReportType = 
   | 'performance_summary'
   | 'team_analysis'
@@ -114,6 +152,9 @@ export type ReportType =
   | 'incident_report'
   | 'training_needs'
 
+/**
+ * @description Represents a metric within a report.
+ */
 export interface ReportMetric {
   name: string
   value: number
@@ -126,6 +167,9 @@ export interface ReportMetric {
 }
 
 // Location and Restaurant Types
+/**
+ * @description Represents a physical location of the business.
+ */
 export interface Location extends BaseEntity {
   name: string
   address: string
@@ -139,6 +183,9 @@ export interface Location extends BaseEntity {
   operatingHours: OperatingHours[]
 }
 
+/**
+ * @description Represents the operating hours for a location.
+ */
 export interface OperatingHours {
   dayOfWeek: number
   openTime: string
@@ -147,6 +194,10 @@ export interface OperatingHours {
 }
 
 // API Response Types
+/**
+ * @description Represents a generic API response.
+ * @template T
+ */
 export interface ApiResponse<T = any> {
   success: boolean
   data?: T
@@ -160,6 +211,9 @@ export interface ApiResponse<T = any> {
   }
 }
 
+/**
+ * @description Defines parameters for pagination.
+ */
 export interface PaginationParams {
   page?: number
   limit?: number
@@ -169,12 +223,19 @@ export interface PaginationParams {
 }
 
 // Form and Validation Types
+/**
+ * @description Represents a validation error for a form field.
+ */
 export interface ValidationError {
   field: string
   message: string
   code?: string
 }
 
+/**
+ * @description Represents the state of a form.
+ * @template T
+ */
 export interface FormState<T = any> {
   data: T
   errors: ValidationError[]
@@ -183,6 +244,9 @@ export interface FormState<T = any> {
 }
 
 // Notification and Alert Types
+/**
+ * @description Represents a notification or alert.
+ */
 export interface Notification extends BaseEntity {
   userId: string
   title: string
@@ -193,6 +257,9 @@ export interface Notification extends BaseEntity {
   metadata?: Record<string, any>
 }
 
+/**
+ * @description Defines the types of notifications.
+ */
 export type NotificationType = 
   | 'rating_received'
   | 'schedule_change'
@@ -201,6 +268,9 @@ export type NotificationType =
   | 'reminder'
 
 // Dashboard and Analytics Types
+/**
+ * @description Represents dashboard metrics.
+ */
 export interface DashboardMetrics {
   totalEmployees: number
   activeEmployees: number
@@ -211,6 +281,9 @@ export interface DashboardMetrics {
   recentRatings: EmployeeRating[]
 }
 
+/**
+ * @description Represents a data point for trend analysis.
+ */
 export interface TrendDataPoint {
   date: string
   value: number
@@ -218,6 +291,10 @@ export interface TrendDataPoint {
 }
 
 // Export utility type for Payload CMS collections
+/**
+ * @description Utility type for Payload CMS collections.
+ * @template T
+ */
 export type PayloadCollection<T> = T & {
   id: string
   createdAt: string

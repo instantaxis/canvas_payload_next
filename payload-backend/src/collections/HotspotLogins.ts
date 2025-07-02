@@ -1,6 +1,9 @@
 import type { CollectionConfig } from 'payload'
 import { isAdmin, isAdminOrManager, isAdminOrHasLocationAccess } from '../access';
 
+/**
+ * @description Hotspot Logins collection configuration.
+ */
 export const HotspotLogins: CollectionConfig = {
   slug: 'hotspot-logins',
   admin: {

@@ -1,14 +1,11 @@
 import React from 'react'
 import './styles.css'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { QueryClientProviderWrapper } from './lib/QueryClientProviderWrapper'
 
 export const metadata = {
   description: 'A blank template using Payload in a Next.js app.',
   title: 'Payload Blank Template',
 }
-
-const queryClient = new QueryClient();
 
 /**
  * @description The root layout for the frontend application.
@@ -21,10 +18,9 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <QueryClientProvider client={queryClient}>
+        <QueryClientProviderWrapper>
           <main>{children}</main>
-          <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
+        </QueryClientProviderWrapper>
       </body>
     </html>
   )

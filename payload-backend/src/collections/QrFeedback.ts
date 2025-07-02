@@ -1,6 +1,9 @@
 import { CollectionConfig } from 'payload';
 import { isAdmin, isAdminOrManager } from '../access';
 
+/**
+ * @description QR Feedback collection configuration.
+ */
 export const QrFeedback: CollectionConfig = {
   slug: 'qrFeedback',
   admin: {

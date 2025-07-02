@@ -1,6 +1,6 @@
-import type { CollectionConfig } from 'payload'
-import { isAdmin, isAdminOrManager } from '../access';
-
+/**
+ * @description Messages collection configuration.
+ */
 export const Messages: CollectionConfig = {
   slug: 'messages',
   admin: {
@@ -157,6 +157,13 @@ export const Messages: CollectionConfig = {
   timestamps: true,
   hooks: {
     beforeChange: [
+      /**
+       * @description Hook to set response_date and validate email format before changing a message.
+       * @param {object} args
+       * @param {object} args.data - The data being saved.
+       * @param {string} args.operation - The operation being performed (e.g., 'create', 'update').
+       * @returns {object} The modified data.
+       */
       ({ data, operation }) => {
         // Auto-set response_date when response_sent is marked true
         if (data.response_sent && !data.response_date) {
@@ -172,6 +179,13 @@ export const Messages: CollectionConfig = {
       }
     ],
     afterChange: [
+      /**
+       * @description Hook to send notification to assigned staff member after a message changes.
+       * @param {object} args
+       * @param {object} args.doc - The document after the change.
+       * @param {string} args.operation - The operation being performed (e.g., 'create', 'update').
+       * @returns {void}
+       */
       ({ doc, operation }) => {
         // Send notification to assigned staff member
         if (operation === 'create' && doc.assigned_to) {

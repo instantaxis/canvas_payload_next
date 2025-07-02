@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+/**
+ * @description Checks if the user is authenticated for admin and dashboard routes.
+ * @param {NextRequest} request
+ * @returns {NextResponse}
+ */
 export function checkAuthentication(request: NextRequest) {
   const { pathname } = request.nextUrl;
 

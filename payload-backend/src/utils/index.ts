@@ -8,6 +8,11 @@ import { twMerge } from 'tailwind-merge'
 import { EmployeeRating, RatingCategory, User, UserRole } from '@/types/restaurant'
 
 // Tailwind CSS class merging utility
+/**
+ * @description Combines Tailwind CSS classes and other class values into a single string.
+ * @param {ClassValue[]} inputs
+ * @returns {string}
+ */
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
@@ -15,7 +20,10 @@ export function cn(...inputs: ClassValue[]) {
 // Date and Time Utilities
 export const dateUtils = {
   /**
-   * Format date to readable string
+   * @description Format date to readable string
+   * @param {string | Date} date
+   * @param {Intl.DateTimeFormatOptions} [options]
+   * @returns {string}
    */
   formatDate: (date: string | Date, options?: Intl.DateTimeFormatOptions): string => {
     const dateObj = typeof date === 'string' ? new Date(date) : date
@@ -28,7 +36,9 @@ export const dateUtils = {
   },
 
   /**
-   * Format time to readable string
+   * @description Format time to readable string
+   * @param {string} time
+   * @returns {string}
    */
   formatTime: (time: string): string => {
     const [hours, minutes] = time.split(':')
@@ -39,7 +49,9 @@ export const dateUtils = {
   },
 
   /**
-   * Get relative time (e.g., "2 hours ago")
+   * @description Get relative time (e.g., "2 hours ago")
+   * @param {string | Date} date
+   * @returns {string}
    */
   getRelativeTime: (date: string | Date): string => {
     const now = new Date()
@@ -58,7 +70,10 @@ export const dateUtils = {
   },
 
   /**
-   * Check if date is within the last N days
+   * @description Check if date is within the last N days
+   * @param {string | Date} date
+   * @param {number} days
+   * @returns {boolean}
    */
   isWithinDays: (date: string | Date, days: number): boolean => {
     const dateObj = typeof date === 'string' ? new Date(date) : date
@@ -72,7 +87,9 @@ export const dateUtils = {
 // Rating and Performance Utilities
 export const ratingUtils = {
   /**
-   * Calculate weighted overall score from rating categories
+   * @description Calculate weighted overall score from rating categories
+   * @param {RatingCategory[]} categories
+   * @returns {number}
    */
   calculateOverallScore: (categories: RatingCategory[]): number => {
     if (!categories.length) return 0
@@ -88,7 +105,9 @@ export const ratingUtils = {
   },
 
   /**
-   * Get rating level description
+   * @description Get rating level description
+   * @param {number} score
+   * @returns {{ level: string; color: string; description: string }}
    */
   getRatingLevel: (score: number): { level: string; color: string; description: string } => {
     if (score >= 9) return { 
@@ -124,7 +143,9 @@ export const ratingUtils = {
   },
 
   /**
-   * Calculate average rating for an employee
+   * @description Calculate average rating for an employee
+   * @param {EmployeeRating[]} ratings
+   * @returns {number}
    */
   calculateAverageRating: (ratings: EmployeeRating[]): number => {
     if (!ratings.length) return 0
@@ -133,7 +154,9 @@ export const ratingUtils = {
   },
 
   /**
-   * Get rating trend (improving, declining, stable)
+   * @description Get rating trend (improving, declining, stable)
+   * @param {EmployeeRating[]} ratings
+   * @returns {'improving' | 'declining' | 'stable'}
    */
   getRatingTrend: (ratings: EmployeeRating[]): 'improving' | 'declining' | 'stable' => {
     if (ratings.length < 2) return 'stable'
@@ -163,14 +186,18 @@ export const ratingUtils = {
 // User and Permission Utilities
 export const userUtils = {
   /**
-   * Get user's full name
+   * @description Get user's full name
+   * @param {User} user
+   * @returns {string}
    */
   getFullName: (user: User): string => {
     return `${user.firstName} ${user.lastName}`.trim()
   },
 
   /**
-   * Get user's initials
+   * @description Get user's initials
+   * @param {User} user
+   * @returns {string}
    */
   getInitials: (user: User): string => {
     const first = user.firstName?.charAt(0) || ''
@@ -179,7 +206,10 @@ export const userUtils = {
   },
 
   /**
-   * Check if user has permission for action
+   * @description Check if user has permission for action
+   * @param {UserRole} userRole
+   * @param {UserRole} requiredRole
+   * @returns {boolean}
    */
   hasPermission: (userRole: UserRole, requiredRole: UserRole): boolean => {
     const roleHierarchy: Record<UserRole, number> = {
@@ -192,7 +222,10 @@ export const userUtils = {
   },
 
   /**
-   * Check if user can rate another user
+   * @description Check if user can rate another user
+   * @param {UserRole} raterRole
+   * @param {UserRole} targetRole
+   * @returns {boolean}
    */
   canRateEmployee: (raterRole: UserRole, targetRole: UserRole): boolean => {
     // Admins can rate anyone, managers can rate employees, employees cannot rate
@@ -205,7 +238,9 @@ export const userUtils = {
 // Data Formatting Utilities
 export const formatUtils = {
   /**
-   * Format currency
+   * @description Format currency
+   * @param {number} amount
+   * @returns {string}
    */
   currency: (amount: number): string => {
     return new Intl.NumberFormat('en-US', {
@@ -215,14 +250,19 @@ export const formatUtils = {
   },
 
   /**
-   * Format percentage
+   * @description Format percentage
+   * @param {number} value
+   * @param {number} [decimals=1]
+   * @returns {string}
    */
   percentage: (value: number, decimals: number = 1): string => {
     return `${value.toFixed(decimals)}%`
   },
 
   /**
-   * Format phone number
+   * @description Format phone number
+   * @param {string} phone
+   * @returns {string}
    */
   phone: (phone: string): string => {
     const cleaned = phone.replace(/\D/g, '')
@@ -233,7 +273,10 @@ export const formatUtils = {
   },
 
   /**
-   * Truncate text with ellipsis
+   * @description Truncate text with ellipsis
+   * @param {string} text
+   * @param {number} maxLength
+   * @returns {string}
    */
   truncate: (text: string, maxLength: number): string => {
     if (text.length <= maxLength) return text
@@ -241,7 +284,9 @@ export const formatUtils = {
   },
 
   /**
-   * Capitalize first letter of each word
+   * @description Capitalize first letter of each word
+   * @param {string} text
+   * @returns {string}
    */
   titleCase: (text: string): string => {
     return text.replace(/\w\S*/g, (txt) => 
@@ -253,7 +298,9 @@ export const formatUtils = {
 // Validation Utilities
 export const validationUtils = {
   /**
-   * Validate email format
+   * @description Validate email format
+   * @param {string} email
+   * @returns {boolean}
    */
   isValidEmail: (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -261,7 +308,9 @@ export const validationUtils = {
   },
 
   /**
-   * Validate phone number
+   * @description Validate phone number
+   * @param {string} phone
+   * @returns {boolean}
    */
   isValidPhone: (phone: string): boolean => {
     const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
@@ -269,14 +318,18 @@ export const validationUtils = {
   },
 
   /**
-   * Validate rating score (1-10)
+   * @description Validate rating score (1-10)
+   * @param {number} score
+   * @returns {boolean}
    */
   isValidRating: (score: number): boolean => {
     return score >= 1 && score <= 10 && Number.isInteger(score * 10)
   },
 
   /**
-   * Check if string is not empty
+   * @description Check if string is not empty
+   * @param {string} value
+   * @returns {boolean}
    */
   isNotEmpty: (value: string): boolean => {
     return value.trim().length > 0
@@ -286,7 +339,11 @@ export const validationUtils = {
 // Array and Object Utilities
 export const arrayUtils = {
   /**
-   * Group array by key
+   * @description Group array by key
+   * @template T
+   * @param {T[]} array
+   * @param {keyof T} key
+   * @returns {Record<string, T[]>}
    */
   groupBy: <T>(array: T[], key: keyof T): Record<string, T[]> => {
     return array.reduce((groups, item) => {
@@ -300,7 +357,11 @@ export const arrayUtils = {
   },
 
   /**
-   * Sort array by multiple criteria
+   * @description Sort array by multiple criteria
+   * @template T
+   * @param {T[]} array
+   * @param {(keyof T | ((item: T) => any))[]} criteria
+   * @returns {T[]}
    */
   sortBy: <T>(array: T[], ...criteria: Array<keyof T | ((item: T) => any)>): T[] => {
     return [...array].sort((a, b) => {
@@ -323,7 +384,11 @@ export const arrayUtils = {
   },
 
   /**
-   * Remove duplicates from array
+   * @description Remove duplicates from array
+   * @template T
+   * @param {T[]} array
+   * @param {keyof T} [key]
+   * @returns {T[]}
    */
   unique: <T>(array: T[], key?: keyof T): T[] => {
     if (!key) {
@@ -345,7 +410,9 @@ export const arrayUtils = {
 // Error Handling Utilities
 export const errorUtils = {
   /**
-   * Extract error message from various error types
+   * @description Extract error message from various error types
+   * @param {unknown} error
+   * @returns {string}
    */
   getErrorMessage: (error: unknown): string => {
     if (error instanceof Error) {
@@ -361,7 +428,9 @@ export const errorUtils = {
   },
 
   /**
-   * Check if error is a network error
+   * @description Check if error is a network error
+   * @param {unknown} error
+   * @returns {boolean}
    */
   isNetworkError: (error: unknown): boolean => {
     const message = errorUtils.getErrorMessage(error).toLowerCase()

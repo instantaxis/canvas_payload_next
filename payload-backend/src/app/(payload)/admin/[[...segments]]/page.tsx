@@ -15,9 +15,19 @@ type Args = {
   }>
 }
 
+/**
+ * @description Generates metadata for the admin page.
+ * @param {Args} { params, searchParams }
+ * @returns {Promise<Metadata>}
+ */
 export const generateMetadata = ({ params, searchParams }: Args): Promise<Metadata> =>
   generatePageMetadata({ config, params, searchParams })
 
+/**
+ * @description The admin page component.
+ * @param {Args} { params, searchParams }
+ * @returns {React.ReactElement}
+ */
 const Page = ({ params, searchParams }: Args) =>
   RootPage({ config, params, searchParams, importMap })
 

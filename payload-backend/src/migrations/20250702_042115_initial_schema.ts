@@ -1,5 +1,10 @@
 import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-vercel-postgres'
 
+/**
+ * @description Migrates the database schema up.
+ * @param {MigrateUpArgs} { db, payload, req }
+ * @returns {Promise<void>}
+ */
 export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
    CREATE TYPE "public"."enum_users_roles" AS ENUM('admin', 'store_manager', 'shift_manager', 'foh_employee', 'boh_employee', 'user');
@@ -665,6 +670,16 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "payload_migrations_created_at_idx" ON "payload_migrations" USING btree ("created_at");`)
 }
 
+/**
+ * @description Migrates the database schema down.
+ * @param {MigrateDownArgs} { db, payload, req }
+ * @returns {Promise<void>}
+ */
+/**
+ * @description Migrates the database schema down.
+ * @param {MigrateDownArgs} { db, payload, req }
+ * @returns {Promise<void>}
+ */
 export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
   await db.execute(sql`
    DROP TABLE "users_roles" CASCADE;

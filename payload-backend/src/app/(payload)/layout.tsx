@@ -13,6 +13,11 @@ type Args = {
   children: React.ReactNode
 }
 
+/**
+ * @description Handles server functions for Payload CMS.
+ * @param {ServerFunctionClient} args
+ * @returns {Promise<any>}
+ */
 const serverFunction: ServerFunctionClient = async function (args) {
   'use server'
   return handleServerFunctions({
@@ -22,6 +27,11 @@ const serverFunction: ServerFunctionClient = async function (args) {
   })
 }
 
+/**
+ * @description The root layout for the Payload admin panel.
+ * @param {Args} { children }
+ * @returns {React.ReactElement}
+ */
 const Layout = ({ children }: Args) => (
   <RootLayout config={config} importMap={importMap} serverFunction={serverFunction}>
     {children}

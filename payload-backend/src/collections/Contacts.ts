@@ -1,6 +1,9 @@
 import { CollectionConfig } from 'payload';
 import { isAdmin, isStoreManager, isShiftManager, isFohEmployee, isAuthenticated } from '../access';
 
+/**
+ * @description Contacts collection configuration.
+ */
 export const Contacts: CollectionConfig = {
   slug: 'contacts',
   admin: {
@@ -184,6 +187,14 @@ export const Contacts: CollectionConfig = {
   ],
   hooks: {
     beforeChange: [
+      /**
+       * @description Hook to set default values and generate VIP ID for new contacts.
+       * @param {object} args
+       * @param {object} args.data - The data being saved.
+       * @param {string} args.operation - The operation being performed (e.g., 'create', 'update').
+       * @param {object} args.req - The Payload request object.
+       * @returns {Promise<object>} The modified data.
+       */
       async ({ data, operation, req }) => {
         if (operation === 'create') {
           // Set default values for new contacts
@@ -209,6 +220,13 @@ export const Contacts: CollectionConfig = {
       },
     ],
     afterChange: [
+      /**
+       * @description Hook to log contact creation/updates.
+       * @param {object} args
+       * @param {object} args.doc - The document after the change.
+       * @param {string} args.operation - The operation being performed (e.g., 'create', 'update').
+       * @returns {void}
+       */
       ({ doc, operation }) => {
         // Log contact creation/updates for analytics
         if (operation === 'create') {
