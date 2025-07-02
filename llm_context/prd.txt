@@ -29,7 +29,7 @@ This PRD defines functional requirements, architecture, and best practices optim
    - Accessibility (ARIA, keyboard nav, WCAG compliance)
 
 4. **Security & Auth**  
-   - Payload CMS authentication (JWT via HttpOnly cookies)  
+   -     **Authentication**: Payload's built-in authentication system.  
    - CSRF protection on API routes  
    - Role-based access control in Payload collections & UI (`PermissionGate` component)
 

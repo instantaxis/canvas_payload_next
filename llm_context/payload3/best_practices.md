@@ -23,7 +23,7 @@
 
 ## Performance
 - [x] Database query optimization - Indexing and query profiling
-- [x] Caching strategies - Redis caching for frequent queries
+- [x] Caching strategies - Implement caching for frequent queries
 - [x] Image optimization - Built-in transformations and CDN delivery
 - [x] Bundle size management - Code splitting and dynamic imports
 - [x] Server-side rendering - Next.js SSR for faster initial loads
