@@ -1,10 +1,14 @@
 import React from 'react'
 import './styles.css'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 export const metadata = {
   description: 'A blank template using Payload in a Next.js app.',
   title: 'Payload Blank Template',
 }
+
+const queryClient = new QueryClient();
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
@@ -12,7 +16,10 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <main>{children}</main>
+        <QueryClientProvider client={queryClient}>
+          <main>{children}</main>
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
       </body>
     </html>
   )
