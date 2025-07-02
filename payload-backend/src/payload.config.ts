@@ -1,4 +1,4 @@
-import { s3Adapter } from '@payloadcms/storage-s3'
+const s3Adapter = (await import('@payloadcms/storage-s3')).s3Adapter;
 import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
 import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'

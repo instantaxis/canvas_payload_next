@@ -61,17 +61,17 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ collectionSlug, onSubmit, cla
         // Apply min/max for number fields
         if (field.type === 'number') {
           if (field.min !== undefined) {
-            fieldSchema = fieldSchema.min(field.min, `Must be at least ${field.min}`)
+            fieldSchema = (fieldSchema as z.ZodNumber).min(field.min, `Must be at least ${field.min}`)
           }
           if (field.max !== undefined) {
-            fieldSchema = fieldSchema.max(field.max, `Must be at most ${field.max}`)
+            fieldSchema = (fieldSchema as z.ZodNumber).max(field.max, `Must be at most ${field.max}`)
           }
         }
 
         // Apply maxLength for text fields
         if (field.type === 'text' || field.type === 'email' || field.type === 'password') {
           if (field.maxLength !== undefined) {
-            fieldSchema = fieldSchema.max(
+            fieldSchema = (fieldSchema as z.ZodString).max(
               field.maxLength,
               `Must be at most ${field.maxLength} characters`,
             )
