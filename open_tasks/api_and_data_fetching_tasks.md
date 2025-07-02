@@ -42,7 +42,7 @@ This group of tasks focuses on building and optimizing the data-fetching layer o
 **Title**: CMS & Database Integration
 **Description**: Configure Payload 3.0 with Supabase, define collections, generate types, and verify setup. Refer to `llm_context/payload3/data_models.md` for detailed data models and relationships, `llm_context/payload3/README.md` for core concepts, and `llm_context/payload3/best_practices.md` for best practices in collection design and API usage. Pay attention to the Lexical WYSIWYG editor integration for rich text fields as described in `llm_context/payload3/data_models.md`.
 **Dependencies**: [1]
-**Details**: Full details in Taskmaster.
+**Details**: Configure Payload 3.0 with Supabase, define collections, generate types, and verify setup. Refer to `llm_context/payload3/data_models.md` for detailed data models and relationships, `llm_context/payload3/README.md` for core concepts, and `llm_context/payload3/best_practices.md` for best practices in collection design and API usage. Pay attention to the Lexical WYSIWYG editor integration for rich text fields as described in `llm_context/payload3/data_models.md`.
 **Status**: done
 
 #### Subtasks:
@@ -56,7 +56,7 @@ This group of tasks focuses on building and optimizing the data-fetching layer o
 **Title**: Data-Fetching Layer
 **Description**: Set up advanced TanStack Query patterns for SSR, caching, optimistic updates, auth-aware queries, offline, sync, and error handling. Refer to `llm_context/tanstack/README.md` for best practices in table implementation and integration points. Also, consult `llm_context/payload3/data_models.md` for Payload 3.0 data loading patterns.
 **Dependencies**: [2, 3]
-**Details**: Full details in Taskmaster.
+**Details**: Set up advanced TanStack Query patterns for SSR, caching, optimistic updates, auth-aware queries, offline, sync, and error handling. Refer to `llm_context/tanstack/README.md` for best practices in table implementation and integration points. Also, consult `llm_context/payload3/data_models.md` for Payload 3.0 data loading patterns.
 **Status**: done
 
 #### Subtasks:
@@ -74,7 +74,7 @@ This group of tasks focuses on building and optimizing the data-fetching layer o
 **Title**: Collection & UI Components
 **Description**: Implement CRUD hooks, relationship handling, and role-based UI/dashboard layout. Refer to `llm_context/payload3/data_models.md` for detailed data models and relationships, `llm_context/payload3/README.md` for core concepts, and `llm_context/ui_patterns/README.md` for Shadcn UI patterns and custom component development.
 **Dependencies**: [5]
-**Details**: Full details in Taskmaster.
+**Details**: Implement CRUD hooks, relationship handling, and role-based UI/dashboard layout. Refer to `llm_context/payload3/data_models.md` for detailed data models and relationships, `llm_context/payload3/README.md` for core concepts, and `llm_context/ui_patterns/README.md` for Shadcn UI patterns and custom component development.
 **Status**: done
 
 #### Subtasks:
@@ -90,7 +90,7 @@ This group of tasks focuses on building and optimizing the data-fetching layer o
 **Title**: Schema Sync
 **Description**: Validate and synchronize database schema between Payload CMS and Supabase. Refer to `llm_context/payload3/data_models.md` for detailed Payload 3.0 data models and relationships, which are crucial for schema synchronization. This includes understanding collections like `Users`, `Media`, `Contacts`, `Locations`, and others, along with their key fields and relationships.
 **Dependencies**: [27]
-**Details**: Full details in Taskmaster.
+**Details**: Validate and synchronize database schema between Payload CMS and Supabase. Refer to `llm_context/payload3/data_models.md` for detailed Payload 3.0 data models and relationships, which are crucial for schema synchronization. This includes understanding collections like `Users`, `Media`, `Contacts`, `Locations`, and others, along with their key fields and relationships.
 **Status**: done
 
 #### Subtasks:
@@ -104,54 +104,92 @@ This group of tasks focuses on building and optimizing the data-fetching layer o
 **Title**: Implement API Versioning with URL Path Prefixes
 **Description**: Introduced URL path versioning (e.g., `/api/v1/`) for all API routes. Refer to `llm_context/payload3/best_practices.md` for API usage best practices.
 **Dependencies**: []
-**Details**: Full details in Taskmaster.
+**Details**: Introduced URL path versioning (e.g., `/api/v1/`) for all API routes. Refer to `llm_context/payload3/best_practices.md` for API usage best practices.
 **Status**: in-progress
 
 ### Task ID: 24
 **Title**: Integrate Supabase S3-Compatible Storage with Payload CMS Media Collection
 **Description**: Installed and configured `@payloadcms/storage-s3` for media uploads. Refer to `llm_context/payload3/best_practices.md` for file upload security best practices.
 **Dependencies**: []
-**Details**: Full details in Taskmaster.
+**Details**: Installed and configured `@payloadcms/storage-s3` for media uploads. Refer to `llm_context/payload3/best_practices.md` for file upload security best practices.
 **Status**: in-progress
 
 #### Subtasks:
-- **Subtask ID**: 24.1 - Package Installation (pending)
-- **Subtask ID**: 24.2 - Environment Variable Setup (pending)
-- **Subtask ID**: 24.3 - Payload Config Update (pending)
-- **Subtask ID**: 24.4 - Media Collection Configuration (pending)
-- **Subtask ID**: 24.5 - Integration Testing (pending)
-- **Subtask ID**: 24.6 - Documentation (pending)
+- **Subtask ID**: 24.1 - Package Installation
+  - Description: Install required packages for S3-compatible storage integration
+  - Status: pending
+- **Subtask ID**: 24.2 - Environment Variable Setup
+  - Description: Configure secure access credentials
+  - Status: pending
+- **Subtask ID**: 24.3 - Payload Config Update
+  - Description: Modify application configuration for S3 storage
+  - Status: pending
+- **Subtask ID**: 24.4 - Media Collection Configuration
+  - Description: Set up storage buckets and access policies
+  - Status: pending
+- **Subtask ID**: 24.5 - Integration Testing
+  - Description: Validate end-to-end functionality
+  - Status: pending
+- **Subtask ID**: 24.6 - Documentation
+  - Description: Create operational guides and runbooks
+  - Status: pending
 
 ### Task ID: 29
 **Title**: Review and Update Data Fetching and API Integration
 **Description**: Reviewed and enhanced all data fetching and API integration tasks with advanced TanStack Query features. Refer to `llm_context/tanstack/README.md` for best practices in table implementation and integration points.
 **Dependencies**: []
-**Details**: Full details in Taskmaster.
+**Details**: Reviewed and enhanced all data fetching and API integration tasks with advanced TanStack Query features. Refer to `llm_context/tanstack/README.md` for best practices in table implementation and integration points.
 **Status**: in-progress
 
 #### Subtasks:
-- **Subtask ID**: 29.1 - Audit Existing Data Fetching Patterns (pending)
-- **Subtask ID**: 29.2 - Implement SSR Hydration (pending)
-- **Subtask ID**: 29.3 - Optimize Pagination Strategies (pending)
-- **Subtask ID**: 29.4 - Enhance Caching Strategies (pending)
-- **Subtask ID**: 29.5 - Implement Optimistic Updates (pending)
-- **Subtask ID**: 29.6 - Secure Authentication-Aware Queries (pending)
-- **Subtask ID**: 29.7 - Refactor Table Data Fetching (pending)
-- **Subtask ID**: 29.8 - Establish Monitoring and Metrics (pending)
+- **Subtask ID**: 29.1 - Audit Existing Data Fetching Patterns
+  - Description: Identify and document all current data-fetching implementations across the codebase, mapping each useQuery/useMutation hook to its API endpoint. Flag instances lacking pagination, SSR support, or caching strategies, and verify authentication token handling in query functions.
+  - Status: pending
+- **Subtask ID**: 29.2 - Implement SSR Hydration
+  - Description: Enable server-side rendering (SSR) support for public routes by creating a getQueryClient utility, wrapping pages with HydrationBoundary, and prefetching critical data in getServerSideProps.
+  - Status: pending
+- **Subtask ID**: 29.3 - Optimize Pagination Strategies
+  - Description: Implement smooth paginated data loading using keepPreviousData, cursor-based pagination for large datasets, and UI skeletons during transitions for collections with more than 50 items.
+  - Status: pending
+- **Subtask ID**: 29.4 - Enhance Caching Strategies
+  - Description: Reduce network requests by defining granular query keys, setting cache lifetimes based on data volatility, and implementing automatic garbage collection.
+  - Status: pending
+- **Subtask ID**: 29.5 - Implement Optimistic Updates
+  - Description: Improve user experience for mutations by adding onMutate handlers to rollback failed updates, focusing on high-frequency mutations such as order status updates and forms requiring immediate feedback.
+  - Status: pending
+- **Subtask ID**: 29.6 - Secure Authentication-Aware Queries
+  - Description: Integrate authentication with data fetching by creating an auth interceptor for automatic token refresh and implementing role-based query enabling using user roles from the Users collection.
+  - Status: pending
+- **Subtask ID**: 29.7 - Refactor Table Data Fetching
+  - Description: Optimize table components by implementing server-side sorting/filtering, adding virtualization for large datasets, integrating Zustand for state persistence, and developing CSV export using query cache data.
+  - Status: pending
+- **Subtask ID**: 29.8 - Establish Monitoring and Metrics
+  - Description: Track data-fetching performance by implementing query logging in development, tracking cache hit/miss ratios, and setting up performance alerts for slow queries, connecting to the existing logging system.
+  - Status: pending
 
 ### Task ID: 32
 **Title**: Validate and Sync Database Schema Between Payload CMS and Supabase
 **Description**: Researched and compared the current state of the database schema between Payload CMS and Supabase. Refer to `llm_context/payload3/data_models.md` for detailed Payload 3.0 data models and relationships.
 **Dependencies**: []
-**Details**: Full details in Taskmaster.
+**Details**: Researched and compared the current state of the database schema between Payload CMS and Supabase. Refer to `llm_context/payload3/data_models.md` for detailed Payload 3.0 data models and relationships.
 **Status**: in-progress
 
 #### Subtasks:
-- **Subtask ID**: 32.1 - Export Payload and Supabase Schemas (pending)
-- **Subtask ID**: 32.2 - Analyze and Document Schema Differences (pending)
-- **Subtask ID**: 32.3 - Generate Migration Scripts for Supabase (pending)
-- **Subtask ID**: 32.4 - Apply and Validate Migrations on Supabase (pending)
-- **Subtask ID**: 32.5 - Document and Version-Control Schema Changes (pending)
+- **Subtask ID**: 32.1 - Export Payload and Supabase Schemas
+  - Description: Extract the current schema definitions from both Payload CMS and Supabase. For Payload, use the `dump` command to export the schema as JSON, referencing collections, fields, and relationships as defined in `llm_context/payload3/data_models.md`. For Supabase, use `pg_dump --schema-only` via the Supabase CLI, filtering to relevant schemas.
+  - Status: pending
+- **Subtask ID**: 32.2 - Analyze and Document Schema Differences
+  - Description: Perform a structural and constraint-based comparison between the exported Payload and Supabase schemas. Generate a delta report identifying missing tables, field type mismatches (e.g., `richText` vs `TEXT`), relationship inconsistencies, and constraint differences.
+  - Status: pending
+- **Subtask ID**: 32.3 - Generate Migration Scripts for Supabase
+  - Description: Based on the documented differences, create SQL migration scripts to synchronize Supabase's schema with Payload's data model. Scripts should handle table/column creation, type conversions, and constraint synchronization.
+  - Status: pending
+- **Subtask ID**: 32.4 - Apply and Validate Migrations on Supabase
+  - Description: Run pre-execution checks on the migration scripts using `supabase migration lint`, then apply the migrations atomically with `supabase migration up`. Validate the resulting schema using Payload's `validate` command and test relationship queries.
+  - Status: pending
+- **Subtask ID**: 32.5 - Document and Version-Control Schema Changes
+  - Description: Commit the updated `schema.sql`, Payload configs, and migration scripts to the project's Git repository. Include a clear commit message and store reverse migration scripts for rollback capability.
+  - Status: pending
 
 ## Instructions for Completing These Tasks
 1. **Work through tasks in dependency order** - Check dependencies before starting

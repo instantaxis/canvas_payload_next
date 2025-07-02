@@ -36,7 +36,7 @@ This group of tasks focuses on building and refining the application's form infr
 **Title**: Form Infrastructure
 **Description**: Implement core form handling, validation, dynamic forms, performance, and analytics. Refer to `llm_context/forms/README.md` for form submission patterns and `llm_context/forms/complex_forms.md` for advanced composition patterns. Utilize `llm_context/state_management/README.md` for Zustand integration in form state management.
 **Dependencies**: [1]
-**Details**: Full details in Taskmaster.
+**Details**: Implement core form handling, validation, dynamic forms, performance, and analytics. Refer to `llm_context/forms/README.md` for form submission patterns and `llm_context/forms/complex_forms.md` for advanced composition patterns. Utilize `llm_context/state_management/README.md` for Zustand integration in form state management.
 **Status**: done
 
 #### Subtasks:
@@ -57,7 +57,7 @@ This group of tasks focuses on building and refining the application's form infr
 **Title**: Dynamic Forms & Complex Forms Review
 **Description**: Audit, research, prototype, and plan migration for complex form scenarios. Refer to `llm_context/forms/complex_forms.md` for advanced composition patterns for multi-step, dynamic, and state-driven forms. This includes guidance on multi-step forms, dynamic field arrays, conditional fields, persisted form state with Zustand, async field-level validation, file uploads, accessibility, and testing strategies.
 **Dependencies**: [4, 5]
-**Details**: Full details in Taskmaster.
+**Details**: Audit, research, prototype, and plan migration for complex form scenarios. Refer to `llm_context/forms/complex_forms.md` for advanced composition patterns for multi-step, dynamic, and state-driven forms. This includes guidance on multi-step forms, dynamic field arrays, conditional fields, persisted form state with Zustand, async field-level validation, file uploads, accessibility, and testing strategies.
 **Status**: done
 
 #### Subtasks:
@@ -73,7 +73,7 @@ This group of tasks focuses on building and refining the application's form infr
 **Title**: File Upload System
 **Description**: Implement drag-and-drop uploads, media collection integration, progress tracking, and media management. Refer to `llm_context/forms/README.md` for file upload handling patterns and `llm_context/payload3/best_practices.md` for file upload security best practices.
 **Dependencies**: [2, 4]
-**Details**: Full details in Taskmaster.
+**Details**: Implement drag-and-drop uploads, media collection integration, progress tracking, and media management. Refer to `llm_context/forms/README.md` for file upload handling patterns and `llm_context/payload3/best_practices.md` for file upload security best practices.
 **Status**: done
 
 #### Subtasks:
@@ -89,22 +89,32 @@ This group of tasks focuses on building and refining the application's form infr
 **Title**: Review and Refine Form Composition for Complex Forms
 **Description**: Analyzed and improved the architecture of complex forms. Refer to `llm_context/forms/complex_forms.md` for advanced composition patterns for multi-step, dynamic, and state-driven forms.
 **Dependencies**: []
-**Details**: Full details in Taskmaster.
+**Details**: Analyzed and improved the architecture of complex forms. Refer to `llm_context/forms/complex_forms.md` for advanced composition patterns for multi-step, dynamic, and state-driven forms.
 **Status**: pending
 
 ### Task ID: 28
 **Title**: Comprehensive Review and Enhancement of Form-Related Tasks and Subtasks
 **Description**: Performed an in-depth review of all form-related tasks to ensure advanced patterns are correctly implemented. Refer to `llm_context/forms/complex_forms.md` for advanced form composition patterns.
 **Dependencies**: []
-**Details**: Full details in Taskmaster.
+**Details**: Performed an in-depth review of all form-related tasks to ensure advanced patterns are correctly implemented. Refer to `llm_context/forms/complex_forms.md` for advanced form composition patterns.
 **Status**: in-progress
 
 #### Subtasks:
-- **Subtask ID**: 28.1 - Audit and Catalog All Form Implementations Against Project Patterns (pending)
-- **Subtask ID**: 28.2 - Review and Validate Form Composition, State, and Validation Layers (pending)
-- **Subtask ID**: 28.3 - Assess Dynamic Fields and File Upload Workflows (pending)
-- **Subtask ID**: 28.4 - Review Accessibility and User Experience Across All Forms (pending)
-- **Subtask ID**: 28.5 - Update Subtasks, Expand Testing, and Synchronize Documentation (pending)
+- **Subtask ID**: 28.1 - Audit and Catalog All Form Implementations Against Project Patterns
+  - Description: Catalog all form implementations in the codebase, referencing `complex_forms.md` for pattern compliance. Validate multi-step isolation using step schema merging (Section 1), dynamic field arrays with `useFieldArray` (Section 2), and conditional field handling via `watch`/`unregister` (Section 3). Output a gap analysis report with compliance status for each form.
+  - Status: pending
+- **Subtask ID**: 28.2 - Review and Validate Form Composition, State, and Validation Layers
+  - Description: Assess all forms for proper validation and state management. Audit Zod schema refinements for cross-field logic (Section 3), test async validation debouncing (Section 5), and verify error handling matches `README.md` UX patterns. Produce a validation deficiency matrix with remediation priorities.
+  - Status: pending
+- **Subtask ID**: 28.3 - Assess Dynamic Fields and File Upload Workflows
+  - Description: Evaluate dynamic field arrays and file upload implementations. Check `useFieldArray` usage (Section 2), conditional fields, and file uploads using `react-dropzone` (Section 6). Integrate Payload upload hooks from `README.md` and add upload progress indicators. Output a standardized upload component with test cases.
+  - Status: pending
+- **Subtask ID**: 28.4 - Review Accessibility and User Experience Across All Forms
+  - Description: Perform a WCAG 2.1 AA accessibility audit. Test ARIA roles and alert mechanisms (Section 7), keyboard navigation in multi-step flows, and contrast ratios in error states. Output an accessibility audit report with component-level fixes.
+  - Status: pending
+- **Subtask ID**: 28.5 - Update Subtasks, Expand Testing, and Synchronize Documentation
+  - Description: Based on previous findings, update all subtasks, expand test coverage (Playwright for multi-step flows, Vitest for Zod schema, accessibility regression tests), and synchronize documentation. Map findings to `complex_forms.md`, add new examples to `README.md`, and create a troubleshooting guide.
+  - Status: pending
 
 ## Instructions for Completing These Tasks
 1. **Work through tasks in dependency order** - Check dependencies before starting

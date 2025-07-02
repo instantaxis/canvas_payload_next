@@ -45,7 +45,7 @@ This group of tasks focuses on implementing and enhancing the security and authe
 **Title**: Authentication & Authorization
 **Description**: Implement secure authentication flows, RBAC, and middleware protections. Refer to `llm_context/payload3/best_practices.md` for security best practices (JWT revocation, secure password hashing, secure cookies, rate limiting, CSRF prevention, session management). Consult `llm_context/forms/README.md` for login/password reset flow patterns. For TypeScript typing issues, refer to `llm_context/responses/typescript_errors.md` and `llm_context/responses/typescript_error_resolution_v2.md`.
 **Dependencies**: [2]
-**Details**: Full details in Taskmaster.
+**Details**: Implement secure authentication flows, RBAC, and middleware protections. Refer to `llm_context/payload3/best_practices.md` for security best practices (JWT revocation, secure password hashing, secure cookies, rate limiting, CSRF prevention, session management). Consult `llm_context/forms/README.md` for login/password reset flow patterns. For TypeScript typing issues, refer to `llm_context/responses/typescript_errors.md` and `llm_context/responses/typescript_error_resolution_v2.md`.
 **Status**: done
 
 #### Subtasks:
@@ -69,7 +69,7 @@ This group of tasks focuses on implementing and enhancing the security and authe
 **Title**: Middleware & Security
 **Description**: Modular middleware, JWT revocation, bcrypt hashing, secure cookies, rate limiting, input validation, centralized access control. Refer to `llm_context/payload3/best_practices.md` for security best practices (JWT revocation, secure password hashing, secure cookies, rate limiting, CSRF prevention, session management, environment security, data encryption). For TypeScript typing issues, refer to `llm_context/responses/typescript_errors.md` and `llm_context/responses/typescript_error_resolution_v2.md`.
 **Dependencies**: [3, 4, 5, 9, 25]
-**Details**: Full details in Taskmaster.
+**Details**: Modular middleware, JWT revocation, bcrypt hashing, secure cookies, rate limiting, input validation, centralized access control. Refer to `llm_context/payload3/best_practices.md` for security best practices (JWT revocation, secure password hashing, secure cookies, rate limiting, CSRF prevention, session management, environment security, data encryption). For TypeScript typing issues, refer to `llm_context/responses/typescript_errors.md` and `llm_context/responses/typescript_error_resolution_v2.md`.
 **Status**: done
 
 #### Subtasks:
@@ -83,67 +83,105 @@ This group of tasks focuses on implementing and enhancing the security and authe
 **Title**: Authenticated User Endpoint
 **Description**: Implement /api/users/me API route for current authenticated user info. Refer to `llm_context/payload3/best_practices.md` for authentication best practices, including JWT and session management. For TypeScript typing issues related to `PayloadRequest` and custom user types, consult `llm_context/responses/typescript_errors.md` and `llm_context/responses/typescript_error_resolution_v2.md`.
 **Dependencies**: [3, 23]
-**Details**: Full details in Taskmaster.
+**Details**: Implement /api/users/me API route for current authenticated user info. Refer to `llm_context/payload3/best_practices.md` for authentication best practices, including JWT and session management. For TypeScript typing issues related to `PayloadRequest` and custom user types, consult `llm_context/responses/typescript_errors.md` and `llm_context/responses/typescript_error_resolution_v2.md`.
 **Status**: in-progress
 
 #### Subtasks:
-- **Subtask ID**: 17.1 - Design Test Cases (pending)
-- **Subtask ID**: 17.2 - Integration Testing (pending)
-- **Subtask ID**: 17.3 - Retention Policy Validation (pending)
-- **Subtask ID**: 17.4 - Cross-Database Checks (pending)
-- **Subtask ID**: 17.5 - Documentation Review (pending)
-- **Subtask ID**: 17.6 - Compliance Validation (pending)
+- **Subtask ID**: 17.1 - Design Test Cases
+  - Description: Create comprehensive test scenarios for audit logging functionality and retention policy enforcement.
+  - Status: pending
+- **Subtask ID**: 17.2 - Integration Testing
+  - Description: Validate end-to-end log flow across systems including applications, databases, and archival storage.
+  - Status: pending
+- **Subtask ID**: 17.3 - Retention Policy Validation
+  - Description: Test automated enforcement of retention durations and deletion mechanisms.
+  - Status: pending
+- **Subtask ID**: 17.4 - Cross-Database Checks
+  - Description: Ensure log consistency across distributed data stores and platforms.
+  - Status: pending
+- **Subtask ID**: 17.5 - Documentation Review
+  - Description: Verify accuracy of policy documentation against implemented controls.
+  - Status: pending
+- **Subtask ID**: 17.6 - Compliance Validation
+  - Description: Confirm adherence to regulatory frameworks (HIPAA, GDPR, etc.) and internal policies.
+  - Status: pending
 
 ### Task ID: 21
 **Title**: Refactor and Centralize Access Control & Role Management
 **Description**: Centralized all access control logic into a dedicated module. Refer to `llm_context/payload3/best_practices.md` for access control implementation and `llm_context/responses/typescript_error_resolution_v2.md` for typing.
 **Dependencies**: []
-**Details**: Full details in Taskmaster.
+**Details**: Centralized all access control logic into a dedicated module. Refer to `llm_context/payload3/best_practices.md` for access control implementation and `llm_context/responses/typescript_error_resolution_v2.md` for typing.
 **Status**: in-progress
 
 ### Task ID: 22
 **Title**: Modularize Middleware for Security, CORS, Authentication, and Rate Limiting
 **Description**: Refactored the monolithic `middleware.ts` file into focused modules. Refer to `llm_context/payload3/best_practices.md` for API rate limiting and CSRF prevention. For TypeScript typing issues, refer to `llm_context/responses/typescript_errors.md`.
 **Dependencies**: []
-**Details**: Full details in Taskmaster.
+**Details**: Refactored the monolithic `middleware.ts` file into focused modules. Refer to `llm_context/payload3/best_practices.md` for API rate limiting and CSRF prevention. For TypeScript typing issues, refer to `llm_context/responses/typescript_errors.md`.
 **Status**: in-progress
 
 ### Task ID: 26
 **Title**: Implement Security Best Practices
 **Description**: Added explicit subtasks and implemented security best practices across the application. Refer to `llm_context/payload3/best_practices.md` for comprehensive security guidelines.
 **Dependencies**: []
-**Details**: Full details in Taskmaster.
+**Details**: Added explicit subtasks and implemented security best practices across the application. Refer to `llm_context/payload3/best_practices.md` for comprehensive security guidelines.
 **Status**: in-progress
 
 #### Subtasks:
-- **Subtask ID**: 26.1 - Implement JWT Revocation Mechanism (pending)
-- **Subtask ID**: 26.2 - Enhance Password and Cookie Security (pending)
-- **Subtask ID**: 26.3 - Apply Rate Limiting and Input Validation (pending)
-- **Subtask ID**: 26.4 - Refactor Middleware and Centralize Access Control (pending)
-- **Subtask ID**: 26.5 - Accessibility, Testing, and Docker Security Hardening (pending)
+- **Subtask ID**: 26.1 - Implement JWT Revocation Mechanism
+  - Description: Create a JWT token blacklist mechanism using Redis cache and update authentication middleware to check token status.
+  - Status: pending
+- **Subtask ID**: 26.2 - Enhance Password and Cookie Security
+  - Description: Implement bcrypt password hashing with a cost factor of 12 and configure HTTP-only, SameSite strict cookies.
+  - Status: pending
+- **Subtask ID**: 26.3 - Apply Rate Limiting and Input Validation
+  - Description: Integrate a token bucket rate limiter for API routes and create input validation middleware using Zod schemas.
+  - Status: pending
+- **Subtask ID**: 26.4 - Refactor Middleware and Centralize Access Control
+  - Description: Refactor authentication, validation, and rate limiting into modular middleware. Implement centralized access control and audit logging.
+  - Status: pending
+- **Subtask ID**: 26.5 - Accessibility, Testing, and Docker Security Hardening
+  - Description: Conduct accessibility testing, implement automated security tests, and harden Docker configuration.
+  - Status: pending
 
 ### Task ID: 30
 **Title**: Review and Update Middleware, Access Control, and Logging
 **Description**: Consolidated access control logic, modularized middleware, and implemented comprehensive logging. Refer to `llm_context/payload3/best_practices.md` for relevant security and logging best practices.
 **Dependencies**: []
-**Details**: Full details in Taskmaster.
+**Details**: Consolidated access control logic, modularized middleware, and implemented comprehensive logging. Refer to `llm_context/payload3/best_practices.md` for relevant security and logging best practices.
 **Status**: in-progress
 
 #### Subtasks:
-- **Subtask ID**: 30.1 - Audit Existing Access Points (pending)
-- **Subtask ID**: 30.2 - Design and Implement Centralized RBAC Module (pending)
-- **Subtask ID**: 30.3 - Refactor Access Checks to Use Central Module (pending)
-- **Subtask ID**: 30.4 - Modularize and Standardize Middleware (pending)
-- **Subtask ID**: 30.5 - Implement Security Headers and Middleware Hardening (pending)
-- **Subtask ID**: 30.6 - Integrate Comprehensive Audit and Centralized Logging (pending)
-- **Subtask ID**: 30.7 - Validation, Automated Testing, and Security Scanning (pending)
-- **Subtask ID**: 30.8 - Documentation and CI/CD Pipeline Integration (pending)
+- **Subtask ID**: 30.1 - Audit Existing Access Points
+  - Description: Identify and document all current access control checks across routes, APIs, and UI components. Note locations of permission logic and any inconsistencies to inform centralization.
+  - Status: pending
+- **Subtask ID**: 30.2 - Design and Implement Centralized RBAC Module
+  - Description: Develop a core access control module (accessControl.js) implementing role-based access control with role inheritance and resource-based permission matrix.
+  - Status: pending
+- **Subtask ID**: 30.3 - Refactor Access Checks to Use Central Module
+  - Description: Replace all scattered permission checks with calls to the new evaluateAccess() function, ensuring all security contexts are routed through the centralized RBAC module.
+  - Status: pending
+- **Subtask ID**: 30.4 - Modularize and Standardize Middleware
+  - Description: Decompose existing middleware into discrete modules (authMiddleware.js, auditMiddleware.js, errorHandler.js) and configure a unified middleware pipeline in server.js.
+  - Status: pending
+- **Subtask ID**: 30.5 - Implement Security Headers and Middleware Hardening
+  - Description: Configure helmet for strict CSP and security headers, add API-specific headers, and integrate additional security middleware (CSRF, input validation, session timeout).
+  - Status: pending
+- **Subtask ID**: 30.6 - Integrate Comprehensive Audit and Centralized Logging
+  - Description: Define audit log schema, implement Payload CMS hooks for logging state transitions, and configure centralized log aggregation with Winston and Elasticsearch.
+  - Status: pending
+- **Subtask ID**: 30.7 - Validation, Automated Testing, and Security Scanning
+  - Description: Develop Jest tests for permission matrix and log integrity, and integrate OWASP ZAP into CI for automated security scanning of headers and access control.
+  - Status: pending
+- **Subtask ID**: 30.8 - Documentation and CI/CD Pipeline Integration
+  - Description: Document architecture, middleware usage, access control, and logging. Integrate checks in CI/CD for security headers, audit log coverage, and access control test coverage.
+  - Status: pending
 
 ### Task ID: 33
 **Title**: Implement /api/users/me API Route for Authenticated User Info
 **Description**: Created a secure API route at `/api/users/me` that returns the current authenticated user's information. Refer to `llm_context/payload3/best_practices.2.md` for authentication best practices, including JWT and session management. For TypeScript typing issues related to `PayloadRequest` and custom user types, consult `llm_context/responses/typescript_errors.md` and `llm_context/responses/typescript_error_resolution_v2.md`.
 **Dependencies**: [3, 23]
-**Details**: Full details in Taskmaster.
+**Details**: Created a secure API route at `/api/users/me` that returns the current authenticated user's information. Refer to `llm_context/payload3/best_practices.2.md` for authentication best practices, including JWT and session management. For TypeScript typing issues related to `PayloadRequest` and custom user types, consult `llm_context/responses/typescript_errors.md` and `llm_context/responses/typescript_error_resolution_v2.md`.
 **Status**: in-progress
 
 ## Instructions for Completing These Tasks
