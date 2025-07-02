@@ -1307,7 +1307,7 @@
         "description": "Centralize all access control logic into a dedicated module and refactor collection files to utilize these functions, improving maintainability and reducing errors.",
         "details": "1. Design and implement a centralized access control module (e.g., access/index.ts) that encapsulates all permission checks, role management, and access logic for Payload collections. 2. Migrate existing access control logic from individual collection files and scattered locations into this module, ensuring all permission checks are standardized and reusable. 3. Update all collection files to import and use the new centralized access control functions, replacing any inline or duplicated logic. 4. Ensure the module supports strong TypeScript typing, leveraging generics and interfaces for roles and permissions. 5. Document the new access control API and usage patterns for developers. 6. Refactor tests to validate access control via the new module. 7. Coordinate with recent improvements in collection management to ensure compatibility with relationship handling and batch operations.",
         "testStrategy": "1. Review all collection files to confirm they exclusively use the centralized access control functions. 2. Write and run unit tests for the new access control module, covering all supported roles and permission scenarios. 3. Perform integration tests to verify that CRUD operations, relationship handling, and batch operations respect the new access control logic. 4. Validate that role-based access control is enforced consistently across all collections. 5. Conduct code review to ensure no legacy or duplicated access logic remains. 6. Confirm TypeScript type safety and proper documentation of the new module.",
-        "status": "pending",
+        "status": "done",
         "dependencies": [
           8
         ],
@@ -1803,7 +1803,7 @@
     ],
     "metadata": {
       "created": "2025-07-01T23:13:03.567Z",
-      "updated": "2025-07-02T07:12:31.454Z",
+      "updated": "2025-07-02T07:17:05.970Z",
       "description": "Tasks for master context"
     }
   }
