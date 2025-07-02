@@ -79,15 +79,6 @@
         "testStrategy": "1. Verify Payload admin panel accessibility\n2. Test database connection\n3. Validate environment variables\n4. Confirm JWT and cookie configuration with HttpOnly and secure flags\n5. Test client-side authentication via REST API\n6. Validate type-safe collections and generated types\n7. Test device-based authentication workflows\n8. Verify uploads collection handles QR feedback media\n9. Confirm real-time updates via WebSockets for employee ratings\n10. Ensure Next.js 15 integration follows recommended patterns",
         "subtasks": [
           {
-            "id": 1,
-            "title": "Set up MongoDB Database Configuration",
-            "description": "Configure MongoDB connection settings and initialize database for Payload CMS [Updated: 7/1/2025] [Updated: 7/1/2025]",
-            "status": "in-progress",
-            "dependencies": [],
-            "details": "Create MongoDB Atlas cluster, set up connection string, configure database access credentials, implement connection error handling, test database connectivity\n<info added on 2025-07-02T00:05:50.352Z>\nSet up Supabase PostgreSQL project, obtain connection credentials, configure Payload CMS to use Supabase PostgreSQL as the database, initialize required tables and schemas, and verify successful connection and database initialization.\n</info added on 2025-07-02T00:05:50.352Z>\n<info added on 2025-07-02T00:15:40.618Z>\nUpdate the Payload CMS configuration file with the Supabase PostgreSQL connection settings, including host, port, database name, user, and password. Run database migrations or initialization scripts to create necessary tables and schemas for Payload CMS. Confirm that the CMS can connect to Supabase PostgreSQL and perform basic CRUD operations.\n</info added on 2025-07-02T00:15:40.618Z>\n<info added on 2025-07-02T00:15:48.084Z>\nRemove any existing MongoDB configuration from the Payload CMS project. Update environment variables and configuration files to use Supabase PostgreSQL connection details. Ensure all references to MongoDB are replaced with the appropriate PostgreSQL settings. Reinitialize the database to match Payload CMS requirements, and verify that all CMS features function correctly with the new Supabase PostgreSQL backend.\n</info added on 2025-07-02T00:15:48.084Z>",
-            "testStrategy": ""
-          },
-          {
             "id": 2,
             "title": "Initialize Payload CMS Project Structure",
             "description": "Set up basic Payload CMS project structure with TypeScript configuration",
@@ -148,6 +139,15 @@
             "description": "Configure Payload to automatically generate TypeScript types for collections and globals.",
             "details": "",
             "status": "deferred",
+            "dependencies": [],
+            "parentTaskId": 2
+          },
+          {
+            "id": 12,
+            "title": "Set up Postgres Database Configuration",
+            "description": "Configure Postgres connection settings and initialize the database for Payload CMS",
+            "details": "Add and validate DATABASE_URL in environment configuration; set up initial schema migrations using Payload CMS tooling; verify connectivity with a test script or psql client; update documentation to reflect Postgres usage.",
+            "status": "pending",
             "dependencies": [],
             "parentTaskId": 2
           }
@@ -1242,11 +1242,69 @@
         ],
         "priority": "medium",
         "subtasks": []
+      },
+      {
+        "id": 17,
+        "title": "Verify and Test Payload Auditor Audit Logging and Retention Policies",
+        "description": "Verify the correct implementation and configuration of the Payload CMS audit-logging plugin (referred to as 'payload-auditor' or similar mechanism), ensuring all critical admin actions are logged with user and payload details, and that retention policies are enforced. Emphasize that the audit-logging solution is database-agnostic and functions with Payload CMS regardless of the underlying database.",
+        "status": "pending",
+        "dependencies": [
+          2,
+          8,
+          13
+        ],
+        "priority": "medium",
+        "details": "Review the integration of the Payload CMS audit-logging plugin (payload-auditor or equivalent) within the Payload CMS configuration, ensuring audit hooks are properly set up on key collections such as Users and Locations. Confirm that log entries are generated for create, update, and delete actions, and that each entry includes user ID, operation type, timestamp, and relevant payload data. Ensure that the audit-logging mechanism is not tied to any specific database (e.g., MongoDB), but works with any database supported by Payload CMS. Reference llm_context/payload3/best_practices.md to validate alignment with recommended audit logging and security practices. Define and implement log retention policies, ensuring logs are stored securely and purged according to compliance requirements. Update documentation to reflect audit logging and retention policy configurations, making clear that the solution is database-agnostic.",
+        "testStrategy": "1. Write unit tests to confirm that create, update, and delete operations on Users and Locations collections generate audit log entries with the correct user ID, operation type, and payload data, regardless of the underlying database. 2. Perform integration tests simulating admin actions to verify logs are created and stored as expected across different database backends. 3. Test log retention by creating logs, advancing the system clock or adjusting timestamps, and confirming that expired logs are purged according to the defined retention policy. 4. Review logs for completeness, accuracy, and security of sensitive information. 5. Validate that documentation accurately describes the audit logging and retention setup, and clearly states that the solution is database-agnostic.",
+        "subtasks": []
+      },
+      {
+        "id": 18,
+        "title": "Implement Automated Enforcement of TypeScript Typing Guidelines in Payload",
+        "description": "Set up and configure automated linting and documentation to enforce strict TypeScript typing guidelines for Payload CMS hooks, access control functions, and field conditions.",
+        "details": "1. Review the documented strict TypeScript typing guidelines for Payload CMS, focusing on hooks, access control functions, and field conditions as outlined in llm_context/responses/typescript_error_resolution_v2.md and llm_context/responses/typescript_errors.md. 2. Update or create an ESLint configuration file (e.g., .eslintrc.js) to include rules that enforce these guidelines, such as requiring explicit types for function parameters and return values, and disallowing use of 'any' in Payload-specific contexts. 3. Integrate ESLint with the project's CI pipeline to ensure all code is checked for compliance. 4. Document the enforced rules and their rationale in the CONTRIBUTING.md or a dedicated developer guide section, providing examples and references to the guidelines. 5. Communicate the new standards to the development team and ensure onboarding materials are updated.",
+        "testStrategy": "1. Run 'npm run lint' on the existing codebase to verify that the new ESLint rules correctly identify violations of the strict typing guidelines. 2. Intentionally introduce non-compliant code (e.g., missing types, use of 'any') and confirm that linting fails as expected. 3. Check that CI fails on pull requests with typing violations. 4. Review the updated documentation to ensure it clearly explains the enforced rules and provides actionable examples. 5. Solicit feedback from developers to confirm understanding and adoption of the new guidelines.",
+        "status": "pending",
+        "dependencies": [
+          10,
+          12,
+          14
+        ],
+        "priority": "medium",
+        "subtasks": []
+      },
+      {
+        "id": 19,
+        "title": "Enforce Code Documentation Standards (Inline Comments & JSDoc/TSDoc)",
+        "description": "Establish and enforce code documentation standards using inline comments and JSDoc/TSDoc for all functions, classes, and interfaces, and update contributing guidelines accordingly.",
+        "details": "1. Define clear documentation standards for inline comments (focusing on explaining complex logic and intent) and for JSDoc/TSDoc usage on all exported functions, classes, and interfaces. 2. Update or create a dedicated documentation file (e.g., llm_context/documentation_standards.md) outlining these requirements, including examples and rationale. 3. Revise the project's CONTRIBUTING.md to reference these standards and set expectations for contributors. 4. Implement a pre-commit hook (e.g., using Husky and lint-staged) or CI/CD check to automatically flag new or modified code that lacks required documentation. 5. Conduct a code review of a representative sample of existing files to identify and document areas lacking sufficient inline comments or JSDoc/TSDoc coverage. 6. Provide onboarding guidance for developers to adopt the new standards, including links to resources and examples.",
+        "testStrategy": "1. Review a representative sample of existing code files to identify and document areas lacking sufficient inline comments or JSDoc/TSDoc coverage. 2. Verify that the pre-commit hook or CI/CD check correctly detects and blocks commits with undocumented or poorly documented code. 3. Confirm that the documentation standards are clearly described in llm_context/documentation_standards.md (or similar) and referenced in CONTRIBUTING.md. 4. Solicit feedback from at least one developer unfamiliar with the codebase to ensure the standards improve code understandability and onboarding. 5. Validate that onboarding materials and documentation are accessible and comprehensive.",
+        "status": "pending",
+        "dependencies": [
+          10,
+          12
+        ],
+        "priority": "medium",
+        "subtasks": []
+      },
+      {
+        "id": 20,
+        "title": "Review and Refine Form Composition for Complex Forms",
+        "description": "Analyze and improve the architecture of complex, multi-step, or dynamic forms to enhance maintainability and user experience, potentially introducing a more structured state management approach or adopting a specialized form library.",
+        "details": "1. Audit existing complex form implementations, focusing on multi-step and highly dynamic forms, referencing llm_context/forms/README.md for current patterns and submission flows.\n2. Identify pain points, redundancies, or limitations in current form composition, state management, and validation strategies.\n3. Research best practices for complex form handling, such as leveraging state machines (e.g., XState) or adopting a more opinionated form library if React Hook Form and Zod are insufficient.\n4. Select a representative complex form (or define a hypothetical one if none exist) and analyze its implementation against modern best practices.\n5. Propose a refactored approach, implementing a proof-of-concept using a more structured pattern or library if warranted.\n6. Document findings, recommendations, and the refactored approach in a new llm_context/forms/complex_forms.md file, including before/after code samples and rationale for changes.",
+        "testStrategy": "1. Identify a complex form within the application (or define a hypothetical one) and document its current implementation, highlighting pain points and limitations.\n2. Compare the current approach to best practices for form composition and state management, noting gaps or inefficiencies.\n3. Implement a refactored version of the form using a more structured approach (e.g., state machine or specialized library) and validate its maintainability, scalability, and user experience improvements.\n4. Document the analysis, refactoring process, and recommendations in llm_context/forms/complex_forms.md, including code samples and rationale.\n5. Review the documentation and refactored implementation with at least one other developer for feedback and validation.",
+        "status": "pending",
+        "dependencies": [
+          4,
+          6
+        ],
+        "priority": "medium",
+        "subtasks": []
       }
     ],
     "metadata": {
       "created": "2025-07-01T23:13:03.567Z",
-      "updated": "2025-07-02T02:23:46.527Z",
+      "updated": "2025-07-02T02:28:43.270Z",
       "description": "Tasks for master context"
     }
   }
