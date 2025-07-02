@@ -121,24 +121,12 @@
             "testStrategy": ""
           },
           {
-            "id": 6,
-            "title": "Set up TanStack Query Integration",
-            "description": "Implement data fetching layer with TanStack Query",
-            "status": "pending",
-            "dependencies": [
-              5
-            ],
-            "details": "Configure query client, implement custom hooks for data fetching, set up cache management, implement optimistic updates, handle error states",
-            "testStrategy": ""
-          },
-          {
             "id": 7,
             "title": "Implement Form Handling",
             "description": "Set up React Hook Form with Zod validation",
             "status": "pending",
             "dependencies": [
-              5,
-              6
+              5
             ],
             "details": "Create form schemas with Zod, implement form components with React Hook Form, set up field validation, handle form submission, implement error handling",
             "testStrategy": ""
@@ -149,7 +137,6 @@
             "description": "Implement comprehensive error handling across the application",
             "status": "pending",
             "dependencies": [
-              6,
               7
             ],
             "details": "Set up error boundary components, implement error logging, create error handling utilities, configure error notifications, implement recovery mechanisms",
