@@ -39,3 +39,39 @@ This library should be updated as:
 3. Check best_practices.md for proven approaches
 4. Reference common_patterns.md for code examples
 5. Use troubleshooting.md when issues arise
+
+## File Index
+
+### forms
+- `complex_forms.md`: Patterns for building multi-step, dynamic, and state-driven forms.
+- `README.md`: Overview of form submission patterns and libraries.
+
+### llm_agent_insights
+- `code_documentation_standards.md`: Standards for JSDoc/TSDoc.
+- `README.md`: Overview of LLM agent behavior patterns and best practices.
+
+### mcp_tools
+- `context7_advanced.md`: Advanced usage of the Context7 MCP tool.
+- `README.md`: Overview of MCP tool integrations.
+- `repomix_automation.md`: Guide for automating code context generation with Repomix.
+
+### payload3
+- `best_practices.md`: Best practices for Payload 3 collection design, API usage, and security.
+- `data_models.md`: Overview of data models and relationships in the Payload CMS.
+- `README.md`: Core concepts of Payload 3.
+- `user_documentation.md`: User guide for managing data in the Payload CMS.
+
+### responses
+- `prompt_template.md`: Template for scripting TypeScript error resolution.
+- `setup_verification.md`: Checklist for verifying the project setup.
+- `typescript_error_resolution_v2.md`: Guide for resolving advanced TypeScript errors.
+- `typescript_errors.md`: Guide for resolving common TypeScript errors.
+
+### state_management
+- `README.md`: Overview of Zustand state management patterns.
+
+### tanstack
+- `README.md`: Overview of Tanstack Query and Tables implementation.
+
+### ui_patterns
+- `README.md`: Overview of Shadcn UI patterns and best practices.

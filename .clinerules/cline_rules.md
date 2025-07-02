@@ -18,8 +18,8 @@ alwaysApply: true
   ```
 
 - **File References:**
-  - Use `[filename](mdc:path/to/file)` ([filename](mdc:filename)) to reference files
-  - Example: [prisma.md](.clinerules/prisma.md) for rule references
+  - Use `[filename](mdc:filename)` to reference files
+  - Example: [prisma.md](mdc:prisma.md) for rule references
   - Example: [schema.prisma](mdc:prisma/schema.prisma) for code references
 
 - **Code Examples:**
@@ -50,4 +50,4 @@ alwaysApply: true
   - Keep descriptions concise
   - Include both DO and DON'T examples
   - Reference actual code over theoretical examples
-  - Use consistent formatting across rules 
+  - Use consistent formatting across rules

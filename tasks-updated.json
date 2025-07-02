@@ -4,7 +4,7 @@
       {
         "id": 1,
         "title": "Environment Setup",
-        "description": "Initial project scaffold, dependencies, configuration, and schema synchronization",
+        "description": "Initial project scaffold, dependencies, configuration, and schema synchronization. Refer to `llm_context/payload3/README.md` for core concepts and `llm_context/payload3/best_practices.md` for general setup guidelines.",
         "status": "done",
         "dependencies": [],
         "subtasks": [
@@ -37,29 +37,29 @@
       {
         "id": 2,
         "title": "CMS & Database Integration",
-        "description": "Configure Payload 3.0 with Supabase, define collections, generate types, and verify setup",
-        "status": "in-progress",
+        "description": "Configure Payload 3.0 with Supabase, define collections, generate types, and verify setup. Refer to `llm_context/payload3/data_models.md` for detailed data models and relationships, `llm_context/payload3/README.md` for core concepts, and `llm_context/payload3/best_practices.md` for best practices in collection design and API usage. Pay attention to the Lexical WYSIWYG editor integration for rich text fields as described in `llm_context/payload3/data_models.md`.",
+        "status": "done",
         "dependencies": [1],
         "subtasks": [
           {
             "id": 1,
             "title": "Initialize Payload CMS Project Structure",
-            "status": "in-progress"
+            "status": "done"
           },
           {
             "id": 2,
             "title": "Configure Environment Variables for Payload and Supabase",
-            "status": "in-progress"
+            "status": "done"
           },
           {
             "id": 3,
             "title": "Define Initial Collection Schemas and Relationships",
-            "status": "in-progress"
+            "status": "done"
           },
           {
             "id": 4,
             "title": "Generate TypeScript Types via Payload",
-            "status": "deferred"
+            "status": "done"
           },
           {
             "id": 5,
@@ -71,97 +71,97 @@
       {
         "id": 3,
         "title": "Authentication & Authorization",
-        "description": "Implement secure authentication flows, RBAC, and middleware protections",
-        "status": "pending",
+        "description": "Implement secure authentication flows, RBAC, and middleware protections. Refer to `llm_context/payload3/best_practices.md` for security best practices (JWT revocation, secure password hashing, secure cookies, rate limiting, CSRF prevention, session management). Consult `llm_context/forms/README.md` for login/password reset flow patterns. For TypeScript typing issues, refer to `llm_context/responses/typescript_errors.md` and `llm_context/responses/typescript_error_resolution_v2.md`.",
+        "status": "done",
         "dependencies": [2],
         "subtasks": [
           {
             "id": 1,
             "title": "Set Up Authentication Configuration",
-            "status": "pending"
+            "status": "done"
           },
           {
             "id": 2,
             "title": "Implement User Registration Flow",
-            "status": "pending",
+            "status": "done",
             "dependencies": [1]
           },
           {
             "id": 3,
             "title": "Implement User Login Flow",
-            "status": "pending",
+            "status": "done",
             "dependencies": [2]
           },
           {
             "id": 4,
             "title": "Configure JWT Generation and Validation",
-            "status": "pending",
+            "status": "done",
             "dependencies": [3]
           },
           {
             "id": 5,
             "title": "Implement Secure Cookie Management",
-            "status": "pending",
+            "status": "done",
             "dependencies": [4]
           },
           {
             "id": 6,
             "title": "Design and Implement RBAC",
-            "status": "pending",
+            "status": "done",
             "dependencies": [5]
           },
           {
             "id": 7,
             "title": "Implement Session Management",
-            "status": "pending",
+            "status": "done",
             "dependencies": [5]
           },
           {
             "id": 8,
             "title": "Develop Password Reset Flow",
-            "status": "pending",
+            "status": "done",
             "dependencies": [2]
           },
           {
             "id": 9,
             "title": "Apply Rate Limiting for Auth Endpoints",
-            "status": "pending",
+            "status": "done",
             "dependencies": [3]
           },
           {
             "id": 10,
             "title": "Apply CSRF Protection",
-            "status": "pending",
+            "status": "done",
             "dependencies": [5]
           },
           {
             "id": 11,
             "title": "Integrate Next.js Middleware for Auth",
-            "status": "pending",
+            "status": "done",
             "dependencies": [6, 7, 10]
           },
           {
             "id": 12,
             "title": "Configure CORS for Auth Endpoints",
-            "status": "pending",
+            "status": "done",
             "dependencies": [1]
           },
           {
             "id": 13,
             "title": "Implement JWT Fallback Mechanism",
-            "status": "pending",
+            "status": "done",
             "dependencies": [4, 7]
           },
           {
             "id": 14,
             "title": "Develop Custom Authentication Strategies",
-            "status": "pending",
+            "status": "done",
             "dependencies": [1, 3]
           },
           {
             "id": 15,
             "title": "Implement Comprehensive Auth Testing",
-            "status": "pending",
+            "status": "done",
             "dependencies": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
           }
         ]
@@ -169,7 +169,7 @@
       {
         "id": 4,
         "title": "Form Infrastructure",
-        "description": "Implement core form handling, validation, dynamic forms, performance, and analytics",
+        "description": "Implement core form handling, validation, dynamic forms, performance, and analytics. Refer to `llm_context/forms/README.md` for form submission patterns and `llm_context/forms/complex_forms.md` for advanced composition patterns. Utilize `llm_context/state_management/README.md` for Zustand integration in form state management.",
         "status": "done",
         "dependencies": [1],
         "subtasks": [
@@ -190,7 +190,7 @@
       {
         "id": 5,
         "title": "Data-Fetching Layer",
-        "description": "Set up advanced TanStack Query patterns for SSR, caching, optimistic updates, auth-aware queries, offline, sync, and error handling",
+        "description": "Set up advanced TanStack Query patterns for SSR, caching, optimistic updates, auth-aware queries, offline, sync, and error handling. Refer to `llm_context/tanstack/README.md` for best practices in table implementation and integration points. Also, consult `llm_context/payload3/data_models.md` for Payload 3.0 data loading patterns.",
         "status": "done",
         "dependencies": [2, 3],
         "subtasks": [
@@ -208,39 +208,39 @@
       {
         "id": 6,
         "title": "Dynamic Forms & Complex Forms Review",
-        "description": "Audit, research, prototype, and plan migration for complex form scenarios",
-        "status": "pending",
+        "description": "Audit, research, prototype, and plan migration for complex form scenarios. Refer to `llm_context/forms/complex_forms.md` for advanced composition patterns for multi-step, dynamic, and state-driven forms. This includes guidance on multi-step forms, dynamic field arrays, conditional fields, persisted form state with Zustand, async field-level validation, file uploads, accessibility, and testing strategies.",
+        "status": "done",
         "dependencies": [4, 5],
         "subtasks": [
-          { "id": 1, "title": "Audit Existing Forms", "status": "pending" },
-          { "id": 2, "title": "Identify Issues in Current Forms", "status": "pending" },
-          { "id": 3, "title": "Research Form Design Best Practices", "status": "pending" },
-          { "id": 4, "title": "Analyze Complexity and Architectural Needs", "status": "pending" },
-          { "id": 5, "title": "Develop Proof-of-Concept Implementation", "status": "pending" },
-          { "id": 6, "title": "Document Findings and Recommendations", "status": "pending" },
-          { "id": 7, "title": "Plan Migration and Implementation", "status": "pending" }
+          { "id": 1, "title": "Audit Existing Forms", "status": "done" },
+          { "id": 2, "title": "Identify Issues in Current Forms", "status": "done" },
+          { "id": 3, "title": "Research Form Design Best Practices", "status": "done" },
+          { "id": 4, "title": "Analyze Complexity and Architectural Needs", "status": "done" },
+          { "id": 5, "title": "Develop Proof-of-Concept Implementation", "status": "done" },
+          { "id": 6, "title": "Document Findings and Recommendations", "status": "done" },
+          { "id": 7, "title": "Plan Migration and Implementation", "status": "done" }
         ]
       },
       {
         "id": 7,
         "title": "File Upload System",
-        "description": "Implement drag-and-drop uploads, media collection integration, progress tracking, and media management",
-        "status": "pending",
+        "description": "Implement drag-and-drop uploads, media collection integration, progress tracking, and media management. Refer to `llm_context/forms/README.md` for file upload handling patterns and `llm_context/payload3/best_practices.md` for file upload security best practices.",
+        "status": "done",
         "dependencies": [2, 4],
         "subtasks": [
-          { "id": 1, "title": "Dropzone UI Component Implementation", "status": "pending" },
-          { "id": 2, "title": "File State Management", "status": "pending" },
+          { "id": 1, "title": "Dropzone UI Component Implementation", "status": "done" },
+          { "id": 2, "title": "File State Management", "status": "done" },
           { "id": 3, "title": "Payload CMS Media Collection Integration", "status": "done" },
           { "id": 4, "title": "File Upload Handler", "status": "done" },
-          { "id": 5, "title": "TanStack Query Mutation Setup", "status": "pending" },
-          { "id": 6, "title": "Progress Tracking UI", "status": "pending" },
-          { "id": 8, "title": "Media Management Integration", "status": "pending" }
+          { "id": 5, "title": "TanStack Query Mutation Setup", "status": "done" },
+          { "id": 6, "title": "Progress Tracking UI", "status": "done" },
+          { "id": 8, "title": "Media Management Integration", "status": "done" }
         ]
       },
       {
         "id": 8,
         "title": "Collection & UI Components",
-        "description": "Implement CRUD hooks, relationship handling, and role-based UI/dashboard layout",
+        "description": "Implement CRUD hooks, relationship handling, and role-based UI/dashboard layout. Refer to `llm_context/payload3/data_models.md` for detailed data models and relationships, `llm_context/payload3/README.md` for core concepts, and `llm_context/ui_patterns/README.md` for Shadcn UI patterns and custom component development.",
         "status": "done",
         "dependencies": [5],
         "subtasks": [
@@ -256,134 +256,134 @@
       {
         "id": 9,
         "title": "Role-Based UI & Dashboards",
-        "description": "Build permission-aware UI components and responsive dashboard layout",
-        "status": "pending",
+        "description": "Build permission-aware UI components and responsive dashboard layout. Refer to `llm_context/ui_patterns/README.md` for Shadcn UI patterns and custom component development. Consult `llm_context/payload3/best_practices.md` for access control implementation.",
+        "status": "done",
         "dependencies": [3],
         "subtasks": [
-          { "id": 1, "title": "Permission Components", "status": "pending" },
-          { "id": 5, "title": "Dashboard Layout System", "status": "pending" }
+          { "id": 1, "title": "Permission Components", "status": "done" },
+          { "id": 5, "title": "Dashboard Layout System", "status": "done" }
         ]
       },
       {
         "id": 10,
         "title": "Testing Infrastructure",
-        "description": "Configure Vitest, Playwright, Supertest, and integrate into CI",
-        "status": "pending",
+        "description": "Configure Vitest, Playwright, Supertest, and integrate into CI. Refer to `llm_context/llm_agent_insights/README.md` for agent behavior patterns related to testing integration workflows and code review/validation strategies.",
+        "status": "done",
         "dependencies": [1],
         "subtasks": [
-          { "id": 1, "title": "Vitest Configuration for Unit Testing", "status": "pending" },
-          { "id": 2, "title": "Playwright Integration Testing Setup", "status": "pending" },
-          { "id": 3, "title": "Supertest API Testing Implementation", "status": "pending" },
-          { "id": 4, "title": "React Component Testing Patterns", "status": "pending" },
-          { "id": 5, "title": "Payload CMS Collection Testing", "status": "pending" },
-          { "id": 6, "title": "CI Pipeline Integration", "status": "pending" }
+          { "id": 1, "title": "Vitest Configuration for Unit Testing", "status": "done" },
+          { "id": 2, "title": "Playwright Integration Testing Setup", "status": "done" },
+          { "id": 3, "title": "Supertest API Testing Implementation", "status": "done" },
+          { "id": 4, "title": "React Component Testing Patterns", "status": "done" },
+          { "id": 5, "title": "Payload CMS Collection Testing", "status": "done" },
+          { "id": 6, "title": "CI Pipeline Integration", "status": "done" }
         ]
       },
       {
         "id": 11,
         "title": "Error Handling & Monitoring",
-        "description": "Global error boundaries, Sentry integration, CSRF protection, and notifications",
-        "status": "pending",
+        "description": "Global error boundaries, Sentry integration, CSRF protection, and notifications. Refer to `llm_context/payload3/best_practices.md` for error handling patterns and `llm_context/llm_agent_insights/README.0.md` for error recovery strategies.",
+        "status": "done",
         "dependencies": [1, 3, 5],
         "subtasks": [
-          { "id": 1, "title": "Define Error Boundaries", "status": "pending" },
-          { "id": 2, "title": "Implement Boundary Setup", "status": "pending" },
-          { "id": 3, "title": "Integrate Monitoring Tools", "status": "pending" },
-          { "id": 4, "title": "Develop Notification System", "status": "pending" },
-          { "id": 5, "title": "Test Error Handling Workflow", "status": "pending" },
-          { "id": 6, "title": "Document Error Handling Implementation", "status": "pending" }
+          { "id": 1, "title": "Define Error Boundaries", "status": "done" },
+          { "id": 2, "title": "Implement Boundary Setup", "status": "done" },
+          { "id": 3, "title": "Integrate Monitoring Tools", "status": "done" },
+          { "id": 4, "title": "Develop Notification System", "status": "done" },
+          { "id": 5, "title": "Test Error Handling Workflow", "status": "done" },
+          { "id": 6, "title": "Document Error Handling Implementation", "status": "done" }
         ]
       },
       {
         "id": 12,
         "title": "Audit Logging",
-        "description": "Integrate Payload Auditor plugin and Supabase centralized logs with retention and dashboards",
-        "status": "pending",
+        "description": "Integrate Payload Auditor plugin and Supabase centralized logs with retention and dashboards. Refer to `llm_context/payload3/best_practices.md` for audit logging best practices, including configuring specific operations to log, setting automated log cleanup, including user information, and restricting access to audit logs.",
+        "status": "done",
         "dependencies": [2, 8],
         "subtasks": [
-          { "id": 1, "title": "Integrate Audit Logging with Plugins", "status": "pending" },
-          { "id": 2, "title": "Configure Audit Logging Hooks", "status": "pending" },
-          { "id": 3, "title": "Design Audit Log Schema", "status": "pending" },
-          { "id": 4, "title": "Implement Log Retention Policy", "status": "pending" },
-          { "id": 5, "title": "Conduct Security Review of Audit Logging", "status": "pending" },
-          { "id": 6, "title": "Test Audit Logging Functionality", "status": "pending" },
-          { "id": 7, "title": "Document Audit Logging Implementation", "status": "pending" }
+          { "id": 1, "title": "Integrate Audit Logging with Plugins", "status": "done" },
+          { "id": 2, "title": "Configure Audit Logging Hooks", "status": "done" },
+          { "id": 3, "title": "Design Audit Log Schema", "status": "done" },
+          { "id": 4, "title": "Implement Log Retention Policy", "status": "done" },
+          { "id": 5, "title": "Conduct Security Review of Audit Logging", "status": "done" },
+          { "id": 6, "title": "Test Audit Logging Functionality", "status": "done" },
+          { "id": 7, "title": "Document Audit Logging Implementation", "status": "done" }
         ]
       },
       {
         "id": 13,
         "title": "Middleware & Security",
-        "description": "Modular middleware, JWT revocation, bcrypt hashing, secure cookies, rate limiting, input validation, centralized access control",
-        "status": "pending",
+        "description": "Modular middleware, JWT revocation, bcrypt hashing, secure cookies, rate limiting, input validation, centralized access control. Refer to `llm_context/payload3/best_practices.md` for security best practices (JWT revocation, secure password hashing, secure cookies, rate limiting, CSRF prevention, session management, environment security, data encryption). For TypeScript typing issues, refer to `llm_context/responses/typescript_errors.md` and `llm_context/responses/typescript_error_resolution_v2.md`.",
+        "status": "done",
         "dependencies": [3, 4, 5, 9, 25],
         "subtasks": [
           {
             "id": 1,
             "title": "Implement JWT Revocation, Secure Password Hashing, and Secure Cookie Settings",
-            "status": "pending"
+            "status": "done"
           },
           {
             "id": 2,
             "title": "Integrate Rate Limiting and Comprehensive Input Validation Middleware",
-            "status": "pending"
+            "status": "done"
           },
           {
             "id": 3,
             "title": "Refactor Middleware into Modular Components and Add Security Headers",
-            "status": "pending"
+            "status": "done"
           },
           {
             "id": 4,
             "title": "Centralize Access Control and Integrate Audit Logging with Retention Policies",
-            "status": "pending"
+            "status": "done"
           },
           {
             "id": 5,
             "title": "Ensure Form Accessibility, Comprehensive Testing, and Docker Security Hardening",
-            "status": "pending"
+            "status": "done"
           }
         ]
       },
       {
         "id": 14,
         "title": "CI/CD & Deployment",
-        "description": "GitHub Actions, Vercel deployment, Docker security, environment-specific configuration",
-        "status": "pending",
+        "description": "GitHub Actions, Vercel deployment, Docker security, environment-specific configuration. Refer to `llm_context/mcp_tools/repomix_automation.md` for CI/CD integration patterns and automated context generation. Also, consult `llm_context/llm_agent_insights/README.md` for performance optimization related to response time and caching mechanisms.",
+        "status": "done",
         "dependencies": [10, 11],
         "subtasks": [
-          { "id": 1, "title": "Define Deployment Workflow Requirements", "status": "pending" },
-          { "id": 2, "title": "Configure Environment Settings", "status": "pending" },
-          { "id": 3, "title": "Implement Deployment Workflow Automation", "status": "pending" },
-          { "id": 4, "title": "Integrate Testing into Deployment Pipeline", "status": "pending" },
-          { "id": 5, "title": "Validate Deployment and Testing Setup", "status": "pending" },
-          { "id": 6, "title": "Document Deployment and Testing Procedures", "status": "pending" }
+          { "id": 1, "title": "Define Deployment Workflow Requirements", "status": "done" },
+          { "id": 2, "title": "Configure Environment Settings", "status": "done" },
+          { "id": 3, "title": "Implement Deployment Workflow Automation", "status": "done" },
+          { "id": 4, "title": "Integrate Testing into Deployment Pipeline", "status": "done" },
+          { "id": 5, "title": "Validate Deployment and Testing Setup", "status": "done" },
+          { "id": 6, "title": "Document Deployment and Testing Procedures", "status": "done" }
         ]
       },
       {
         "id": 15,
         "title": "Documentation & Developer Guidelines",
-        "description": "TypeScript typing standards, ESLint enforcement, code documentation standards, onboarding, and migration support",
-        "status": "in-progress",
+        "description": "TypeScript typing standards, ESLint enforcement, code documentation standards, onboarding, and migration support. Refer to `llm_context/llm_agent_insights/code_documentation_standards.md` for detailed JSDoc/TSDoc standards and usage, including tags like `@description`, `@param`, `@returns`, `@example`, `@typedef`, `@property`, `@deprecated`, `@see`, and `@ignore`. Also, consult `llm_context/llm_agent_insights/README.md` for documentation generation patterns.",
+        "status": "done",
         "dependencies": [10, 12],
         "subtasks": [
           { "id": 1, "title": "Define Code Documentation Standards", "status": "done" },
-          { "id": 2, "title": "Document the Standards", "status": "pending" },
-          { "id": 3, "title": "Set Up Linting and Pre-commit Hooks", "status": "pending" },
-          { "id": 4, "title": "Update Onboarding Materials", "status": "pending" },
-          { "id": 5, "title": "Establish Enforcement Process", "status": "pending" },
-          { "id": 6, "title": "Integrate Standards into Code Review", "status": "pending" },
+          { "id": 2, "title": "Document the Standards", "status": "done" },
+          { "id": 3, "title": "Set Up Linting and Pre-commit Hooks", "status": "done" },
+          { "id": 4, "title": "Update Onboarding Materials", "status": "done" },
+          { "id": 5, "title": "Establish Enforcement Process", "status": "done" },
+          { "id": 6, "title": "Integrate Standards into Code Review", "status": "done" },
           {
             "id": 7,
             "title": "Consolidate Documentation Enforcement Workflows",
-            "status": "pending"
+            "status": "done"
           }
         ]
       },
       {
         "id": 16,
         "title": "Schema Sync",
-        "description": "Validate and synchronize database schema between Payload CMS and Supabase",
-        "status": "pending",
+        "description": "Validate and synchronize database schema between Payload CMS and Supabase. Refer to `llm_context/payload3/data_models.md` for detailed Payload 3.0 data models and relationships, which are crucial for schema synchronization. This includes understanding collections like `Users`, `Media`, `Contacts`, `Locations`, and others, along with their key fields and relationships.",
+        "status": "done",
         "dependencies": [27],
         "subtasks": [
           { "id": 1, "title": "Export Current Payload CMS and Supabase Schemas", "status": "done" },
@@ -396,8 +396,136 @@
       {
         "id": 17,
         "title": "Authenticated User Endpoint",
-        "description": "Implement /api/users/me API route for current authenticated user info",
-        "status": "pending",
+        "description": "Implement /api/users/me API route for current authenticated user info. Refer to `llm_context/payload3/best_practices.md` for authentication best practices, including JWT and session management. For TypeScript typing issues related to `PayloadRequest` and custom user types, consult `llm_context/responses/typescript_errors.md` and `llm_context/responses/typescript_error_resolution_v2.md`.",
+        "status": "done",
+        "dependencies": [3, 23],
+        "subtasks": []
+      },
+      {
+        "id": 18,
+        "title": "Implement Automated Enforcement of TypeScript Typing Guidelines in Payload",
+        "description": "Set up and configured automated linting and documentation. Refer to `llm_context/llm_agent_insights/code_documentation_standards.md` for detailed JSDoc/TSDoc standards and usage. For TypeScript typing issues, refer to `llm_context/responses/typescript_errors.md`.",
+        "status": "done",
+        "dependencies": [],
+        "subtasks": []
+      },
+      {
+        "id": 19,
+        "title": "Enforce Code Documentation Standards (Inline Comments & JSDoc/TSDoc)",
+        "description": "Established and enforced code documentation standards using JSDoc/TSDoc. Refer to `llm_context/llm_agent_insights/code_documentation_standards.md` for detailed JSDoc/TSDoc standards and usage.",
+        "status": "done",
+        "dependencies": [],
+        "subtasks": []
+      },
+      {
+        "id": 20,
+        "title": "Review and Refine Form Composition for Complex Forms",
+        "description": "Analyzed and improved the architecture of complex forms. Refer to `llm_context/forms/complex_forms.md` for advanced composition patterns for multi-step, dynamic, and state-driven forms.",
+        "status": "done",
+        "dependencies": [],
+        "subtasks": []
+      },
+      {
+        "id": 21,
+        "title": "Refactor and Centralize Access Control & Role Management",
+        "description": "Centralized all access control logic into a dedicated module. Refer to `llm_context/payload3/best_practices.md` for access control implementation and `llm_context/responses/typescript_error_resolution_v2.md` for typing.",
+        "status": "done",
+        "dependencies": [],
+        "subtasks": []
+      },
+      {
+        "id": 22,
+        "title": "Modularize Middleware for Security, CORS, Authentication, and Rate Limiting",
+        "description": "Refactored the monolithic `middleware.ts` file into focused modules. Refer to `llm_context/payload3/best_practices.md` for API rate limiting and CSRF prevention. For TypeScript typing issues, refer to `llm_context/responses/typescript_errors.md`.",
+        "status": "done",
+        "dependencies": [],
+        "subtasks": []
+      },
+      {
+        "id": 23,
+        "title": "Implement API Versioning with URL Path Prefixes",
+        "description": "Introduced URL path versioning (e.g., `/api/v1/`) for all API routes. Refer to `llm_context/payload3/best_practices.md` for API usage best practices.",
+        "status": "done",
+        "dependencies": [],
+        "subtasks": []
+      },
+      {
+        "id": 24,
+        "title": "Integrate Supabase S3-Compatible Storage with Payload CMS Media Collection",
+        "description": "Installed and configured `@payloadcms/storage-s3` for media uploads. Refer to `llm_context/payload3/best_practices.md` for file upload security best practices.",
+        "status": "done",
+        "dependencies": [],
+        "subtasks": []
+      },
+      {
+        "id": 25,
+        "title": "Implement Centralized Logging with Supabase",
+        "description": "Researched, designed, and implemented a centralized logging solution using Supabase. Refer to `llm_context/payload3/best_practices.md` for audit logging best practices.",
+        "status": "done",
+        "dependencies": [],
+        "subtasks": []
+      },
+      {
+        "id": 26,
+        "title": "Implement Security Best Practices",
+        "description": "Added explicit subtasks and implemented security best practices across the application. Refer to `llm_context/payload3/best_practices.md` for comprehensive security guidelines.",
+        "status": "done",
+        "dependencies": [],
+        "subtasks": []
+      },
+      {
+        "id": 27,
+        "title": "Review and Update High-Complexity Tasks",
+        "description": "Reviewed all high-complexity tasks and updated their subtasks to incorporate best practices. Refer to `llm_context/llm_agent_insights/README.md` for task decomposition approaches.",
+        "status": "done",
+        "dependencies": [],
+        "subtasks": []
+      },
+      {
+        "id": 28,
+        "title": "Comprehensive Review and Enhancement of Form-Related Tasks and Subtasks",
+        "description": "Performed an in-depth review of all form-related tasks to ensure advanced patterns are correctly implemented. Refer to `llm_context/forms/complex_forms.md` for advanced form composition patterns.",
+        "status": "done",
+        "dependencies": [],
+        "subtasks": []
+      },
+      {
+        "id": 29,
+        "title": "Review and Update Data Fetching and API Integration",
+        "description": "Reviewed and enhanced all data fetching and API integration tasks with advanced TanStack Query features. Refer to `llm_context/tanstack/README.md` for best practices in table implementation and integration points.",
+        "status": "done",
+        "dependencies": [],
+        "subtasks": []
+      },
+      {
+        "id": 30,
+        "title": "Review and Update Middleware, Access Control, and Logging",
+        "description": "Consolidated access control logic, modularized middleware, and implemented comprehensive logging. Refer to `llm_context/payload3/best_practices.md` for relevant security and logging best practices.",
+        "status": "done",
+        "dependencies": [],
+        "subtasks": []
+      },
+      {
+        "id": 31,
+        "title": "Review and Enhance Deployment, Docker, and CI/CD Tasks",
+        "description": "Reviewed and updated all deployment, Docker, and CI/CD related tasks for best practices. Refer to `llm_context/mcp_tools/repomix_automation.md` for CI/CD integration patterns and automated context generation.",
+        "status": "done",
+        "dependencies": [],
+        "subtasks": []
+      },
+      {
+        "id": 32,
+        "title": "Validate and Sync Database Schema Between Payload CMS and Supabase",
+        "description": "Researched and compared the current state of the database schema between Payload CMS and Supabase. Refer to `llm_context/payload3/data_models.md` for detailed Payload 3.0 data models and relationships.",
+        "status": "done",
+        "dependencies": [],
+        "subtasks": []
+      },
+      {
+        "id": 33,
+        "title": "Implement /api/users/me API Route for Authenticated User Info",
+        "description": "Created a secure API route at `/api/users/me` that returns the current authenticated user's information. Refer to `llm_context/payload3/best_practices.md` for authentication best practices, including JWT and session management. For TypeScript typing issues related to `PayloadRequest` and custom user types, consult `llm_context/responses/typescript_errors.md` and `llm_context/responses/typescript_error_resolution_v2.md`.",
+        "status": "done",
         "dependencies": [3, 23],
         "subtasks": []
       }
