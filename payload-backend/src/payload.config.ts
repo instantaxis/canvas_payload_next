@@ -1,3 +1,5 @@
+
+
 // 
 import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
 import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
@@ -29,7 +31,7 @@ import { Reviews } from './collections/Reviews'
 import { ServerReports } from './collections/ServerReports'
 import { ShiftTypes } from './collections/ShiftTypes'
 import { Upgrades } from './collections/Upgrades'
-import { UpgradeTypes }m './collections/UpgradeTypes'
+import { UpgradeTypes } from './collections/UpgradeTypes'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -79,7 +81,9 @@ export default buildConfig({
       connectionString: process.env.POSTGRES_URL || '',
     },
   }),
-  sharp,
+  
+
+sharp,
   plugins: [
     payloadCloudPlugin(),
     s3Adapter({

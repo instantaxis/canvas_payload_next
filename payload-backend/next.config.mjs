@@ -5,8 +5,8 @@ const nextConfig = {
   // Restaurant Management System Configuration
   experimental: {
     reactCompiler: false,
-    serverComponentsExternalPackages: ['sharp'],
   },
+  serverExternalPackages: ['sharp'],
 
   // Image optimization for restaurant photos and media
   images: {

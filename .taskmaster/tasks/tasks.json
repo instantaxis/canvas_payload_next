@@ -17,7 +17,7 @@
             "description": "Create a new Next.js project with TypeScript support using create-next-app",
             "dependencies": [],
             "details": "Run 'npx create-next-app@latest' with TypeScript flag, configure tsconfig.json for strict mode, and set up initial environment variables\n<info added on 2025-07-01T23:50:02.593Z>\nTask 1.1 verification completed successfully. Project structure and configuration confirmed as per requirements. Ready to proceed with Task 1.2: Install Core Dependencies.\n</info added on 2025-07-01T23:50:02.593Z>",
-            "status": "completed",
+            "status": "done",
             "testStrategy": ""
           },
           {
@@ -86,7 +86,7 @@
             "dependencies": [
               1
             ],
-            "details": "Initialize project with payload create, configure tsconfig.json, set up project folders (collections, fields, hooks), implement proper type definitions",
+            "details": "Initialize project with payload create, configure tsconfig.json, set up project folders (collections, fields, hooks), implement proper type definitions\n<info added on 2025-07-02T14:39:12.277Z>\nOrganize the project under a `src/` directory, creating feature-based folders for each major domain or collection as specified in the PRD. Place shared utilities and custom hooks in a `src/lib/` folder to promote reusability and maintainability. Ensure all TypeScript configurations and module resolutions support this structure, and follow Payload CMS and TypeScript best practices for modularity and code organization.\n</info added on 2025-07-02T14:39:12.277Z>",
             "testStrategy": ""
           },
           {
@@ -97,7 +97,7 @@
             "dependencies": [
               2
             ],
-            "details": "Create .env files for development/production, implement environment variable validation, set up secure key management, configure deployment-specific settings",
+            "details": "Create .env files for development/production, implement environment variable validation, set up secure key management, configure deployment-specific settings\n<info added on 2025-07-02T14:39:22.145Z>\nFollow the guidelines outlined in llm_context/payload3/best_practices.md to structure environment configuration files for each deployment stage (development, staging, production). Ensure all sensitive information, such as API keys, database credentials, and secret tokens, is referenced exclusively through environment variables and never hardcoded in the codebase. Implement checks to prevent application startup if required environment variables are missing or improperly set. Document the required environment variables and their usage for each deployment stage.\n</info added on 2025-07-02T14:39:22.145Z>",
             "testStrategy": ""
           },
           {
@@ -108,7 +108,7 @@
             "dependencies": [
               2
             ],
-            "details": "Create collection types, implement field validations with Zod, set up relationships between collections, configure access control, implement hooks, use uploads collection for QR feedback media attachments",
+            "details": "Create collection types, implement field validations with Zod, set up relationships between collections, configure access control, implement hooks, use uploads collection for QR feedback media attachments\n<info added on 2025-07-02T14:38:52.698Z>\nDefine initial collection schemas using TypeScript interfaces and generics to ensure strong typing and maintainability. Select field types according to the guidelines in best_practices.md, using enums and union types where appropriate for constrained values. Model relationships between collections using referenced IDs and Payload's relationship field type, ensuring referential integrity and clear ownership semantics. Implement access control using Payload's access functions, applying role-based permissions and field-level restrictions as recommended. Validate all fields with Zod schemas, integrating them with the TypeScript types for runtime and compile-time safety. Document each collection and relationship in accordance with data_models.md to maintain clarity and consistency.\n</info added on 2025-07-02T14:38:52.698Z>",
             "testStrategy": ""
           },
           {
@@ -119,7 +119,7 @@
             "dependencies": [
               5
             ],
-            "details": "Configure WebSocket server integration, implement subscription handlers for employee ratings collection, ensure real-time data synchronization in admin and client apps",
+            "details": "Configure WebSocket server integration, implement subscription handlers for employee ratings collection, ensure real-time data synchronization in admin and client apps\n<info added on 2025-07-02T14:39:02.275Z>\nIntegrate WebSocket-based real-time updates for the employee ratings collection with TanStack Query's useQuery hook, following the guidelines in llm_context/tanstack/README.md. Ensure that subscription events trigger cache updates and revalidation in both admin and client applications, providing seamless and efficient data synchronization.\n</info added on 2025-07-02T14:39:02.275Z>",
             "testStrategy": "Test real-time updates propagation on employee ratings changes"
           },
           {
@@ -130,7 +130,7 @@
             "dependencies": [
               2
             ],
-            "details": "Implement server components using local Payload API, configure middleware for authentication, optimize Payload usage with Next.js 15 features",
+            "details": "Implement server components using local Payload API, configure middleware for authentication, optimize Payload usage with Next.js 15 features\n<info added on 2025-07-02T14:39:31.444Z>\nAdopt the latest Next.js 15 integration patterns for Payload CMS by referencing the guidelines in llm_context/payload3/README.md and llm_context/payload3/best_practices.md. Ensure server components utilize recommended data loading strategies, such as leveraging Next.js 15's server actions and async/await for efficient data fetching. Configure API usage to align with best practices, including secure handling of authentication tokens, minimizing client-side data exposure, and optimizing API calls for performance and scalability as outlined in the referenced documentation.\n</info added on 2025-07-02T14:39:31.444Z>",
             "testStrategy": "Verify Next.js 15 server components correctly consume Payload API and authentication flows"
           },
           {
@@ -182,7 +182,7 @@
             "dependencies": [
               1
             ],
-            "details": "Build registration form component, implement Zod validation schema, handle form submission with TanStack Query mutation",
+            "details": "Build registration form component, implement Zod validation schema, handle form submission with TanStack Query mutation\n<info added on 2025-07-02T14:39:39.304Z>\nCreate a registration API endpoint that accepts email and password, validates inputs using Zod according to the guidelines in best_practices.md and forms/README.md, and securely hashes passwords with bcrypt using at least 12 rounds before storing them. Update the registration form to use React Hook Form integrated with Zod for real-time validation feedback, ensuring comprehensive error handling and user-friendly validation messages.\n</info added on 2025-07-02T14:39:39.304Z>",
             "testStrategy": ""
           },
           {
@@ -193,7 +193,7 @@
             "dependencies": [
               1
             ],
-            "details": "Build login form component, implement credential verification, generate and return JWT tokens, handle login errors",
+            "details": "Build login form component, implement credential verification, generate and return JWT tokens, handle login errors\n<info added on 2025-07-02T14:39:50.301Z>\nCreate a secure login endpoint and corresponding frontend form that validates user credentials according to authentication best practices. Upon successful authentication, generate a JWT token and set it in a cookie with the following attributes: httpOnly, secure, sameSite set to 'strict', a custom cookie name, and restrict cookie transmission to HTTPS in production environments. Ensure all logic aligns with the guidelines in llm_context/payload3/best_practices.md and resolve any TypeScript errors as outlined in llm_context/responses/typescript_error_resolution_v2.md.\n</info added on 2025-07-02T14:39:50.301Z>",
             "testStrategy": ""
           },
           {
@@ -205,7 +205,7 @@
               1,
               3
             ],
-            "details": "Implement JWT verification middleware, handle token extraction from headers, validate token expiration and signature",
+            "details": "Implement JWT verification middleware, handle token extraction from headers, validate token expiration and signature\n<info added on 2025-07-02T14:40:01.507Z>\nDesign the middleware to be reusable and easily integrated into different routes, separating concerns by keeping token verification logic distinct from user authentication logic. Ensure the middleware properly handles error cases, such as missing or malformed tokens, and returns appropriate HTTP status codes and error messages. Follow security best practices by avoiding token leakage in logs, supporting token revocation mechanisms if applicable, and using environment variables for secret management. Reference the guidelines in best_practices.md for secure implementation patterns and consult typescript_error_resolution_v2.md to handle potential TypeScript errors gracefully, ensuring robust type safety throughout the middleware.\n</info added on 2025-07-02T14:40:01.507Z>",
             "testStrategy": ""
           },
           {
@@ -217,7 +217,7 @@
               1,
               3
             ],
-            "details": "Build password reset request form, implement email verification, create reset token handling, build password update form",
+            "details": "Build password reset request form, implement email verification, create reset token handling, build password update form\n<info added on 2025-07-02T14:40:12.913Z>\nDevelop password reset endpoints on the backend that securely generate and validate reset tokens, ensuring tokens are time-limited and cryptographically secure. Implement email verification as part of the reset process, sending users a reset link containing the token. On the frontend, create password reset request and update forms using React Hook Form and Zod for robust validation, following best practices outlined in llm_context/payload3/best_practices.md and llm_context/forms/README.md. Ensure comprehensive error handling and clear user feedback throughout the reset flow, including handling invalid or expired tokens and providing success or failure notifications.\n</info added on 2025-07-02T14:40:12.913Z>",
             "testStrategy": ""
           },
           {
@@ -229,7 +229,7 @@
               3,
               4
             ],
-            "details": "Implement AuthContext with user state, login/logout methods, token management, and proper TypeScript types",
+            "details": "Implement AuthContext with user state, login/logout methods, token management, and proper TypeScript types\n<info added on 2025-07-02T14:40:22.131Z>\nSet up a React AuthContext that leverages Zustand for global authentication state management, ensuring user information and authentication status are accessible throughout the app. Integrate TanStack Query for fetching and caching user data, following the guidelines in llm_context/state_management/README.md and llm_context/tanstack/README.md. Ensure the context provides hooks for accessing and updating authentication state, and coordinates with TanStack Query to refetch or invalidate user data on login/logout events.\n</info added on 2025-07-02T14:40:22.131Z>",
             "testStrategy": ""
           },
           {
@@ -241,7 +241,7 @@
               4,
               6
             ],
-            "details": "Implement token refresh logic, handle session timeouts, manage token storage securely",
+            "details": "Implement token refresh logic, handle session timeouts, manage token storage securely\n<info added on 2025-07-02T14:40:30.663Z>\nDevelop session handling logic that utilizes HttpOnly cookies for storing refresh tokens, ensuring tokens are inaccessible to client-side scripts. Implement automatic token refresh upon expiration and enforce session timeouts according to best practices outlined in llm_context/payload3/best_practices.md. Validate session integrity on each request, handle logout and token revocation securely, and ensure all session management mechanisms adhere to recommended authentication security standards.\n</info added on 2025-07-02T14:40:30.663Z>",
             "testStrategy": ""
           },
           {
@@ -254,7 +254,7 @@
               4,
               9
             ],
-            "details": "Add rate limiting, implement CSRF protection, secure cookie handling, XSS prevention measures",
+            "details": "Add rate limiting, implement CSRF protection, secure cookie handling, XSS prevention measures\n<info added on 2025-07-02T14:40:39.130Z>\nImplement CSRF prevention using secure tokens and ensure all state-changing requests are validated. Apply API rate limiting with the token bucket algorithm to protect endpoints from abuse. Strengthen login security by enforcing a maximum number of login attempts (maxLoginAttempts) and implementing a lockout period (lockTime) after repeated failed attempts, as outlined in best practices.\n</info added on 2025-07-02T14:40:39.130Z>",
             "testStrategy": ""
           },
           {
@@ -265,7 +265,7 @@
             "dependencies": [
               4
             ],
-            "details": "Create middleware that intercepts requests, validates HTTP-only cookies, fetches user session from Payload API, and redirects unauthorized users",
+            "details": "Create middleware that intercepts requests, validates HTTP-only cookies, fetches user session from Payload API, and redirects unauthorized users\n<info added on 2025-07-02T14:40:47.856Z>\nDevelop a modular Next.js 15 middleware that protects application routes by verifying the user's authentication status through a secure request to Payload's /api/users/me endpoint. Ensure the middleware adheres to security best practices as specified in llm_context/payload3/best_practices.md, including proper error handling, avoidance of sensitive data exposure, and robust session validation. Follow guidance from llm_context/responses/typescript_error_resolution_v2.md to handle TypeScript errors effectively and maintain code reliability.\n</info added on 2025-07-02T14:40:47.856Z>",
             "testStrategy": "Test middleware correctly protects routes and redirects unauthorized access."
           },
           {
@@ -276,7 +276,7 @@
             "dependencies": [
               1
             ],
-            "details": "Configure Payload and Next.js to use HTTP-only cookies with appropriate security flags to prevent XSS and CSRF attacks",
+            "details": "Configure Payload and Next.js to use HTTP-only cookies with appropriate security flags to prevent XSS and CSRF attacks\n<info added on 2025-07-02T14:41:01.501Z>\nSet authentication cookies with the following secure settings: set the tokenExpiration to a reasonable duration (e.g., 1 hour), enable the secure flag to ensure cookies are only sent over HTTPS, and set sameSite to 'strict' to mitigate CSRF risks. Ensure all authentication tokens are stored in HttpOnly cookies to prevent client-side JavaScript access, following the guidelines in llm_context/payload3/best_practices.md.\n</info added on 2025-07-02T14:41:01.501Z>",
             "testStrategy": "Verify cookies have correct flags and expire as configured."
           },
           {
@@ -287,7 +287,7 @@
             "dependencies": [
               6
             ],
-            "details": "Implement hook to fetch current user session, handle login/logout, and revalidate session periodically or on focus",
+            "details": "Implement hook to fetch current user session, handle login/logout, and revalidate session periodically or on focus\n<info added on 2025-07-02T14:41:06.987Z>\nDevelop a useAuth hook that leverages TanStack Query for managing session state, incorporating SWR (stale-while-revalidate) patterns to enable efficient session revalidation both periodically and on user focus. Ensure the hook exposes authentication-aware query utilities, integrates with the caching and invalidation strategies outlined in llm_context/tanstack/README.md and llm_context/state_management/README.md, and provides a consistent interface for login, logout, and session status checks.\n</info added on 2025-07-02T14:41:06.987Z>",
             "testStrategy": "Test session state updates and revalidation behavior."
           },
           {
@@ -298,7 +298,7 @@
             "dependencies": [
               1
             ],
-            "details": "Define roles and permissions in Payload, implement access control hooks to restrict data access accordingly",
+            "details": "Define roles and permissions in Payload, implement access control hooks to restrict data access accordingly\n<info added on 2025-07-02T14:41:14.734Z>\nUtilize Payload CMS access control hooks to implement robust role-based access control (RBAC) on backend resources. Define granular access rules for each collection and global, ensuring that permissions are enforced at the API level. Apply proper TypeScript type annotations to all access functions, following the guidelines in llm_context/payload3/best_practices.md and resolving any type errors as outlined in llm_context/responses/typescript_error_resolution_v2.md.\n</info added on 2025-07-02T14:41:14.734Z>",
             "testStrategy": "Verify access restrictions based on user roles."
           },
           {
@@ -310,7 +310,7 @@
               6,
               14
             ],
-            "details": "Component checks user roles and permissions to conditionally render children or redirect/deny access",
+            "details": "Component checks user roles and permissions to conditionally render children or redirect/deny access\n<info added on 2025-07-02T14:41:22.211Z>\nDesign and implement the PermissionGate component to align with Shadcn UI styling conventions, ensuring all interactive elements are accessible and meet guidelines outlined in llm_context/ui_patterns/README.md. The component should accept required roles and permissions as props, and render children only if the current user meets the criteria. If access is denied, provide accessible feedback or redirection, using ARIA attributes and semantic HTML where appropriate. Include documentation and usage examples demonstrating integration with other UI components.\n</info added on 2025-07-02T14:41:22.211Z>",
             "testStrategy": "Test component hides or shows UI elements based on user permissions."
           },
           {
@@ -321,7 +321,7 @@
             "dependencies": [
               1
             ],
-            "details": "Configure allowed origins, methods, and headers to enable secure cross-origin requests",
+            "details": "Configure allowed origins, methods, and headers to enable secure cross-origin requests\n<info added on 2025-07-02T14:41:29.015Z>\nImplement CORS configuration in Payload CMS to explicitly allow requests from the Next.js frontend domain(s). Reference the guidelines in llm_context/payload3/best_practices.md to ensure secure handling of allowed origins, HTTP methods, and headers. Set environment-specific CORS settings, permitting only trusted origins in production and using broader settings for development if necessary. Avoid using wildcards for origins in production, and document the configuration for future maintenance.\n</info added on 2025-07-02T14:41:29.015Z>",
             "testStrategy": "Verify CORS headers are correctly set and requests succeed."
           },
           {
@@ -332,7 +332,7 @@
             "dependencies": [
               4
             ],
-            "details": "Support JWT token extraction from headers and validation for API clients without cookie support",
+            "details": "Support JWT token extraction from headers and validation for API clients without cookie support\n<info added on 2025-07-02T14:41:35.856Z>\nImplement JWT token authentication as a fallback mechanism for API clients that do not support cookies. Ensure tokens can be securely extracted from the Authorization header using the Bearer schema. Follow security best practices outlined in llm_context/payload3/best_practices.md, including proper token validation, expiration checks, and prevention of token leakage. Document the authentication flow and clearly distinguish between cookie-based and header-based authentication paths.\n</info added on 2025-07-02T14:41:35.856Z>",
             "testStrategy": "Test API access using JWT tokens without cookies."
           },
           {
@@ -343,7 +343,7 @@
             "dependencies": [
               10
             ],
-            "details": "Configure Payload and API endpoints to track failed login attempts, lock accounts temporarily, and limit request rates",
+            "details": "Configure Payload and API endpoints to track failed login attempts, lock accounts temporarily, and limit request rates\n<info added on 2025-07-02T14:41:47.193Z>\nImplement password lockout policies by enforcing a maximum number of failed login attempts (maxLoginAttempts) and a lockout duration (lockTime) as specified in best practices. Integrate API rate limiting using the token bucket algorithm to restrict the number of authentication requests per user or IP within a defined time window. Ensure all configurations and logic align with the guidelines outlined in llm_context/payload3/best_practices.md to effectively mitigate brute force attacks.\n</info added on 2025-07-02T14:41:47.193Z>",
             "testStrategy": "Verify lockout triggers after threshold and rate limiting blocks excessive requests."
           },
           {
@@ -354,7 +354,7 @@
             "dependencies": [
               6
             ],
-            "details": "Abstract authentication logic to allow plugging in alternative auth providers and strategies",
+            "details": "Abstract authentication logic to allow plugging in alternative auth providers and strategies\n<info added on 2025-07-02T14:41:56.052Z>\nEnsure the authentication system is architected with a modular interface that allows seamless integration of additional authentication providers, such as Firebase, in the future. Follow best practices outlined in llm_context/payload3/best_practices.md, including separation of concerns, secure handling of credentials, and clear provider abstraction layers to facilitate maintainability and extensibility.\n</info added on 2025-07-02T14:41:56.052Z>",
             "testStrategy": "Validate ability to add and switch custom auth strategies."
           }
         ]
@@ -712,7 +712,7 @@
             "dependencies": [
               6
             ],
-            "details": "Include unit tests, integration tests, and user acceptance tests covering various dynamic scenarios and edge cases.",
+            "details": "Include unit tests, integration tests, and user acceptance tests covering various dynamic scenarios and edge cases.\n<info added on 2025-07-02T14:42:07.312Z>\nDesign and implement comprehensive test suites to verify dynamic field rendering, validation mapping, and overall form generation accuracy. Utilize Vitest and React Testing Library for unit tests that cover dynamic scenarios and edge cases. Develop end-to-end tests with Playwright to validate multi-step form navigation, error handling, and validation behaviors, ensuring alignment with requirements specified in llm_context/forms/complex_forms.md.\n</info added on 2025-07-02T14:42:07.312Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -723,7 +723,7 @@
             "dependencies": [
               7
             ],
-            "details": "Implement optimizations such as memoization, lazy loading, and enhance UI responsiveness and accessibility.",
+            "details": "Implement optimizations such as memoization, lazy loading, and enhance UI responsiveness and accessibility.\n<info added on 2025-07-02T14:42:16.392Z>\nAnalyze dynamic form rendering and validation processes to identify and address performance bottlenecks. Implement debounced validation to reduce unnecessary validation calls during user input. Memoize form schemas to prevent redundant computations and improve rendering efficiency. Review and apply accessibility and UX best practices as outlined in llm_context/forms/complex_forms.md, ensuring clear validation feedback, keyboard navigation support, and overall enhanced user experience.\n</info added on 2025-07-02T14:42:16.392Z>",
             "status": "pending",
             "testStrategy": ""
           }
@@ -747,7 +747,7 @@
             "title": "Dropzone UI Component Implementation",
             "description": "Create React Dropzone component with drag-and-drop functionality for menu item images",
             "dependencies": [],
-            "details": "Implement useDropzone hook with accept: 'image/*', multiple: true. Style dropzone area with visual feedback for drag-active/drag-reject states. Include file type validation (jpg, png, webp) and max file size (5MB) restrictions.",
+            "details": "Implement useDropzone hook with accept: 'image/*', multiple: true. Style dropzone area with visual feedback for drag-active/drag-reject states. Include file type validation (jpg, png, webp) and max file size (5MB) restrictions.\n<info added on 2025-07-02T14:42:24.565Z>\nDevelop a reusable React Dropzone component for menu item image uploads with full drag-and-drop support. Ensure the component is accessible by providing appropriate ARIA attributes, keyboard navigation, and screen reader instructions. Integrate the Dropzone seamlessly with React Hook Form following the guidelines in llm_context/forms/README.md and llm_context/forms/complex_forms.md, enabling controlled form state, validation feedback, and error handling.\n</info added on 2025-07-02T14:42:24.565Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -758,7 +758,7 @@
             "dependencies": [
               1
             ],
-            "details": "Create React state for tracking: 1) Selected files array, 2) Upload progress per file (0-100%), 3) Upload status (idle/uploading/success/error). Use useReducer for complex state transitions.",
+            "details": "Create React state for tracking: 1) Selected files array, 2) Upload progress per file (0-100%), 3) Upload status (idle/uploading/success/error). Use useReducer for complex state transitions.\n<info added on 2025-07-02T14:42:34.593Z>\nReplace useReducer with Zustand to manage global state for selected files, upload progress, and upload status. Set up a Zustand store that exposes actions for adding/removing files, updating progress, and setting status. Integrate the Zustand store with React Hook Form by registering the selected files field and synchronizing state changes as described in llm_context/state_management/README.md and llm_context/forms/complex_forms.md, ensuring form validation and submission include the current file selection and statuses.\n</info added on 2025-07-02T14:42:34.593Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -767,7 +767,7 @@
             "title": "Payload CMS Media Collection Integration",
             "description": "Configure Payload CMS media collection for restaurant menu items",
             "dependencies": [],
-            "details": "Set up Payload media collection with fields: filename, mimeType, filesize, restaurantID. Configure access controls for CRUD operations. Implement image transformation presets for thumbnails.",
+            "details": "Set up Payload media collection with fields: filename, mimeType, filesize, restaurantID. Configure access controls for CRUD operations. Implement image transformation presets for thumbnails.\n<info added on 2025-07-02T14:42:43.440Z>\nDefine the media collection in Payload CMS specifically for restaurant menu items, selecting appropriate field types such as text for filename, select or text for mimeType, number for filesize, and a relationship field linking to the menu items collection. Ensure the restaurantID is modeled as a relationship to the restaurants collection for referential integrity. Apply access control rules to restrict CRUD operations based on user roles and ownership, following the guidelines in best_practices.md. Validate that only authorized users (e.g., restaurant owners or admins) can upload, update, or delete media associated with their menu items.\n</info added on 2025-07-02T14:42:43.440Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -778,7 +778,7 @@
             "dependencies": [
               3
             ],
-            "details": "Create Next.js API route handling multipart/form-data. Use Payload's create handler to store files in media collection. Implement server-side validation for file types/sizes. Return media document ID on success.",
+            "details": "Create Next.js API route handling multipart/form-data. Use Payload's create handler to store files in media collection. Implement server-side validation for file types/sizes. Return media document ID on success.\n<info added on 2025-07-02T14:42:52.027Z>\nIntegrate a virus scanning step (e.g., using ClamAV or a similar service) into the upload workflow before storing files in the Payload CMS media collection. Ensure strict file type validation using both MIME type and file signature checks. Follow API usage best practices from llm_context/payload3/best_practices.md, including proper error handling, rate limiting, and secure handling of authentication tokens. Document the endpoint's expected request/response formats and security considerations.\n</info added on 2025-07-02T14:42:52.027Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -790,7 +790,7 @@
               2,
               4
             ],
-            "details": "Implement useMutation hook with axios POST to upload endpoint. Configure onUploadProgress callback to update progress state. Handle concurrent uploads with Promise.allSettled. Implement automatic retry logic for failed uploads.",
+            "details": "Implement useMutation hook with axios POST to upload endpoint. Configure onUploadProgress callback to update progress state. Handle concurrent uploads with Promise.allSettled. Implement automatic retry logic for failed uploads.\n<info added on 2025-07-02T14:43:00.683Z>\nIntegrate optimistic updates to immediately reflect file upload status in the UI before server confirmation. Implement comprehensive error handling to capture and display specific error messages for failed uploads, including network and server-side errors. Apply caching strategies recommended in llm_context/tanstack/README.md to ensure uploaded file data is correctly cached, invalidated, or updated in response to mutations, maintaining UI consistency across components.\n</info added on 2025-07-02T14:43:00.683Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -1199,7 +1199,83 @@
           8
         ],
         "priority": "medium",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Integrate Audit Logging with Plugins",
+            "description": "Modify and extend existing plugins to emit audit logs for relevant actions and events.",
+            "dependencies": [],
+            "details": "Identify all plugins requiring audit logging, update their code to generate logs at appropriate points, and ensure consistency in log generation.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Configure Audit Logging Hooks",
+            "description": "Set up hooks to capture and route audit events from various system components.",
+            "dependencies": [
+              1
+            ],
+            "details": "Implement or configure hooks in the application framework to intercept actions and send them to the audit logging system.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Design Audit Log Schema",
+            "description": "Define the structure and fields for audit log entries to ensure completeness and consistency.",
+            "dependencies": [
+              2
+            ],
+            "details": "Specify required fields (e.g., timestamp, user, action, resource, status), data types, and any indexing requirements for efficient querying.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Implement Log Retention Policy",
+            "description": "Develop and enforce policies for how long audit logs are stored and how they are purged.",
+            "dependencies": [
+              3
+            ],
+            "details": "Determine retention periods based on compliance needs, automate log deletion or archiving, and document the policy.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Conduct Security Review of Audit Logging",
+            "description": "Assess the audit logging implementation for security risks and compliance with best practices.",
+            "dependencies": [
+              4
+            ],
+            "details": "Review access controls, log integrity, encryption, and ensure sensitive information is not inadvertently logged.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Test Audit Logging Functionality",
+            "description": "Verify that audit logging works as intended across all integrated plugins and system components.",
+            "dependencies": [
+              5
+            ],
+            "details": "Develop and execute test cases for log generation, schema adherence, retention enforcement, and security controls.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Document Audit Logging Implementation",
+            "description": "Create comprehensive documentation covering integration, configuration, schema, retention, and usage.",
+            "dependencies": [
+              6
+            ],
+            "details": "Prepare user and developer guides, including configuration steps, schema definitions, retention policy details, and troubleshooting tips.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
       },
       {
         "id": 14,
@@ -1213,7 +1289,73 @@
           12
         ],
         "priority": "medium",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Draft Typing Guidelines",
+            "description": "Create a comprehensive set of typing guidelines tailored to the project's needs.",
+            "dependencies": [],
+            "details": "Research best practices, consult with senior developers, and draft clear rules for type usage, including when to use 'any', generics, and strictness levels.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Document Typing Guidelines",
+            "description": "Prepare formal documentation of the typing guidelines for team reference.",
+            "dependencies": [
+              1
+            ],
+            "details": "Convert the drafted guidelines into a well-structured document, including examples and rationale, and store it in the project's documentation repository.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Configure ESLint Typing Rules",
+            "description": "Set up and customize ESLint rules to enforce the documented typing guidelines.",
+            "dependencies": [
+              2
+            ],
+            "details": "Identify relevant ESLint plugins (e.g., @typescript-eslint), configure rules in the ESLint config file, and test enforcement locally.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Integrate Typing Checks into CI",
+            "description": "Update the CI pipeline to include ESLint typing checks for automated enforcement.",
+            "dependencies": [
+              3
+            ],
+            "details": "Modify CI configuration files to run ESLint with the new typing rules on every pull request and commit.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Communicate Guidelines to Team",
+            "description": "Inform and educate the development team about the new typing guidelines and enforcement mechanisms.",
+            "dependencies": [
+              2,
+              4
+            ],
+            "details": "Host a team meeting, share documentation, and provide examples of compliant and non-compliant code.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Provide Migration Support",
+            "description": "Assist the team in updating existing code to comply with the new typing guidelines.",
+            "dependencies": [
+              5
+            ],
+            "details": "Offer code review support, create migration guides, and address questions or issues as they arise during the transition.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
       },
       {
         "id": 15,
@@ -1241,7 +1383,84 @@
           6
         ],
         "priority": "medium",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Audit Existing Forms",
+            "description": "Review all current forms to document their structure, fields, validation, and user flows.",
+            "dependencies": [],
+            "details": "Collect all forms in use, analyze their components, and create a comprehensive inventory.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Identify Issues in Current Forms",
+            "description": "Analyze audited forms to identify usability, accessibility, and technical issues.",
+            "dependencies": [
+              1
+            ],
+            "details": "List pain points, inconsistencies, and areas for improvement based on the audit.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Research Form Design Best Practices",
+            "description": "Investigate industry standards and best practices for form design and composition.",
+            "dependencies": [
+              2
+            ],
+            "details": "Gather resources, guidelines, and case studies relevant to form usability and accessibility.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Analyze Complexity and Architectural Needs",
+            "description": "Assess the complexity of current forms and determine architectural changes required for improvement.",
+            "dependencies": [
+              2,
+              3
+            ],
+            "details": "Evaluate technical and design challenges, and outline necessary architectural updates.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Develop Proof-of-Concept Implementation",
+            "description": "Create a prototype implementing recommended best practices and architectural changes.",
+            "dependencies": [
+              4
+            ],
+            "details": "Build a sample form or component demonstrating the proposed improvements.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Document Findings and Recommendations",
+            "description": "Compile audit results, identified issues, research, and proof-of-concept outcomes into documentation.",
+            "dependencies": [
+              5
+            ],
+            "details": "Prepare a report summarizing the process, findings, and actionable recommendations.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Plan Migration and Implementation",
+            "description": "Develop a detailed plan for migrating existing forms to the improved architecture and design.",
+            "dependencies": [
+              6
+            ],
+            "details": "Outline steps, resources, timelines, and risk mitigation strategies for the migration.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
       },
       {
         "id": 17,
@@ -1256,7 +1475,73 @@
         "priority": "medium",
         "details": "Review the integration of the Payload CMS audit-logging plugin (payload-auditor or equivalent) within the Payload CMS configuration, ensuring audit hooks are properly set up on key collections such as Users and Locations. Confirm that log entries are generated for create, update, and delete actions, and that each entry includes user ID, operation type, timestamp, and relevant payload data. Ensure that the audit-logging mechanism is not tied to any specific database (e.g., MongoDB), but works with any database supported by Payload CMS. Reference llm_context/payload3/best_practices.md to validate alignment with recommended audit logging and security practices. Define and implement log retention policies, ensuring logs are stored securely and purged according to compliance requirements. Update documentation to reflect audit logging and retention policy configurations, making clear that the solution is database-agnostic.",
         "testStrategy": "1. Write unit tests to confirm that create, update, and delete operations on Users and Locations collections generate audit log entries with the correct user ID, operation type, and payload data, regardless of the underlying database. 2. Perform integration tests simulating admin actions to verify logs are created and stored as expected across different database backends. 3. Test log retention by creating logs, advancing the system clock or adjusting timestamps, and confirming that expired logs are purged according to the defined retention policy. 4. Review logs for completeness, accuracy, and security of sensitive information. 5. Validate that documentation accurately describes the audit logging and retention setup, and clearly states that the solution is database-agnostic.",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Design Test Cases for Audit Logging Verification",
+            "description": "Develop comprehensive test cases to cover all aspects of audit logging, including event capture, data integrity, and error handling.",
+            "dependencies": [],
+            "details": "Identify key audit events, expected log formats, and edge cases to ensure thorough coverage.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Perform Integration Testing of Audit Logging",
+            "description": "Execute the designed test cases to validate audit logging functionality within the integrated system environment.",
+            "dependencies": [
+              1
+            ],
+            "details": "Test audit log generation during real-world workflows and system interactions.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Validate Audit Log Retention Policy",
+            "description": "Verify that audit logs are retained and purged according to the defined retention policy.",
+            "dependencies": [
+              2
+            ],
+            "details": "Check log storage duration, automatic deletion, and archival processes.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Conduct Cross-Database Audit Logging Checks",
+            "description": "Ensure audit logging operates consistently across all supported database platforms.",
+            "dependencies": [
+              2
+            ],
+            "details": "Compare log formats, event capture, and storage mechanisms between databases.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Review Audit Logging Documentation",
+            "description": "Assess the completeness and accuracy of documentation related to audit logging features and usage.",
+            "dependencies": [
+              3,
+              4
+            ],
+            "details": "Check user guides, developer documentation, and configuration instructions.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Validate Compliance of Audit Logging Implementation",
+            "description": "Confirm that audit logging meets relevant regulatory and organizational compliance requirements.",
+            "dependencies": [
+              5
+            ],
+            "details": "Cross-reference implementation with compliance checklists and standards (e.g., GDPR, HIPAA).",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
       },
       {
         "id": 18,
@@ -1271,35 +1556,75 @@
           14
         ],
         "priority": "medium",
-        "subtasks": []
-      },
-      {
-        "id": 19,
-        "title": "Enforce Code Documentation Standards (Inline Comments & JSDoc/TSDoc)",
-        "description": "Establish and enforce code documentation standards using inline comments and JSDoc/TSDoc for all functions, classes, and interfaces, and update contributing guidelines accordingly.",
-        "details": "1. Define clear documentation standards for inline comments (focusing on explaining complex logic and intent) and for JSDoc/TSDoc usage on all exported functions, classes, and interfaces. 2. Update or create a dedicated documentation file (e.g., llm_context/documentation_standards.md) outlining these requirements, including examples and rationale. 3. Revise the project's CONTRIBUTING.md to reference these standards and set expectations for contributors. 4. Implement a pre-commit hook (e.g., using Husky and lint-staged) or CI/CD check to automatically flag new or modified code that lacks required documentation. 5. Conduct a code review of a representative sample of existing files to identify and document areas lacking sufficient inline comments or JSDoc/TSDoc coverage. 6. Provide onboarding guidance for developers to adopt the new standards, including links to resources and examples.",
-        "testStrategy": "1. Review a representative sample of existing code files to identify and document areas lacking sufficient inline comments or JSDoc/TSDoc coverage. 2. Verify that the pre-commit hook or CI/CD check correctly detects and blocks commits with undocumented or poorly documented code. 3. Confirm that the documentation standards are clearly described in llm_context/documentation_standards.md (or similar) and referenced in CONTRIBUTING.md. 4. Solicit feedback from at least one developer unfamiliar with the codebase to ensure the standards improve code understandability and onboarding. 5. Validate that onboarding materials and documentation are accessible and comprehensive.",
-        "status": "pending",
-        "dependencies": [
-          10,
-          12
-        ],
-        "priority": "medium",
-        "subtasks": []
-      },
-      {
-        "id": 20,
-        "title": "Review and Refine Form Composition for Complex Forms",
-        "description": "Analyze and improve the architecture of complex, multi-step, or dynamic forms to enhance maintainability and user experience, potentially introducing a more structured state management approach or adopting a specialized form library.",
-        "details": "1. Audit existing complex form implementations, focusing on multi-step and highly dynamic forms, referencing llm_context/forms/README.md for current patterns and submission flows.\n2. Identify pain points, redundancies, or limitations in current form composition, state management, and validation strategies.\n3. Research best practices for complex form handling, such as leveraging state machines (e.g., XState) or adopting a more opinionated form library if React Hook Form and Zod are insufficient.\n4. Select a representative complex form (or define a hypothetical one if none exist) and analyze its implementation against modern best practices.\n5. Propose a refactored approach, implementing a proof-of-concept using a more structured pattern or library if warranted.\n6. Document findings, recommendations, and the refactored approach in a new llm_context/forms/complex_forms.md file, including before/after code samples and rationale for changes.",
-        "testStrategy": "1. Identify a complex form within the application (or define a hypothetical one) and document its current implementation, highlighting pain points and limitations.\n2. Compare the current approach to best practices for form composition and state management, noting gaps or inefficiencies.\n3. Implement a refactored version of the form using a more structured approach (e.g., state machine or specialized library) and validate its maintainability, scalability, and user experience improvements.\n4. Document the analysis, refactoring process, and recommendations in llm_context/forms/complex_forms.md, including code samples and rationale.\n5. Review the documentation and refactored implementation with at least one other developer for feedback and validation.",
-        "status": "pending",
-        "dependencies": [
-          4,
-          6
-        ],
-        "priority": "medium",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Configure ESLint Rule",
+            "description": "Set up and customize ESLint rules to enforce typing guidelines in the codebase.",
+            "dependencies": [],
+            "details": "Identify appropriate ESLint plugins and rules for typing, add them to the ESLint configuration file, and test locally.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Integrate ESLint with CI Pipeline",
+            "description": "Ensure ESLint runs automatically in the continuous integration (CI) workflow.",
+            "dependencies": [
+              1
+            ],
+            "details": "Update CI configuration files (e.g., GitHub Actions, Jenkins) to include ESLint checks on pull requests and merges.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Update Documentation",
+            "description": "Document the typing guidelines, ESLint rule configuration, and CI integration steps.",
+            "dependencies": [
+              1,
+              2
+            ],
+            "details": "Revise or create documentation to explain the enforced rules, how to fix violations, and the CI process.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Lint Existing Codebase",
+            "description": "Run ESLint on the current codebase and address any violations found.",
+            "dependencies": [
+              1,
+              2
+            ],
+            "details": "Execute ESLint across all relevant files, review reported issues, and fix or suppress as needed to achieve a clean baseline.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Onboard Developers",
+            "description": "Educate developers about the new typing enforcement process and tools.",
+            "dependencies": [
+              3,
+              4
+            ],
+            "details": "Host onboarding sessions, share updated documentation, and provide guidance on resolving lint errors.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Collect Developer Feedback",
+            "description": "Gather feedback from developers regarding the automated enforcement process and make improvements as necessary.",
+            "dependencies": [
+              5
+            ],
+            "details": "Distribute surveys or hold meetings to collect input, then review and prioritize actionable suggestions.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
       },
       {
         "id": 21,
@@ -1445,7 +1770,72 @@
           7
         ],
         "priority": "medium",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Install Required S3 Storage Packages",
+            "description": "Install necessary npm packages for S3 storage integration, such as AWS SDK or compatible libraries.",
+            "dependencies": [],
+            "details": "Use npm or yarn to add packages like aws-sdk or @aws-sdk/client-s3 to the project.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Set Up Environment Variables",
+            "description": "Configure environment variables for S3 access, including keys, region, and bucket name.",
+            "dependencies": [
+              1
+            ],
+            "details": "Add variables such as S3_ACCESS_KEY, S3_SECRET_KEY, S3_REGION, and S3_BUCKET to the .env file.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Update Payload Configuration for S3",
+            "description": "Modify Payload CMS configuration to use S3 storage for file uploads.",
+            "dependencies": [
+              2
+            ],
+            "details": "Update the Payload config to use the S3 adapter and reference the environment variables for credentials.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Update Media Collection to Use S3 Adapter",
+            "description": "Configure the media collection in Payload to utilize the S3 storage adapter.",
+            "dependencies": [
+              3
+            ],
+            "details": "Edit the media collection definition to specify S3 as the storage backend.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Test S3 Storage Integration",
+            "description": "Verify that file uploads, downloads, and deletions work correctly with the S3 storage backend.",
+            "dependencies": [
+              4
+            ],
+            "details": "Perform manual or automated tests to ensure all media operations interact with S3 as expected.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Document S3 Integration Steps",
+            "description": "Write documentation outlining the S3 integration process, configuration, and troubleshooting tips.",
+            "dependencies": [
+              5
+            ],
+            "details": "Create or update documentation to assist future developers with S3 storage setup and maintenance.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
       },
       {
         "id": 25,
@@ -1522,7 +1912,61 @@
           25
         ],
         "priority": "high",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement JWT Revocation, Secure Password Hashing, and Secure Cookie Settings",
+            "description": "Integrate JWT revocation/blacklisting using Redis or Memcached, apply bcrypt with at least 12 rounds for password hashing, and configure secure cookie/session settings (httpOnly, secure, sameSite='strict', custom cookie name, HTTPS-only in production).",
+            "dependencies": [],
+            "details": "1. Add a Redis or Memcached client to store blacklisted JWTs. Update authentication middleware to check JWTs against the blacklist on each request and blacklist tokens on logout or password change. 2. Refactor user registration and password update flows to use bcrypt with 12+ rounds, ensuring asynchronous hashing. 3. Update session/cookie configuration to use httpOnly, secure, sameSite='strict', custom cookie names, and restrict cookies to HTTPS in production environments.",
+            "status": "pending",
+            "testStrategy": "Write unit and integration tests for JWT revocation (including blacklisting and validation), verify password hashes are generated and validated securely, and use automated tests to confirm cookie settings in different environments."
+          },
+          {
+            "id": 2,
+            "title": "Integrate Rate Limiting and Comprehensive Input Validation Middleware",
+            "description": "Add rate limiting middleware for login and sensitive endpoints, and implement input validation using Zod or Joi schemas with fail-fast rejection of invalid requests.",
+            "dependencies": [
+              1
+            ],
+            "details": "1. Use a library like express-rate-limit to apply per-IP and per-username+IP rate limiting to authentication and sensitive routes. 2. Create reusable validation middleware using Zod or Joi for all incoming request bodies, params, and queries. Ensure middleware is applied globally or to relevant routes and rejects invalid requests before reaching business logic.",
+            "status": "pending",
+            "testStrategy": "Simulate brute force and rapid requests to verify rate limiting, and write tests to ensure invalid inputs are rejected with appropriate error messages."
+          },
+          {
+            "id": 3,
+            "title": "Refactor Middleware into Modular Components and Add Security Headers",
+            "description": "Restructure middleware into modular units for security headers, CORS, authentication, and rate limiting to improve maintainability and enforce best practices.",
+            "dependencies": [
+              2
+            ],
+            "details": "1. Separate existing middleware into distinct modules (e.g., security headers using helmet, CORS configuration, authentication, rate limiting). 2. Ensure each module is independently testable and can be composed in the main app entry point. 3. Document middleware responsibilities and usage.",
+            "status": "pending",
+            "testStrategy": "Write unit tests for each middleware module, and integration tests to ensure correct order and effect of middleware in the request pipeline."
+          },
+          {
+            "id": 4,
+            "title": "Centralize Access Control and Integrate Audit Logging with Retention Policies",
+            "description": "Create a strongly typed access control module for consistent role/permission management across backend and frontend, and integrate audit logging with configurable retention.",
+            "dependencies": [
+              3
+            ],
+            "details": "1. Design and implement a centralized access control module (e.g., using enums/types for roles and permissions) and refactor existing permission checks to use this module. 2. Integrate an audit logging solution (such as Payload Auditor) to log user actions and payloads, with retention policies configurable via environment variables.",
+            "status": "pending",
+            "testStrategy": "Write tests to verify access control logic for various roles and permissions, and test audit log entries for key actions. Simulate log retention policy enforcement."
+          },
+          {
+            "id": 5,
+            "title": "Ensure Form Accessibility, Comprehensive Testing, and Docker Security Hardening",
+            "description": "Update all forms to meet ARIA/accessibility standards, add progress indicators and keyboard navigation, implement comprehensive tests, and harden Docker deployment.",
+            "dependencies": [
+              4
+            ],
+            "details": "1. Refactor forms to comply with ARIA standards, support keyboard navigation, and display progress indicators. 2. Write tests using Vitest, React Testing Library, and Playwright for all form interactions and accessibility features. 3. Add a .dockerignore file, ensure containers run as non-root users, and manage secrets via environment variables or Docker secrets.",
+            "status": "pending",
+            "testStrategy": "Run accessibility audits (e.g., axe), execute end-to-end tests for forms, and verify Docker security settings by inspecting running containers and environment variable management."
+          }
+        ]
       },
       {
         "id": 27,
@@ -1541,7 +1985,61 @@
           26
         ],
         "priority": "high",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Audit High-Complexity Tasks for Missing Security and Best Practice Patterns",
+            "description": "Systematically review all high-complexity tasks and their subtasks to identify where explicit security, validation, middleware, access control, logging, accessibility, testing, and deployment best practices are missing or insufficient.",
+            "dependencies": [],
+            "details": "Use the llm_context library and Node.js best practices as reference. For each high-complexity task, create a checklist covering JWT revocation, password hashing, cookie/session security, rate limiting, input validation, modular middleware, access control, audit logging, accessibility, testing, and Docker security. Document all gaps and areas needing updates.",
+            "status": "pending",
+            "testStrategy": "Spot-check a sample of reviewed tasks to ensure all best practice areas are covered in the audit findings."
+          },
+          {
+            "id": 2,
+            "title": "Update Subtasks for Security Patterns and Validation",
+            "description": "Revise subtasks to explicitly incorporate security best practices, including JWT revocation/blacklisting, secure password hashing, secure cookie/session settings, and comprehensive input validation.",
+            "dependencies": [
+              1
+            ],
+            "details": "For JWT, add subtasks for token invalidation using Redis/Memcached, middleware checks, and logout flows. For password hashing, mandate bcrypt/scrypt/PBKDF2 with 12+ rounds and proper salt, using async methods. For cookies/sessions, specify httpOnly, secure, sameSite='strict', custom names, and HTTPS enforcement. For input validation, require Zod/Joi schemas and fail-fast middleware on all endpoints.",
+            "status": "pending",
+            "testStrategy": "Write and run unit tests for JWT revocation, password hashing, and input validation logic. Review updated subtasks for explicitness and completeness."
+          },
+          {
+            "id": 3,
+            "title": "Integrate Modular Middleware, Rate Limiting, and Centralized Access Control",
+            "description": "Update subtasks to ensure modular middleware composition, robust rate limiting, and centralized, strongly typed access control across all high-complexity tasks.",
+            "dependencies": [
+              2
+            ],
+            "details": "Add subtasks for composing security headers, CORS, authentication, and rate limiting middleware in a modular way. Specify per-IP and per-username+IP rate limiting with lockout policies. Mandate a single, strongly typed access control module imported by all collections.",
+            "status": "pending",
+            "testStrategy": "Test middleware composition order and effectiveness. Simulate rate limiting and lockout scenarios. Verify access control module usage across collections."
+          },
+          {
+            "id": 4,
+            "title": "Enhance Audit Logging, Accessibility, and Testing Subtasks",
+            "description": "Revise subtasks to require integration of audit logging, accessibility improvements, and comprehensive testing for all high-complexity tasks.",
+            "dependencies": [
+              3
+            ],
+            "details": "Add subtasks for integrating Payload Auditor or equivalent, ensuring user and payload details are logged with retention policies. For accessibility, require ARIA attributes, keyboard navigation, and progress indicators in forms. For testing, specify use of Vitest, React Testing Library, and Playwright with coverage for accessibility and security features.",
+            "status": "pending",
+            "testStrategy": "Review logs for completeness and retention. Use accessibility testing tools and run automated test suites to verify requirements."
+          },
+          {
+            "id": 5,
+            "title": "Update Deployment and Docker Security Subtasks",
+            "description": "Revise deployment-related subtasks to enforce Docker security best practices and secure deployment patterns.",
+            "dependencies": [
+              4
+            ],
+            "details": "Add subtasks for using .dockerignore, running containers as non-root users, managing secrets securely, and implementing multi-stage builds. Reference Node.js and Docker best practices throughout.",
+            "status": "pending",
+            "testStrategy": "Build and run Docker images, verifying non-root execution, secret management, and absence of sensitive files. Review deployment pipeline for adherence to updated security requirements."
+          }
+        ]
       },
       {
         "id": 28,
@@ -1554,7 +2052,61 @@
           27
         ],
         "priority": "high",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Audit and Catalog Existing Form-Related Tasks and Subtasks",
+            "description": "Perform a thorough review of all current form-related tasks and subtasks, referencing llm_context/forms/complex_forms.md to identify advanced form patterns and requirements.",
+            "dependencies": [],
+            "details": "Collect all tasks and subtasks related to forms. Cross-reference each with the advanced patterns described in the provided documentation. Create a catalog or checklist mapping each requirement (e.g., multi-step forms, validation, state management, accessibility, testing) to the corresponding tasks/subtasks.",
+            "status": "pending",
+            "testStrategy": "Verify completeness by ensuring every advanced pattern and requirement from the documentation is mapped to at least one task or subtask."
+          },
+          {
+            "id": 2,
+            "title": "Validate Form Composition, State Management, and Validation Patterns",
+            "description": "Review and verify the implementation of advanced form composition, including multi-step forms with isolated and merged Zod schemas, Zustand-based state persistence, and async validation patterns.",
+            "dependencies": [
+              1
+            ],
+            "details": "For each cataloged task/subtask, inspect code and documentation to confirm: (a) multi-step forms use isolated Zod schemas per step and merge on submit, (b) Zustand is used for state persistence/restoration, (c) async validation uses debounced server-side checks and async Zod refinements. Note any gaps or inconsistencies.",
+            "status": "pending",
+            "testStrategy": "Write or update unit tests to cover schema merging, state restoration after navigation/reload, and async validation flows."
+          },
+          {
+            "id": 3,
+            "title": "Assess Dynamic Fields, File Uploads, and Field Registry Patterns",
+            "description": "Ensure dynamic field arrays, conditional fields, and file upload components adhere to best practices, including field registry/unregister patterns and react-dropzone usage.",
+            "dependencies": [
+              2
+            ],
+            "details": "Review implementation of dynamic fields to confirm correct use of field registry and unregister patterns. Inspect file upload components for use of react-dropzone, file previews, and upload progress indicators. Document any missing or incorrect implementations.",
+            "status": "pending",
+            "testStrategy": "Add or update unit/component tests for dynamic field addition/removal, file upload preview, and progress indicator functionality."
+          },
+          {
+            "id": 4,
+            "title": "Review Accessibility and User Experience Enhancements",
+            "description": "Check that all form components comply with accessibility standards, including ARIA roles, keyboard navigation, and visible progress indicators for multi-step forms.",
+            "dependencies": [
+              3
+            ],
+            "details": "Audit form components for ARIA attributes, keyboard navigation support, and visible progress indicators. Use accessibility testing tools (e.g., axe) to identify issues. Document findings and propose or implement necessary improvements.",
+            "status": "pending",
+            "testStrategy": "Run automated accessibility tests and perform manual keyboard navigation checks. Verify progress indicators are visible and correctly labeled."
+          },
+          {
+            "id": 5,
+            "title": "Update Subtasks, Enhance Testing Coverage, and Document Findings",
+            "description": "Add or update subtasks to address any gaps found, ensure comprehensive unit and E2E testing, and document all findings and recommendations for future maintenance.",
+            "dependencies": [
+              4
+            ],
+            "details": "Based on previous audits, update or create new subtasks to address uncovered gaps. Enhance test coverage using Vitest, React Testing Library, and Playwright for E2E flows. Compile a detailed report documenting all findings, updates, and recommendations for developer reference.",
+            "status": "pending",
+            "testStrategy": "Review test coverage reports, ensure all new/updated subtasks have associated tests, and validate E2E flows for multi-step navigation, validation, and submission."
+          }
+        ]
       },
       {
         "id": 29,
@@ -1803,7 +2355,7 @@
     ],
     "metadata": {
       "created": "2025-07-01T23:13:03.567Z",
-      "updated": "2025-07-02T14:32:19.164Z",
+      "updated": "2025-07-02T14:33:05.769Z",
       "description": "Tasks for master context"
     }
   }
