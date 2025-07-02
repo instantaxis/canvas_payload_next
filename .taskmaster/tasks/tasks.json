@@ -27,7 +27,7 @@
             "dependencies": [
               1
             ],
-            "details": "Install Payload CMS, TanStack Query, React Hook Form, Zod, and required dev dependencies. Update package.json with correct versions\n<info added on 2025-07-01T23:55:42.019Z>\nSuccessfully installed all core dependencies for the restaurant management system using pnpm. Production dependencies include @tanstack/react-query@5.81.5, @tanstack/react-query-devtools@5.81.5, react-hook-form@7.59.0, @hookform/resolvers@5.1.1, zod@3.25.67, zustand@5.0.6, @radix-ui/react-slot@1.2.3, class-variance-authority@0.7.1, clsx@2.1.1, tailwind-merge@3.3.1, and lucide-react@0.525.0. Development dependencies include tailwindcss@4.1.11, postcss@8.5.6, and autoprefixer@10.4.21. All dependencies are correctly reflected in package.json. Ready to proceed with Task 1.3: Set Up Configuration Files.\n</info added on 2025-07-01T23:55:42.019Z>\n<info added on 2025-07-02T00:16:28.183Z>\nCompleted verification of core dependencies in payload-backend/package.json. Confirmed that all essential packages, including Payload CMS 3.0 with TypeScript, Next.js 15 with App Router, Vercel Postgres adapter, authentication/security packages, ESLint, Prettier, TypeScript, Vitest, and Playwright, are installed and up to date. No additional dependencies are required. Package.json scripts for development, build, and testing are properly configured. Ready to proceed to subtask 1.3: Set Up Configuration Files and enhance existing configurations as needed.\n</info added on 2025-07-02T00:16:28.183Z>\n<info added on 2025-07-02T00:48:25.321Z>\nProgress Update:\n\nAll core dependencies are installed and the project structure, TypeScript configuration, and Payload CMS backend are set up. However, 148 TypeScript errors were found across 19 collection files. Key issues include missing 'roles' and 'locations' properties in the User type, improperly typed collection slugs, and insufficient typing for access control functions. Next steps are to consult best practices from llm_context/payload3/, update User type definitions, define a CollectionSlug union type, improve typing for access controls, and resolve all TypeScript errors before moving forward.\n</info added on 2025-07-02T00:48:25.321Z>",
+            "details": "Install Payload CMS, TanStack Query, React Hook Form, Zod, and required dev dependencies. Update package.json with correct versions\n<info added on 2025-07-01T23:55:42.019Z>\nSuccessfully installed all core dependencies for the restaurant management system using pnpm. Production dependencies include @tanstack/react-query@5.81.5, @tanstack/react-query-devtools@5.81.5, react-hook-form@7.59.0, @hookform/resolvers@5.1.1, zod@3.25.67, zustand@5.0.6, @radix-ui/react-slot@1.2.3, class-variance-authority@0.7.1, clsx@2.1.1, tailwind-merge@3.3.1, and lucide-react@0.525.0. Development dependencies include tailwindcss@4.1.11, postcss@8.5.6, and autoprefixer@10.4.21. All dependencies are correctly reflected in package.json. Ready to proceed with Task 1.3: Set Up Configuration Files.\n</info added on 2025-07-01T23:55:42.019Z>\n<info added on 2025-07-02T00:16:28.183Z>\nCompleted verification of core dependencies in package.json. Confirmed that all essential packages, including Payload CMS 3.0 with TypeScript, Next.js 15 with App Router, Vercel Postgres adapter, authentication/security packages, ESLint, Prettier, TypeScript, Vitest, and Playwright, are installed and up to date. No additional dependencies are required. Package.json scripts for development, build, and testing are properly configured. Ready to proceed to subtask 1.3: Set Up Configuration Files and enhance existing configurations as needed.\n</info added on 2025-07-02T00:16:28.183Z>\n<info added on 2025-07-02T00:48:25.321Z>\nProgress Update:\n\nAll core dependencies are installed and the project structure, TypeScript configuration, and Payload CMS backend are set up. However, 148 TypeScript errors were found across 19 collection files. Key issues include missing 'roles' and 'locations' properties in the User type, improperly typed collection slugs, and insufficient typing for access control functions. Next steps are to consult best practices from llm_context/payload3/, update User type definitions, define a CollectionSlug union type, improve typing for access controls, and resolve all TypeScript errors before moving forward.\n</info added on 2025-07-02T00:48:25.321Z>",
             "status": "done",
             "testStrategy": ""
           },
@@ -802,7 +802,7 @@
               2,
               5
             ],
-            "details": "Create progress bar component showing: 1) Overall upload percentage, 2) Individual file status. Implement animated transitions between states. Display upload speed and time estimates.",
+            "details": "Create progress bar component showing: 1) Overall upload percentage, 2) Individual file status. Implement animated transitions between states. Display upload speed and time estimates.\n<info added on 2025-07-02T14:43:12.381Z>\nEnsure all visual progress indicators meet accessibility standards, including appropriate ARIA attributes, color contrast, and keyboard navigation support. Style progress bars and status indicators to align with Shadcn UI patterns as described in llm_context/ui_patterns/README.md, maintaining visual consistency across components.\n</info added on 2025-07-02T14:43:12.381Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -814,7 +814,7 @@
               3,
               5
             ],
-            "details": "Implement TanStack Query to fetch existing media. Create gallery view with delete functionality. Associate uploaded media with menu items via Payload relationships. Implement caching strategies for media data.",
+            "details": "Implement TanStack Query to fetch existing media. Create gallery view with delete functionality. Associate uploaded media with menu items via Payload relationships. Implement caching strategies for media data.\n<info added on 2025-07-02T14:43:26.042Z>\nIntegrate the upload functionality with the restaurant management system by establishing and enforcing data relationships as specified in llm_context/payload3/data_models.md. Ensure that uploaded media is correctly linked to restaurant entities (e.g., locations, menu items) according to the defined schema, updating data models and API endpoints as needed to maintain referential integrity and support seamless management of media assets within the broader restaurant management workflow.\n</info added on 2025-07-02T14:43:26.042Z>",
             "status": "pending",
             "testStrategy": ""
           }
@@ -932,7 +932,7 @@
             "title": "Permission Components",
             "description": "Create reusable permission-aware UI components",
             "dependencies": [],
-            "details": "Develop `Can` component for conditional rendering based on user roles. Create `ProtectedComponent` wrapper for role-based element rendering. Implement `usePermissions` hook for programmatic access checks. Design permission-aware button groups and navigation items.",
+            "details": "Develop `Can` component for conditional rendering based on user roles. Create `ProtectedComponent` wrapper for role-based element rendering. Implement `usePermissions` hook for programmatic access checks. Design permission-aware button groups and navigation items.\n<info added on 2025-07-02T14:43:34.959Z>\nEnsure all permission-aware UI components are reusable and adhere to Shadcn UI design patterns for visual and interaction consistency. Incorporate accessibility best practices, including proper ARIA attributes and keyboard navigation support. Integrate components tightly with Payload CMS access control mechanisms, following guidelines from llm_context/ui_patterns/README.md and llm_context/payload3/best_practices.md to ensure secure and maintainable permission checks throughout the UI.\n</info added on 2025-07-02T14:43:34.959Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -943,7 +943,7 @@
             "dependencies": [
               3
             ],
-            "details": "Create `DashboardLayout` component with MUI. Implement responsive sidebar with dynamic navigation items based on user roles. Develop `PageContainer` for consistent content wrapping. Add real-time data sections using TanStack Query hooks. Implement breadcrumb navigation with permission checks.",
+            "details": "Create `DashboardLayout` component with MUI. Implement responsive sidebar with dynamic navigation items based on user roles. Develop `PageContainer` for consistent content wrapping. Add real-time data sections using TanStack Query hooks. Implement breadcrumb navigation with permission checks.\n<info added on 2025-07-02T14:43:43.914Z>\nEnsure the dashboard layout adheres to Shadcn UI design patterns for visual consistency and user experience. Incorporate accessibility best practices, including keyboard navigation and ARIA attributes. Integrate Payload CMS access control mechanisms to protect dashboard sections, referencing guidelines from `llm_context/ui_patterns/README.md` and `llm_context/payload3/best_practices.md` for secure and maintainable implementation.\n</info added on 2025-07-02T14:43:43.914Z>",
             "status": "pending",
             "testStrategy": ""
           }
@@ -966,7 +966,7 @@
             "title": "Vitest Configuration for Unit Testing",
             "description": "Set up Vitest framework for React component unit tests",
             "dependencies": [],
-            "details": "Install Vitest (`npm install -D vitest`), configure vite.config.js with test plugins. Create test files using *.test.jsx pattern. Implement rendering tests for React components using @testing-library/react. Include DOM assertions and user interaction simulations with user-event. Configure coverage reporting.",
+            "details": "Install Vitest (`npm install -D vitest`), configure vite.config.js with test plugins. Create test files using *.test.jsx pattern. Implement rendering tests for React components using @testing-library/react. Include DOM assertions and user interaction simulations with user-event. Configure coverage reporting.\n<info added on 2025-07-02T14:43:54.928Z>\nEnsure Vitest is configured to work seamlessly with TypeScript by updating vite.config.js to include the appropriate TypeScript settings and plugins. Enable strict type checking in tsconfig.json and integrate type-checking into the test run process. Follow testing best practices by isolating tests, using descriptive test names, and cleaning up after each test. Reference the guidelines in llm_context/responses/setup_verification.md to verify that the setup meets project standards for reliability, maintainability, and code coverage.\n</info added on 2025-07-02T14:43:54.928Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -975,7 +975,7 @@
             "title": "Playwright Integration Testing Setup",
             "description": "Configure Playwright for end-to-end component testing",
             "dependencies": [],
-            "details": "Install Playwright (`npm init playwright@latest`). Configure playwright.config.js for component testing. Create spec files for critical user flows. Implement cross-browser testing configurations. Use page object pattern for maintainable selectors. Configure video/screenshot capture on failures.",
+            "details": "Install Playwright (`npm init playwright@latest`). Configure playwright.config.js for component testing. Create spec files for critical user flows. Implement cross-browser testing configurations. Use page object pattern for maintainable selectors. Configure video/screenshot capture on failures.\n<info added on 2025-07-02T14:44:05.275Z>\nSet up Playwright to run end-to-end component tests against the production build by integrating build step execution within the test workflow. Ensure tests are executed on the built application, verifying that the build output functions as expected. Follow best practices from llm_context/responses/setup_verification.md, including clear test naming, isolation of test cases, and cleanup of test artifacts. Document the test setup and execution process to facilitate reproducibility and maintainability.\n</info added on 2025-07-02T14:44:05.275Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -984,7 +984,7 @@
             "title": "Supertest API Testing Implementation",
             "description": "Establish API test suite for Next.js routes and Payload CMS",
             "dependencies": [],
-            "details": "Install Supertest (`npm install -D supertest`). Create test files for API endpoints. Test CRUD operations for Payload collections with authentication handling. Validate response schemas and status codes. Implement test database seeding using beforeAll hooks. Include edge case testing for error responses.",
+            "details": "Install Supertest (`npm install -D supertest`). Create test files for API endpoints. Test CRUD operations for Payload collections with authentication handling. Validate response schemas and status codes. Implement test database seeding using beforeAll hooks. Include edge case testing for error responses.\n<info added on 2025-07-02T14:44:14.393Z>\nSet up a dedicated API test suite targeting Next.js API routes and Payload CMS endpoints. Ensure Payload CMS is properly initialized and connected within the test environment, using environment variables and mock configurations as needed. Structure tests to isolate side effects and maintain data integrity between runs. Follow recommended testing best practices, including clear test naming, arranging setup/teardown logic with beforeEach/afterEach hooks, and verifying both positive and negative scenarios. Refer to guidelines in llm_context/responses/setup_verification.md to confirm comprehensive coverage and maintainability.\n</info added on 2025-07-02T14:44:14.393Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -995,7 +995,7 @@
             "dependencies": [
               1
             ],
-            "details": "Follow Testing Library principles: query by role/text, avoid implementation details. Implement AAA pattern (Arrange-Act-Assert). Use data-testid for stable element targeting. Cover: 1) Rendering verification 2) Prop/state changes 3) User event simulations 4) Async behavior. Include snapshot testing for critical UI components.",
+            "details": "Follow Testing Library principles: query by role/text, avoid implementation details. Implement AAA pattern (Arrange-Act-Assert). Use data-testid for stable element targeting. Cover: 1) Rendering verification 2) Prop/state changes 3) User event simulations 4) Async behavior. Include snapshot testing for critical UI components.\n<info added on 2025-07-02T14:44:23.635Z>\nEnsure all test files are TypeScript (.tsx/.ts) and configure the test runner (e.g., Jest) to perform type-checking during test execution. Integrate type-safe utilities and extend test environment typings as needed. Reference and follow the guidelines in llm_context/responses/setup_verification.md for consistent test setup, teardown, and environment configuration. Validate that all component tests fail on TypeScript errors, not just runtime failures, to maintain strict type safety throughout the testing process.\n</info added on 2025-07-02T14:44:23.635Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -1006,7 +1006,7 @@
             "dependencies": [
               3
             ],
-            "details": "Create tests for: 1) Collection schema validation 2) Access control rules 3) Hooks execution 4) Relationship population. Use test database instances. Validate admin panel operations. Test custom endpoints and plugins. Implement CRUD operation tests with authentication scenarios.",
+            "details": "Create tests for: 1) Collection schema validation 2) Access control rules 3) Hooks execution 4) Relationship population. Use test database instances. Validate admin panel operations. Test custom endpoints and plugins. Implement CRUD operation tests with authentication scenarios.\n<info added on 2025-07-02T14:44:31.835Z>\nEstablish a dedicated test suite for Payload CMS collections, ensuring Payload connection is properly configured and isolated for testing. Follow best practices outlined in llm_context/responses/setup_verification.md, including environment setup, teardown procedures, and use of mock data where appropriate. Ensure tests are reproducible, independent, and provide clear assertions for collection behaviors.\n</info added on 2025-07-02T14:44:31.835Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -1021,7 +1021,7 @@
               4,
               5
             ],
-            "details": "Set up GitHub Actions workflow: 1) Parallel test execution 2) Caching for dependencies 3) Fail-fast reporting 4) Artifact uploads. Configure separate jobs for unit, integration, and API tests. Add coverage reporting to PR checks. Implement Slack notifications for failures. Include playwright CI container setup.",
+            "details": "Set up GitHub Actions workflow: 1) Parallel test execution 2) Caching for dependencies 3) Fail-fast reporting 4) Artifact uploads. Configure separate jobs for unit, integration, and API tests. Add coverage reporting to PR checks. Implement Slack notifications for failures. Include playwright CI container setup.\n<info added on 2025-07-02T14:44:42.750Z>\nIntegrate continuous integration steps to verify the build process before running tests, ensuring that all dependencies are installed and the application builds successfully. Reference and implement testing best practices outlined in llm_context/responses/setup_verification.md, including environment consistency, reproducibility, and clear separation of build and test stages within the workflow.\n</info added on 2025-07-02T14:44:42.750Z>",
             "status": "pending",
             "testStrategy": ""
           }
@@ -1046,7 +1046,7 @@
             "title": "Define Error Boundaries",
             "description": "Establish the scope and boundaries for error handling within the system to isolate and manage errors effectively.",
             "dependencies": [],
-            "details": "Identify critical modules and components where error boundaries should be implemented to prevent cascading failures.",
+            "details": "Identify critical modules and components where error boundaries should be implemented to prevent cascading failures.\n<info added on 2025-07-02T14:44:50.367Z>\nDefine the specific system areas, services, and components that require dedicated error boundaries to contain faults and prevent error propagation. Document the criteria for boundary placement and outline the responsibilities of each boundary in error detection, reporting, and recovery. Ensure that the established boundaries align with best practices for comprehensive error handling and monitoring, facilitating clear isolation of failures and streamlined incident response.\n</info added on 2025-07-02T14:44:50.367Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -1057,7 +1057,7 @@
             "dependencies": [
               1
             ],
-            "details": "Use appropriate programming constructs or frameworks to create error boundaries that capture exceptions and prevent system crashes.",
+            "details": "Use appropriate programming constructs or frameworks to create error boundaries that capture exceptions and prevent system crashes.\n<info added on 2025-07-02T14:44:59.979Z>\nDevelop and integrate error boundary mechanisms according to the defined scopes, ensuring they catch and handle errors gracefully. Follow the guidelines outlined in llm_context/payload3/best_practices.md to achieve comprehensive error handling and facilitate effective monitoring.\n</info added on 2025-07-02T14:44:59.979Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -1068,7 +1068,7 @@
             "dependencies": [
               2
             ],
-            "details": "Choose and configure monitoring tools that can capture error logs, performance metrics, and alert on anomalies.",
+            "details": "Choose and configure monitoring tools that can capture error logs, performance metrics, and alert on anomalies.\n<info added on 2025-07-02T14:45:07.562Z>\nSet up real-time monitoring systems to track errors and overall system health, ensuring all configurations and alerting mechanisms follow the performance monitoring best practices outlined in llm_context/mcp_tools/README.md.\n</info added on 2025-07-02T14:45:07.562Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -1079,7 +1079,7 @@
             "dependencies": [
               3
             ],
-            "details": "Design notification workflows including channels (email, SMS, dashboards) and escalation policies for critical errors.",
+            "details": "Design notification workflows including channels (email, SMS, dashboards) and escalation policies for critical errors.\n<info added on 2025-07-02T14:45:17.987Z>\nDevelop and implement an automated notification mechanism that triggers alerts to relevant stakeholders upon detection of errors. Ensure the notification system follows established error handling patterns and is seamlessly integrated with the selected monitoring tools. Reference and adhere to the guidelines outlined in llm_context/payload3/best_practices.md to maintain consistency and reliability in the alerting process.\n</info added on 2025-07-02T14:45:17.987Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -1090,7 +1090,7 @@
             "dependencies": [
               4
             ],
-            "details": "Simulate various error scenarios to verify that errors are caught, logged, monitored, and notifications are sent appropriately.",
+            "details": "Simulate various error scenarios to verify that errors are caught, logged, monitored, and notifications are sent appropriately.\n<info added on 2025-07-02T14:45:26.922Z>\nPerform boundary testing to assess system behavior at edge cases and limits. Validate that monitoring tools accurately capture and report all error events. Confirm that notification mechanisms trigger correctly for each error type. Ensure all testing procedures align with the guidelines and best practices outlined in llm_context/responses/setup_verification.md.\n</info added on 2025-07-02T14:45:26.922Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -1101,7 +1101,7 @@
             "dependencies": [
               5
             ],
-            "details": "Include instructions for maintenance, troubleshooting, and future enhancements of the error handling system.",
+            "details": "Include instructions for maintenance, troubleshooting, and future enhancements of the error handling system.\n<info added on 2025-07-02T14:45:33.754Z>\nProvide comprehensive documentation of the error handling system, including an architectural overview, setup instructions, and operational guidelines. Structure the documentation to align with the format and conventions outlined in llm_context/llm_agent_insights/README.md, ensuring clarity and consistency. Include sections on system components, configuration steps, integration points, monitoring procedures, and best practices for ongoing operation.\n</info added on 2025-07-02T14:45:33.754Z>",
             "status": "pending",
             "testStrategy": ""
           }
@@ -1125,7 +1125,7 @@
             "title": "Define Deployment Workflow Requirements",
             "description": "Gather and document the requirements for the deployment workflow including stages, triggers, and deployment targets.",
             "dependencies": [],
-            "details": "Identify the environments (e.g., staging, production), deployment frequency, rollback strategies, and approval processes needed.",
+            "details": "Identify the environments (e.g., staging, production), deployment frequency, rollback strategies, and approval processes needed.\n<info added on 2025-07-02T14:45:45.596Z>\nGather and document the requirements for the deployment workflow, specifying each deployment stage, the triggers for initiating deployments, and the deployment targets. Ensure that the workflow aligns with CI/CD integration standards and incorporates MCP tools as outlined in llm_context/mcp_tools/README.md.\n</info added on 2025-07-02T14:45:45.596Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -1136,7 +1136,7 @@
             "dependencies": [
               1
             ],
-            "details": "Create configuration files or use environment management tools to ensure each environment is properly configured for deployment.",
+            "details": "Create configuration files or use environment management tools to ensure each environment is properly configured for deployment.\n<info added on 2025-07-02T14:45:54.186Z>\nSet up environment-specific configurations by defining environment variables, managing secrets securely using recommended practices for Docker and CI/CD, and allocating resources according to the requirements outlined in llm_context/repomix_integration.md. Ensure secrets are not hardcoded and are managed through secure vaults or CI/CD secret management features.\n</info added on 2025-07-02T14:45:54.186Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -1148,7 +1148,7 @@
               1,
               2
             ],
-            "details": "Use tools like Jenkins, GitHub Actions, or GitLab CI to script the deployment pipeline including build, test, and deploy stages.",
+            "details": "Use tools like Jenkins, GitHub Actions, or GitLab CI to script the deployment pipeline including build, test, and deploy stages.\n<info added on 2025-07-02T14:46:03.315Z>\nDevelop and automate the deployment workflow using the selected CI/CD tools, ensuring the workflow aligns with the defined requirements and integrates seamlessly with MCP tools as specified in llm_context/mcp_tools/README.md.\n</info added on 2025-07-02T14:46:03.315Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -1159,7 +1159,7 @@
             "dependencies": [
               3
             ],
-            "details": "Add unit tests, integration tests, and end-to-end tests to the CI/CD pipeline to run automatically during deployment.",
+            "details": "Add unit tests, integration tests, and end-to-end tests to the CI/CD pipeline to run automatically during deployment.\n<info added on 2025-07-02T14:46:16.698Z>\nIntegrate automated testing stages into the deployment workflow in alignment with the guidelines specified in llm_context/mcp_tools/README.md, ensuring that all code changes pass the required automated tests before progressing to subsequent deployment steps.\n</info added on 2025-07-02T14:46:16.698Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -1170,7 +1170,7 @@
             "dependencies": [
               4
             ],
-            "details": "Execute test deployments to staging environment and review logs and test results to confirm successful setup.",
+            "details": "Execute test deployments to staging environment and review logs and test results to confirm successful setup.\n<info added on 2025-07-02T14:46:22.910Z>\nPerform validation runs of the deployment workflow and integrated testing to verify correctness and reliability, ensuring all steps adhere to the automated testing workflows outlined in llm_context/mcp_tools/README.md.\n</info added on 2025-07-02T14:46:22.910Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -1181,7 +1181,7 @@
             "dependencies": [
               5
             ],
-            "details": "Include step-by-step guides, configuration details, troubleshooting tips, and maintenance instructions.",
+            "details": "Include step-by-step guides, configuration details, troubleshooting tips, and maintenance instructions.\n<info added on 2025-07-02T14:46:31.979Z>\nDocument the deployment workflow, environment configuration, and testing integration using the standardized structure outlined in llm_context/llm_agent_insights/README.md. Ensure each section includes clear prerequisites, step-by-step instructions, configuration file examples, and expected outcomes. Highlight key environment variables, secrets management, and integration points with CI/CD tools. Provide troubleshooting scenarios and solutions for common deployment and testing issues. Include maintenance best practices and update procedures to keep the documentation current with pipeline changes.\n</info added on 2025-07-02T14:46:31.979Z>",
             "status": "pending",
             "testStrategy": ""
           }
@@ -1205,7 +1205,7 @@
             "title": "Integrate Audit Logging with Plugins",
             "description": "Modify and extend existing plugins to emit audit logs for relevant actions and events.",
             "dependencies": [],
-            "details": "Identify all plugins requiring audit logging, update their code to generate logs at appropriate points, and ensure consistency in log generation.",
+            "details": "Identify all plugins requiring audit logging, update their code to generate logs at appropriate points, and ensure consistency in log generation.\n<info added on 2025-07-02T14:46:41.181Z>\nModify and extend existing plugins to emit audit logs for all relevant actions and events, ensuring that every critical admin action (create, update, delete) is logged. Each log entry must include the acting user's identity and detailed payload information, following the guidelines specified in llm_context/payload3/best_practices.md.\n</info added on 2025-07-02T14:46:41.181Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -1216,7 +1216,7 @@
             "dependencies": [
               1
             ],
-            "details": "Implement or configure hooks in the application framework to intercept actions and send them to the audit logging system.",
+            "details": "Implement or configure hooks in the application framework to intercept actions and send them to the audit logging system.\n<info added on 2025-07-02T14:46:50.764Z>\nEnsure hooks are configured to capture audit events from all relevant system components, specifically targeting critical admin actions such as create, update, and delete. Each logged event must include the acting user's identity and full payload details, following the guidelines outlined in llm_context/payload3/best_practices.md. Route these events to the audit logging system for centralized and comprehensive tracking.\n</info added on 2025-07-02T14:46:50.764Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -1227,7 +1227,7 @@
             "dependencies": [
               2
             ],
-            "details": "Specify required fields (e.g., timestamp, user, action, resource, status), data types, and any indexing requirements for efficient querying.",
+            "details": "Specify required fields (e.g., timestamp, user, action, resource, status), data types, and any indexing requirements for efficient querying.\n<info added on 2025-07-02T14:47:03.707Z>\nEach audit log entry should include the following fields to ensure completeness and consistency:\n\n- timestamp (ISO 8601 format)\n- user_id (unique identifier for the user)\n- user_role (role or permission level of the user)\n- action (type of operation performed, e.g., CREATE, UPDATE, DELETE, READ)\n- resource_type (type of resource affected)\n- resource_id (unique identifier of the resource)\n- status (result of the action, e.g., SUCCESS, FAILURE)\n- request_payload (serialized representation of the request data, with sensitive fields redacted as per best practices)\n- response_payload (serialized representation of the response data, with sensitive fields redacted)\n- client_ip (originating IP address of the request)\n- user_agent (user agent string from the client)\n- correlation_id (unique identifier for tracing related events)\n- error_details (optional, included if status is FAILURE)\n\nEnsure all fields are strongly typed and indexed as appropriate for efficient querying, especially on timestamp, user_id, action, and resource_id. Payload fields must follow redaction and minimization guidelines from llm_context/payload3/best_practices.md to avoid logging sensitive or unnecessary data.\n</info added on 2025-07-02T14:47:03.707Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -1238,7 +1238,7 @@
             "dependencies": [
               3
             ],
-            "details": "Determine retention periods based on compliance needs, automate log deletion or archiving, and document the policy.",
+            "details": "Determine retention periods based on compliance needs, automate log deletion or archiving, and document the policy.\n<info added on 2025-07-02T14:47:10.670Z>\nEstablish and document retention and purge policies for audit logs in alignment with best practices outlined in llm_context/payload3/best_practices.md. Implement automated mechanisms to enforce these retention periods and ensure timely log cleanup or secure deletion, minimizing manual intervention and reducing risk of non-compliance. Regularly review and update policies to reflect evolving compliance requirements and organizational needs.\n</info added on 2025-07-02T14:47:10.670Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -1249,7 +1249,7 @@
             "dependencies": [
               4
             ],
-            "details": "Review access controls, log integrity, encryption, and ensure sensitive information is not inadvertently logged.",
+            "details": "Review access controls, log integrity, encryption, and ensure sensitive information is not inadvertently logged.\n<info added on 2025-07-02T14:47:16.845Z>\nEvaluate the audit logging implementation for potential security risks and verify compliance with industry best practices, referencing the guidelines in llm_context/payload3/best_practices.md. Confirm that access to audit logs is strictly restricted using robust access control mechanisms as specified in the referenced best practices document.\n</info added on 2025-07-02T14:47:16.845Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -1260,7 +1260,7 @@
             "dependencies": [
               5
             ],
-            "details": "Develop and execute test cases for log generation, schema adherence, retention enforcement, and security controls.",
+            "details": "Develop and execute test cases for log generation, schema adherence, retention enforcement, and security controls.\n<info added on 2025-07-02T14:47:23.618Z>\nVerify audit logging functionality across all integrated plugins and system components, ensuring that all critical administrative actions are captured with associated user and payload details in accordance with the guidelines specified in llm_context/payload3/best_practices.md.\n</info added on 2025-07-02T14:47:23.618Z>",
             "status": "pending",
             "testStrategy": ""
           },
@@ -1271,7 +1271,7 @@
             "dependencies": [
               6
             ],
-            "details": "Prepare user and developer guides, including configuration steps, schema definitions, retention policy details, and troubleshooting tips.",
+            "details": "Prepare user and developer guides, including configuration steps, schema definitions, retention policy details, and troubleshooting tips.\n<info added on 2025-07-02T14:47:30.977Z>\nDevelop the documentation to include detailed sections on integration steps with external systems, configuration parameters with examples, complete schema definitions, retention policy configuration and management, and practical usage scenarios. Ensure all documentation follows the structure, formatting, and content guidelines established in llm_context/llm_agent_insights/README.md, including code snippets, configuration samples, and clear section headings for ease of navigation and consistency.\n</info added on 2025-07-02T14:47:30.977Z>",
             "status": "pending",
             "testStrategy": ""
           }
@@ -1641,8 +1641,8 @@
           {
             "id": 1,
             "title": "Create Centralized Access Control Functions",
-            "description": "Create `payload-backend/src/access/index.ts` and move common access logic (e.g., isAdmin, isManager) into this file. Ensure functions are strongly typed using `UserRole`.",
-            "details": "The file `payload-backend/src/access/index.ts` has already been created and populated with initial access control functions. This subtask is to ensure all necessary common access logic is centralized and correctly typed. Review `payload-backend/src/types/auth.ts` to confirm `UserRole` is comprehensive and used consistently in these functions.",
+            "description": "Create `src/access/index.ts` and move common access logic (e.g., isAdmin, isManager) into this file. Ensure functions are strongly typed using `UserRole`.",
+            "details": "The file `src/access/index.ts` has already been created and populated with initial access control functions. This subtask is to ensure all necessary common access logic is centralized and correctly typed. Review `src/types/auth.ts` to confirm `UserRole` is comprehensive and used consistently in these functions.",
             "status": "done",
             "dependencies": [],
             "parentTaskId": 21
@@ -1650,7 +1650,7 @@
           {
             "id": 2,
             "title": "Refactor Collection Access to Use Centralized Functions",
-            "description": "Modify each collection file in `payload-backend/src/collections/` to import and use the centralized access control functions from `payload-backend/src/access/index.ts`.",
+            "description": "Modify each collection file in `src/collections/` to import and use the centralized access control functions from `src/access/index.ts`.",
             "details": "This involves replacing repetitive inline access logic with calls to `isAdmin`, `isManager`, `isAdminOrManager`, `isFohEmployee`, `isStoreManager`, `isShiftManager`, `isAdminOrSelf`, and `isAdminOrHasLocationAccess` as appropriate for each collection. Ensure correct imports are added to each collection file.",
             "status": "done",
             "dependencies": [],
@@ -1673,7 +1673,7 @@
           {
             "id": 1,
             "title": "Create Middleware Directory",
-            "description": "Create `payload-backend/src/middleware/` directory.",
+            "description": "Create `src/middleware/` directory.",
             "details": "This directory will house individual middleware modules for better organization and maintainability.",
             "status": "done",
             "dependencies": [],
@@ -1682,7 +1682,7 @@
           {
             "id": 2,
             "title": "Create Security Headers Middleware",
-            "description": "Create `payload-backend/src/middleware/securityHeaders.ts` for handling security-related HTTP headers.",
+            "description": "Create `src/middleware/securityHeaders.ts` for handling security-related HTTP headers.",
             "details": "This file should export a function that sets X-Frame-Options, X-Content-Type-Options, Referrer-Policy, and X-XSS-Protection headers.",
             "status": "done",
             "dependencies": [],
@@ -1691,7 +1691,7 @@
           {
             "id": 3,
             "title": "Create CORS Middleware",
-            "description": "Create `payload-backend/src/middleware/cors.ts` for handling CORS headers for API routes.",
+            "description": "Create `src/middleware/cors.ts` for handling CORS headers for API routes.",
             "details": "This file should export a function that sets Access-Control-Allow-Origin, Access-Control-Allow-Methods, Access-Control-Allow-Headers, and Access-Control-Allow-Credentials headers, and handles OPTIONS preflight requests.",
             "status": "done",
             "dependencies": [],
@@ -1700,7 +1700,7 @@
           {
             "id": 4,
             "title": "Create Authentication Middleware",
-            "description": "Create `payload-backend/src/middleware/authentication.ts` for handling authentication checks and route protection.",
+            "description": "Create `src/middleware/authentication.ts` for handling authentication checks and route protection.",
             "details": "This file should export a function that checks for an authentication token (e.g., `payload-token` cookie) and redirects unauthenticated users from protected routes like `/admin` or `/dashboard`.",
             "status": "done",
             "dependencies": [],
@@ -1709,7 +1709,7 @@
           {
             "id": 5,
             "title": "Create Rate Limiting Middleware",
-            "description": "Create `payload-backend/src/middleware/rateLimiting.ts` for basic API rate limiting.",
+            "description": "Create `src/middleware/rateLimiting.ts` for basic API rate limiting.",
             "details": "This file should export a function that implements a basic rate limiting mechanism for API routes. In a production environment, this would be replaced by a more robust solution (e.g., Redis-backed).",
             "status": "done",
             "dependencies": [],
@@ -1718,7 +1718,7 @@
           {
             "id": 6,
             "title": "Compose Modular Middleware in `middleware.ts`",
-            "description": "Update `payload-backend/src/middleware.ts` to import and apply the new modular middleware functions (`setSecurityHeaders`, `setCorsHeaders`, `checkAuthentication`, `applyRateLimiting`) in the correct order.",
+            "description": "Update `src/middleware.ts` to import and apply the new modular middleware functions (`setSecurityHeaders`, `setCorsHeaders`, `checkAuthentication`, `applyRateLimiting`) in the correct order.",
             "details": "The existing `middleware.ts` file contains all the logic. This subtask involves replacing the inline logic with calls to the newly created modular functions. Ensure the order of execution is maintained: security headers, then CORS, then authentication, then rate limiting.",
             "status": "done",
             "dependencies": [],
@@ -1742,7 +1742,7 @@
           {
             "id": 1,
             "title": "Rename Payload API Catch-all Route",
-            "description": "Rename `payload-backend/src/app/(payload)/api/[...slug]/route.ts` to `payload-backend/src/app/(payload)/api/v1/[...slug]/route.ts`.",
+            "description": "Rename `src/app/(payload)/api/[...slug]/route.ts` to `src/app/(payload)/api/v1/[...slug]/route.ts`.",
             "details": "This involves creating the new directory `v1` and moving the `[...slug]/route.ts` file into it. Ensure the file content remains the same.",
             "status": "done",
             "dependencies": [],
@@ -1751,8 +1751,8 @@
           {
             "id": 2,
             "title": "Rename Custom Route to Versioned API Path",
-            "description": "Rename `payload-backend/src/app/my-route/route.ts` to `payload-backend/src/app/api/v1/my-route/route.ts`.",
-            "details": "This involves creating the `api/v1` directory under `payload-backend/src/app/` if it doesn't exist, and moving the `my-route/route.ts` file into it. Ensure the file content remains the same.",
+            "description": "Rename `src/app/my-route/route.ts` to `src/app/api/v1/my-route/route.ts`.",
+            "details": "This involves creating the `api/v1` directory under `src/app/` if it doesn't exist, and moving the `my-route/route.ts` file into it. Ensure the file content remains the same.",
             "status": "done",
             "dependencies": [],
             "parentTaskId": 23
