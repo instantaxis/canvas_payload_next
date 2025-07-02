@@ -1,19 +1,45 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server'
 
-/**
- * @description Checks if the user is authenticated for admin and dashboard routes.
- * @param {NextRequest} request
- * @returns {NextResponse}
- */
-export function checkAuthentication(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+export async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl
 
-  if (pathname.startsWith('/admin') || pathname.startsWith('/dashboard')) {
-    const token = request.cookies.get('payload-token')?.value;
-    
-    if (!token && !pathname.startsWith('/admin/login')) {
-      return NextResponse.redirect(new URL('/admin/login', request.url));
+  // Protect /admin and other protected routes
+  if (pathname.startsWith('/admin')) {
+    const token = request.cookies.get('token')?.value
+
+    if (!token) {
+      // Redirect to login if no token
+      const loginUrl = new URL('/login', request.url)
+      return NextResponse.redirect(loginUrl)
+    }
+
+    try {
+      // Verify session by calling Payload API /api/users/me
+      const response = await fetch(`${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/users/me`, {
+        headers: {
+          cookie: `token=${token}`,
+        },
+      })
+
+      if (!response.ok) {
+        // Invalid session, redirect to login
+        const loginUrl = new URL('/login', request.url)
+        return NextResponse.redirect(loginUrl)
+      }
+
+      // Session valid, allow request
+      return NextResponse.next()
+    } catch (error) {
+      console.error('Middleware auth error:', error)
+      const loginUrl = new URL('/login', request.url)
+      return NextResponse.redirect(loginUrl)
     }
   }
-  return NextResponse.next();
+
+  // Allow other requests
+  return NextResponse.next()
+}
+
+export const config = {
+  matcher: ['/admin/:path*'],
 }

@@ -1,29 +1,38 @@
-'use client';
+'use client'
 
-import Image from 'next/image';
-import React from 'react';
-import { fileURLToPath } from 'url';
-import './styles.css';
-import { useAuthQuery } from './hooks/useAuthQuery';
+import Image from 'next/image'
+import React from 'react'
+import './styles.css'
+import { useAuthQuery } from './hooks/useAuthQuery'
 
 /**
  * @description The home page for the frontend application.
  * @returns {React.ReactElement}
  */
 export default function HomePage() {
-  const { data: user, isLoading, isError } = useAuthQuery(
+  const {
+    data: user,
+    isLoading,
+    isError,
+  } = useAuthQuery(
     ['currentUser'],
     async ({ signal }) => {
-      const response = await fetch('/api/users/me', { signal });
+      const response = await fetch('/api/users/me', { signal })
       if (!response.ok) {
-        throw new Error('Failed to fetch user data');
+        throw new Error('Failed to fetch user data')
       }
-      return response.json();
+      return response.json()
     },
-    { requireAuth: false } // This page can be viewed by unauthenticated users
-  );
+    { requireAuth: false }, // This page can be viewed by unauthenticated users
+  )
 
-  const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`;
+  // Create VSCode link using client-side only approach to prevent hydration mismatch
+  const [fileURL, setFileURL] = React.useState('')
+
+  React.useEffect(() => {
+    // Only set the URL on the client side to ensure consistent rendering
+    setFileURL(`vscode://file${process.cwd()}/src/app/(frontend)/page.tsx`)
+  }, [])
 
   return (
     <div className="home">
@@ -42,12 +51,7 @@ export default function HomePage() {
         {!isLoading && !isError && !user && <h1>Welcome to your new project.</h1>}
         {!isLoading && !isError && user && <h1>Welcome back, {user.email}</h1>}
         <div className="links">
-          <a
-            className="admin"
-            href="/admin"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
+          <a className="admin" href="/admin" rel="noopener noreferrer" target="_blank">
             Go to admin panel
           </a>
           <a
@@ -67,5 +71,5 @@ export default function HomePage() {
         </a>
       </div>
     </div>
-  );
+  )
 }

@@ -7,11 +7,13 @@ This guide covers patterns for building multi-step, dynamic, and state-driven fo
 - **Step Schema Isolation**
   - Define a separate Zod schema per step.
   - Merge schemas at submission:  
+
     ```ts
     const step1Schema = z.object({ name: z.string().min(1) });
     const step2Schema = z.object({ address: z.string().min(1) });
     const fullSchema = step1Schema.merge(step2Schema);
     ```
+
 - **FormProvider & useFormContext**
   - Wrap steps in `<FormProvider {...methods}>`.
   - Inside each step component, use `useFormContext()` to register fields.
@@ -24,9 +26,11 @@ This guide covers patterns for building multi-step, dynamic, and state-driven fo
 - **useFieldArray**
   - Use React Hook Form’s `useFieldArray` for repeating sections.
   - Example:
+
     ```tsx
     const { fields, append, remove } = useFieldArray({ name: "items" });
     ```
+
 - **Nested Arrays**
   - Combine with step forms: manage separate arrays per step.
   - Ensure unique keys: use `id` from `fields`.
@@ -36,13 +40,16 @@ This guide covers patterns for building multi-step, dynamic, and state-driven fo
 - **watch & conditional render**
   - Use `watch("type")` to conditionally render and register fields.
   - Unregister fields when hidden:  
+
     ```ts
     useEffect(() => {
       if (type !== "other") unregister("otherText");
     }, [type]);
     ```
+
 - **Zod refinements**
   - Enforce cross-field conditions:  
+
     ```ts
     z.object({ a: z.string(), b: z.string() })
       .refine(data => data.a !== data.b, { message: "A and B must differ" });
@@ -51,12 +58,14 @@ This guide covers patterns for building multi-step, dynamic, and state-driven fo
 ## 4. Persisted Form State (Zustand)
 
 - **Create store slice**
+
   ```ts
   const useFormStore = create(persist((set) => ({
     data: {},
     setData: (partial) => set(state => ({ data: { ...state.data, ...partial } })),
   })));
   ```
+
 - **Sync with RHF**
   - On step submit: `useFormStore.getState().setData(getValues())`.
   - On mount: `reset(useFormStore.getState().data)` to restore values.

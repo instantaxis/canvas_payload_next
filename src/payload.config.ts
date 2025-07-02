@@ -8,6 +8,8 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
+import { s3Storage } from '@payloadcms/storage-s3'
+
 
 import Users from './collections/Users'
 import { Media } from './collections/Media'
@@ -44,6 +46,14 @@ export default buildConfig({
     user: Users.slug,
     importMap: {
       baseDir: path.resolve(dirname),
+    },
+  },
+  auth: {
+    tokenExpiration: parseInt(process.env.PAYLOAD_TOKEN_EXPIRATION || '7200'), // 2 hours
+    cookies: {
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: process.env.PAYLOAD_COOKIE_SAMESITE as 'Lax' | 'Strict' | 'None' || 'Lax',
+      domain: process.env.PAYLOAD_PUBLIC_SERVER_URL ? new URL(process.env.PAYLOAD_PUBLIC_SERVER_URL).hostname : undefined,
     },
   },
   collections: [
@@ -86,7 +96,10 @@ export default buildConfig({
 sharp,
   plugins: [
     payloadCloudPlugin(),
-    s3Adapter({
+    s3Storage({
+      collections: {
+        media: true,
+      },
       bucket: process.env.SUPABASE_S3_BUCKET || '',
       region: process.env.SUPABASE_S3_REGION || '',
       endpoint: process.env.SUPABASE_S3_ENDPOINT || '',
@@ -95,4 +108,6 @@ sharp,
       forcePathStyle: true,
     }),
   ],
+  
+  
 })

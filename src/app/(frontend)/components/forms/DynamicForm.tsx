@@ -1,12 +1,13 @@
 'use client'
 
 import React, { useEffect, useMemo, useState } from 'react'
-import { FieldValues, useFormContext } from 'react-hook-form'
-import { FormWrapper } from '@/app/(frontend)/components/forms/FormWrapper'
+import { FieldValues } from 'react-hook-form'
+import debounce from 'lodash.debounce'
 import FieldRegistry from '@/app/(frontend)/components/forms/FieldRegistry'
 import { useCollectionSchema } from '@/app/(frontend)/hooks/useCollectionSchema'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { FormProvider, useForm } from 'react-hook-form'
 
 interface DynamicFormProps {
   collectionSlug: string
@@ -25,80 +26,80 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ collectionSlug, onSubmit, cla
   const [isMounted, setIsMounted] = useState(false)
 
   const dynamicZodSchema = useMemo(() => {
-    if (!schema) return z.object({}) // Return an empty schema if schema is not yet available
+    if (!schema) return z.object({})
 
-    return z.object(
-      schema.fields.reduce((acc, field) => {
-        let fieldSchema: z.ZodTypeAny
-        switch (field.type) {
-          case 'text':
-          case 'email':
-          case 'password':
-            fieldSchema = z.string()
-            break
-          case 'number':
-            fieldSchema = z.number()
-            break
-          case 'checkbox':
-            fieldSchema = z.boolean()
-            break
-          case 'select':
-            fieldSchema = z.string() // Assuming single select for now
-            if (field.hasMany) {
-              fieldSchema = z.array(z.string())
-            }
-            break
-          // TODO: Add more types as needed (e.g., richText, relationship, date, array, group)
-          default:
-            fieldSchema = z.any()
-            break
-        }
-
-        if (field.required) {
-          if ('min' in fieldSchema) {
-            fieldSchema = (fieldSchema as z.ZodString | z.ZodArray<any>).min(
-              1,
-              `${field.label || field.name} is required`,
-            )
+    const schemaFields = schema.fields.reduce((acc, field) => {
+      let fieldSchema: z.ZodTypeAny
+      switch (field.type) {
+        case 'text':
+        case 'email':
+        case 'password':
+          fieldSchema = z.string()
+          break
+        case 'number':
+          fieldSchema = z.number()
+          break
+        case 'checkbox':
+          fieldSchema = z.boolean()
+          break
+        case 'select':
+          fieldSchema = z.string()
+          if (field.hasMany) {
+            fieldSchema = z.array(z.string())
           }
-        }
+          break
+        default:
+          fieldSchema = z.any()
+          break
+      }
 
-        // Apply min/max for number fields
-        if (field.type === 'number') {
-          if (field.min !== undefined) {
-            fieldSchema = (fieldSchema as z.ZodNumber).min(
-              field.min,
-              `Must be at least ${field.min}`,
-            )
-          }
-          if (field.max !== undefined) {
-            fieldSchema = (fieldSchema as z.ZodNumber).max(
-              field.max,
-              `Must be at most ${field.max}`,
-            )
-          }
+      if (field.required) {
+        if ('min' in fieldSchema) {
+          fieldSchema = (fieldSchema as z.ZodString | z.ZodArray<any>).min(
+            1,
+            `${field.label || field.name} is required`,
+          )
         }
+      }
 
-        // Apply maxLength for text fields
-        if (field.type === 'text' || field.type === 'email' || field.type === 'password') {
-          if (field.maxLength !== undefined) {
-            fieldSchema = (fieldSchema as z.ZodString).max(
-              field.maxLength,
-              `Must be at most ${field.maxLength} characters`,
-            )
-          }
+      if (field.type === 'number') {
+        if (field.min !== undefined) {
+          fieldSchema = (fieldSchema as z.ZodNumber).min(field.min, `Must be at least ${field.min}`)
         }
+        if (field.max !== undefined) {
+          fieldSchema = (fieldSchema as z.ZodNumber).max(field.max, `Must be at most ${field.max}`)
+        }
+      }
 
-        return { ...acc, [field.name]: fieldSchema }
-      }, {}),
-    )
+      if (field.type === 'text' || field.type === 'email' || field.type === 'password') {
+        if (field.maxLength !== undefined) {
+          fieldSchema = (fieldSchema as z.ZodString).max(
+            field.maxLength,
+            `Must be at most ${field.maxLength} characters`,
+          )
+        }
+      }
+
+      return { ...acc, [field.name]: fieldSchema }
+    }, {})
+
+    return z.object(schemaFields)
   }, [schema])
 
   useEffect(() => {
     setIsMounted(true)
   }, [])
 
-  const formMethods = useFormContext<FieldValues>()
+  const formMethods = useForm({
+    resolver: zodResolver(dynamicZodSchema),
+    mode: 'onChange',
+    reValidateMode: 'onChange',
+  })
+
+  const debouncedSubmit = useMemo(
+    () => debounce(formMethods.handleSubmit(onSubmit), 500),
+    [formMethods, onSubmit],
+  )
 
   if (isLoading || !isMounted) {
     return <div>Loading form schema...</div>
@@ -113,12 +114,14 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ collectionSlug, onSubmit, cla
   }
 
   return (
-    <FormWrapper onSubmit={onSubmit} schema={dynamicZodSchema} className={className}>
-      {schema.fields.map((field) => (
-        <FieldRegistry key={field.name} field={field} formMethods={formMethods} />
-      ))}
-      <button type="submit">Submit</button>
-    </FormWrapper>
+    <FormProvider {...formMethods}>
+      <form onSubmit={debouncedSubmit} className={className}>
+        {schema.fields.map((field, index) => (
+          <FieldRegistry key={`${field.name}-${index}`} field={field} formMethods={formMethods} />
+        ))}
+        <button type="submit">Submit</button>
+      </form>
+    </FormProvider>
   )
 }
 

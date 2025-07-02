@@ -1,3 +1,6 @@
+import { CollectionConfig } from 'payload';
+import { isAdmin, isAdminOrManager } from '../access';
+
 /**
  * @description Messages collection configuration.
  */

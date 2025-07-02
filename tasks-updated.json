@@ -1,0 +1,410 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Environment Setup",
+        "description": "Initial project scaffold, dependencies, configuration, and schema synchronization",
+        "status": "done",
+        "dependencies": [],
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Initialize Next.js Project with TypeScript and Tailwind",
+            "status": "done",
+            "dependencies": []
+          },
+          {
+            "id": 2,
+            "title": "Install Core Dependencies and Configure Tailwind, ESLint, Prettier",
+            "status": "done",
+            "dependencies": [1]
+          },
+          {
+            "id": 3,
+            "title": "Set Up Payload CMS and Supabase Branch",
+            "status": "done",
+            "dependencies": [2]
+          },
+          {
+            "id": 4,
+            "title": "Export and Sync Database Schemas (Payload vs Supabase)",
+            "status": "done",
+            "dependencies": [3]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "CMS & Database Integration",
+        "description": "Configure Payload 3.0 with Supabase, define collections, generate types, and verify setup",
+        "status": "in-progress",
+        "dependencies": [1],
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Initialize Payload CMS Project Structure",
+            "status": "in-progress"
+          },
+          {
+            "id": 2,
+            "title": "Configure Environment Variables for Payload and Supabase",
+            "status": "in-progress"
+          },
+          {
+            "id": 3,
+            "title": "Define Initial Collection Schemas and Relationships",
+            "status": "in-progress"
+          },
+          {
+            "id": 4,
+            "title": "Generate TypeScript Types via Payload",
+            "status": "deferred"
+          },
+          {
+            "id": 5,
+            "title": "Set Up Postgres Database Configuration",
+            "status": "done"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Authentication & Authorization",
+        "description": "Implement secure authentication flows, RBAC, and middleware protections",
+        "status": "pending",
+        "dependencies": [2],
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Set Up Authentication Configuration",
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Implement User Registration Flow",
+            "status": "pending",
+            "dependencies": [1]
+          },
+          {
+            "id": 3,
+            "title": "Implement User Login Flow",
+            "status": "pending",
+            "dependencies": [2]
+          },
+          {
+            "id": 4,
+            "title": "Configure JWT Generation and Validation",
+            "status": "pending",
+            "dependencies": [3]
+          },
+          {
+            "id": 5,
+            "title": "Implement Secure Cookie Management",
+            "status": "pending",
+            "dependencies": [4]
+          },
+          {
+            "id": 6,
+            "title": "Design and Implement RBAC",
+            "status": "pending",
+            "dependencies": [5]
+          },
+          {
+            "id": 7,
+            "title": "Implement Session Management",
+            "status": "pending",
+            "dependencies": [5]
+          },
+          {
+            "id": 8,
+            "title": "Develop Password Reset Flow",
+            "status": "pending",
+            "dependencies": [2]
+          },
+          {
+            "id": 9,
+            "title": "Apply Rate Limiting for Auth Endpoints",
+            "status": "pending",
+            "dependencies": [3]
+          },
+          {
+            "id": 10,
+            "title": "Apply CSRF Protection",
+            "status": "pending",
+            "dependencies": [5]
+          },
+          {
+            "id": 11,
+            "title": "Integrate Next.js Middleware for Auth",
+            "status": "pending",
+            "dependencies": [6, 7, 10]
+          },
+          {
+            "id": 12,
+            "title": "Configure CORS for Auth Endpoints",
+            "status": "pending",
+            "dependencies": [1]
+          },
+          {
+            "id": 13,
+            "title": "Implement JWT Fallback Mechanism",
+            "status": "pending",
+            "dependencies": [4, 7]
+          },
+          {
+            "id": 14,
+            "title": "Develop Custom Authentication Strategies",
+            "status": "pending",
+            "dependencies": [1, 3]
+          },
+          {
+            "id": 15,
+            "title": "Implement Comprehensive Auth Testing",
+            "status": "pending",
+            "dependencies": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Form Infrastructure",
+        "description": "Implement core form handling, validation, dynamic forms, performance, and analytics",
+        "status": "done",
+        "dependencies": [1],
+        "subtasks": [
+          { "id": 1, "title": "Set up Form Component Base Structure", "status": "done" },
+          { "id": 2, "title": "Implement Zod Validation Schema", "status": "done" },
+          { "id": 3, "title": "Develop Form Field Components", "status": "done" },
+          { "id": 5, "title": "Setup TanStack Query Integration", "status": "done" },
+          { "id": 6, "title": "Add Form Submission Logic", "status": "done" },
+          { "id": 7, "title": "Implement Form State Management", "status": "done" },
+          { "id": 8, "title": "Integrate Next.js 15 Server Actions", "status": "done" },
+          { "id": 9, "title": "Create Dynamic Form Builder with Field Registry", "status": "done" },
+          { "id": 10, "title": "Add Performance Optimizations", "status": "done" },
+          { "id": 12, "title": "Create Reusable Form Components and Hooks", "status": "done" },
+          { "id": 13, "title": "Integrate Auth for Secure Form Submissions", "status": "done" },
+          { "id": 14, "title": "Add Form Analytics and Validation Tracking", "status": "done" }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Data-Fetching Layer",
+        "description": "Set up advanced TanStack Query patterns for SSR, caching, optimistic updates, auth-aware queries, offline, sync, and error handling",
+        "status": "done",
+        "dependencies": [2, 3],
+        "subtasks": [
+          { "id": 1, "title": "Query Client Setup", "status": "done" },
+          { "id": 2, "title": "Hydration Boundaries", "status": "done" },
+          { "id": 3, "title": "Caching Strategy", "status": "done" },
+          { "id": 4, "title": "Mutation Handlers", "status": "done" },
+          { "id": 6, "title": "Optimistic Updates", "status": "done" },
+          { "id": 7, "title": "Authentication-Aware Querying", "status": "done" },
+          { "id": 8, "title": "Factory Patterns", "status": "done" },
+          { "id": 9, "title": "Offline Support and Background Sync", "status": "done" },
+          { "id": 10, "title": "Loading States and Suspense Boundaries", "status": "done" }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Dynamic Forms & Complex Forms Review",
+        "description": "Audit, research, prototype, and plan migration for complex form scenarios",
+        "status": "pending",
+        "dependencies": [4, 5],
+        "subtasks": [
+          { "id": 1, "title": "Audit Existing Forms", "status": "pending" },
+          { "id": 2, "title": "Identify Issues in Current Forms", "status": "pending" },
+          { "id": 3, "title": "Research Form Design Best Practices", "status": "pending" },
+          { "id": 4, "title": "Analyze Complexity and Architectural Needs", "status": "pending" },
+          { "id": 5, "title": "Develop Proof-of-Concept Implementation", "status": "pending" },
+          { "id": 6, "title": "Document Findings and Recommendations", "status": "pending" },
+          { "id": 7, "title": "Plan Migration and Implementation", "status": "pending" }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "File Upload System",
+        "description": "Implement drag-and-drop uploads, media collection integration, progress tracking, and media management",
+        "status": "pending",
+        "dependencies": [2, 4],
+        "subtasks": [
+          { "id": 1, "title": "Dropzone UI Component Implementation", "status": "pending" },
+          { "id": 2, "title": "File State Management", "status": "pending" },
+          { "id": 3, "title": "Payload CMS Media Collection Integration", "status": "done" },
+          { "id": 4, "title": "File Upload Handler", "status": "done" },
+          { "id": 5, "title": "TanStack Query Mutation Setup", "status": "pending" },
+          { "id": 6, "title": "Progress Tracking UI", "status": "pending" },
+          { "id": 8, "title": "Media Management Integration", "status": "pending" }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Collection & UI Components",
+        "description": "Implement CRUD hooks, relationship handling, and role-based UI/dashboard layout",
+        "status": "done",
+        "dependencies": [5],
+        "subtasks": [
+          { "id": 1, "title": "Design Data Models and Relationships", "status": "done" },
+          { "id": 2, "title": "Implement Create Operations", "status": "done" },
+          { "id": 3, "title": "Implement Read Operations with Filtering", "status": "done" },
+          { "id": 4, "title": "Implement Update Operations", "status": "done" },
+          { "id": 5, "title": "Implement Delete Operations", "status": "done" },
+          { "id": 6, "title": "Develop Advanced Filtering System", "status": "done" },
+          { "id": 7, "title": "Test and Optimize CRUD and Filtering", "status": "done" }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Role-Based UI & Dashboards",
+        "description": "Build permission-aware UI components and responsive dashboard layout",
+        "status": "pending",
+        "dependencies": [3],
+        "subtasks": [
+          { "id": 1, "title": "Permission Components", "status": "pending" },
+          { "id": 5, "title": "Dashboard Layout System", "status": "pending" }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Testing Infrastructure",
+        "description": "Configure Vitest, Playwright, Supertest, and integrate into CI",
+        "status": "pending",
+        "dependencies": [1],
+        "subtasks": [
+          { "id": 1, "title": "Vitest Configuration for Unit Testing", "status": "pending" },
+          { "id": 2, "title": "Playwright Integration Testing Setup", "status": "pending" },
+          { "id": 3, "title": "Supertest API Testing Implementation", "status": "pending" },
+          { "id": 4, "title": "React Component Testing Patterns", "status": "pending" },
+          { "id": 5, "title": "Payload CMS Collection Testing", "status": "pending" },
+          { "id": 6, "title": "CI Pipeline Integration", "status": "pending" }
+        ]
+      },
+      {
+        "id": 11,
+        "title": "Error Handling & Monitoring",
+        "description": "Global error boundaries, Sentry integration, CSRF protection, and notifications",
+        "status": "pending",
+        "dependencies": [1, 3, 5],
+        "subtasks": [
+          { "id": 1, "title": "Define Error Boundaries", "status": "pending" },
+          { "id": 2, "title": "Implement Boundary Setup", "status": "pending" },
+          { "id": 3, "title": "Integrate Monitoring Tools", "status": "pending" },
+          { "id": 4, "title": "Develop Notification System", "status": "pending" },
+          { "id": 5, "title": "Test Error Handling Workflow", "status": "pending" },
+          { "id": 6, "title": "Document Error Handling Implementation", "status": "pending" }
+        ]
+      },
+      {
+        "id": 12,
+        "title": "Audit Logging",
+        "description": "Integrate Payload Auditor plugin and Supabase centralized logs with retention and dashboards",
+        "status": "pending",
+        "dependencies": [2, 8],
+        "subtasks": [
+          { "id": 1, "title": "Integrate Audit Logging with Plugins", "status": "pending" },
+          { "id": 2, "title": "Configure Audit Logging Hooks", "status": "pending" },
+          { "id": 3, "title": "Design Audit Log Schema", "status": "pending" },
+          { "id": 4, "title": "Implement Log Retention Policy", "status": "pending" },
+          { "id": 5, "title": "Conduct Security Review of Audit Logging", "status": "pending" },
+          { "id": 6, "title": "Test Audit Logging Functionality", "status": "pending" },
+          { "id": 7, "title": "Document Audit Logging Implementation", "status": "pending" }
+        ]
+      },
+      {
+        "id": 13,
+        "title": "Middleware & Security",
+        "description": "Modular middleware, JWT revocation, bcrypt hashing, secure cookies, rate limiting, input validation, centralized access control",
+        "status": "pending",
+        "dependencies": [3, 4, 5, 9, 25],
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement JWT Revocation, Secure Password Hashing, and Secure Cookie Settings",
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Integrate Rate Limiting and Comprehensive Input Validation Middleware",
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Refactor Middleware into Modular Components and Add Security Headers",
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Centralize Access Control and Integrate Audit Logging with Retention Policies",
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Ensure Form Accessibility, Comprehensive Testing, and Docker Security Hardening",
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "title": "CI/CD & Deployment",
+        "description": "GitHub Actions, Vercel deployment, Docker security, environment-specific configuration",
+        "status": "pending",
+        "dependencies": [10, 11],
+        "subtasks": [
+          { "id": 1, "title": "Define Deployment Workflow Requirements", "status": "pending" },
+          { "id": 2, "title": "Configure Environment Settings", "status": "pending" },
+          { "id": 3, "title": "Implement Deployment Workflow Automation", "status": "pending" },
+          { "id": 4, "title": "Integrate Testing into Deployment Pipeline", "status": "pending" },
+          { "id": 5, "title": "Validate Deployment and Testing Setup", "status": "pending" },
+          { "id": 6, "title": "Document Deployment and Testing Procedures", "status": "pending" }
+        ]
+      },
+      {
+        "id": 15,
+        "title": "Documentation & Developer Guidelines",
+        "description": "TypeScript typing standards, ESLint enforcement, code documentation standards, onboarding, and migration support",
+        "status": "in-progress",
+        "dependencies": [10, 12],
+        "subtasks": [
+          { "id": 1, "title": "Define Code Documentation Standards", "status": "done" },
+          { "id": 2, "title": "Document the Standards", "status": "pending" },
+          { "id": 3, "title": "Set Up Linting and Pre-commit Hooks", "status": "pending" },
+          { "id": 4, "title": "Update Onboarding Materials", "status": "pending" },
+          { "id": 5, "title": "Establish Enforcement Process", "status": "pending" },
+          { "id": 6, "title": "Integrate Standards into Code Review", "status": "pending" },
+          {
+            "id": 7,
+            "title": "Consolidate Documentation Enforcement Workflows",
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "id": 16,
+        "title": "Schema Sync",
+        "description": "Validate and synchronize database schema between Payload CMS and Supabase",
+        "status": "pending",
+        "dependencies": [27],
+        "subtasks": [
+          { "id": 1, "title": "Export Current Payload CMS and Supabase Schemas", "status": "done" },
+          { "id": 2, "title": "Analyze and Document Schema Differences", "status": "done" },
+          { "id": 3, "title": "Plan and Generate Required Schema Migrations", "status": "done" },
+          { "id": 4, "title": "Apply Migrations and Update Payload CMS State", "status": "done" },
+          { "id": 5, "title": "Document and Version Control Schema Changes", "status": "done" }
+        ]
+      },
+      {
+        "id": 17,
+        "title": "Authenticated User Endpoint",
+        "description": "Implement /api/users/me API route for current authenticated user info",
+        "status": "pending",
+        "dependencies": [3, 23],
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "created": "2025-07-02T13:20:00.000Z",
+      "description": "Updated master task list organized by phase/milestone"
+    }
+  }
+}

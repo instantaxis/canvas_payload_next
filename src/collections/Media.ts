@@ -1,19 +1,10 @@
 import { CollectionConfig } from 'payload';
 import { isAuthenticated, isOwnerOrAdmin } from '../access';
-import { s3Adapter } from '@payloadcms/storage-s3';
 
 
 export const Media: CollectionConfig = {
   slug: 'media',
   upload: {
-    adapter: s3Adapter({
-      bucket: process.env.SUPABASE_S3_BUCKET || '',
-      region: process.env.SUPABASE_S3_REGION || '',
-      endpoint: process.env.SUPABASE_S3_ENDPOINT || '',
-      accessKeyId: process.env.SUPABASE_S3_KEY || '',
-      secretAccessKey: process.env.SUPABASE_S3_SECRET || '',
-      forcePathStyle: true,
-    }),
     imageSizes: [
       {
         name: 'thumbnail',

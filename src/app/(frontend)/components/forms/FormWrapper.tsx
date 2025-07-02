@@ -1,18 +1,17 @@
+'use client'
 
-'use client';
-
-import React from 'react';
-import { useForm, FormProvider, UseFormProps, UseFormReturn } from 'react-hook-form';
-import { ZodSchema, z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { FieldValues } from 'react-hook-form';
+import React from 'react'
+import { useForm, FormProvider, UseFormProps, UseFormReturn } from 'react-hook-form'
+import { ZodSchema, z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { FieldValues } from 'react-hook-form'
 
 interface FormWrapperProps<TFormValues extends FieldValues> {
-  children: React.ReactNode;
-  onSubmit: (data: TFormValues) => void;
-  schema: ZodSchema<TFormValues>;
-  options?: UseFormProps<TFormValues>;
-  className?: string;
+  children: (methods: UseFormReturn<TFormValues>) => React.ReactNode
+  onSubmit: (data: TFormValues) => void
+  schema: ZodSchema<TFormValues>
+  options?: UseFormProps<TFormValues>
+  className?: string
 }
 
 /**
@@ -31,17 +30,17 @@ export const FormWrapper = <TFormValues extends FieldValues>({
   const methods = useForm<TFormValues>({
     ...options,
     resolver: zodResolver(schema),
-  });
+  })
 
   return (
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)} className={className}>
-        {children}
+        {children(methods)}
       </form>
     </FormProvider>
-  );
-};
+  )
+}
 
 // Re-exporting for convenience
-export { useForm, zodResolver, z };
-export type { UseFormReturn };
+export { useForm, zodResolver, z }
+export type { UseFormReturn }

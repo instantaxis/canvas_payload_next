@@ -1,5 +1,5 @@
 import { CollectionConfig } from 'payload';
-import { isAdmin } from '../access';
+import { isAdmin, isAuthenticated } from '../access';
 
 export const Features: CollectionConfig = {
   slug: 'features',

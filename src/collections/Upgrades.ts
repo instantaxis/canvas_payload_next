@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { isAdmin, isAdminOrManager, isAdminOrHasLocationAccess } from '../access';
+import { isAdmin, isAdminOrManager, isAdminOrHasLocationAccess, isAuthenticated } from '../access';
 
 /**
  * @description Upgrades collection configuration.

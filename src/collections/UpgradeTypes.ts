@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload';
+import { isAdmin, isAuthenticated } from '../access';
 
 export const UpgradeTypes: CollectionConfig = {
   slug: 'upgrade-types',

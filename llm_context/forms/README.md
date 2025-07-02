@@ -1,11 +1,13 @@
 # Form Submission Patterns
 
+
 ## Form Libraries
 - [x] React Hook Form integration patterns - Integrates well with Zod for schema validation
 - [x] Zod schema validation - Provides type safety and validation logic
 - [x] Form state management with Zustand - Use Zustand for complex form state across components
 - [x] File upload handling with Payload Media - Implement using Form Builder plugin with custom overrides[1][2]
-
+- [x] Password reset flow - Backend endpoints and frontend forms with validation and email verification
+- [x] Login flow - Backend API and frontend form with JWT authentication and secure cookie handling
 ## Submission Strategies
 - [x] Optimistic UI updates - Implement with Tanstack Query's `onMutate`[4]
 - [x] Error handling and user feedback - Use Form Builder's confirmation messages[1][4]

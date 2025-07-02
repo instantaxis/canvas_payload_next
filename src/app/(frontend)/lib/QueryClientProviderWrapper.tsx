@@ -40,13 +40,16 @@ export const QueryClientProviderWrapper: React.FC<QueryClientProviderWrapperProp
 
   React.useEffect(() => {
     if (typeof window !== 'undefined') {
-      persistQueryClient({
-        queryClient,
-        persister,
-        maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
-      }).then(() => {
+      const setupPersistence = async () => {
+        await persistQueryClient({
+          queryClient,
+          persister,
+          maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+        })
         queryClient.resumePausedMutations()
-      })
+      }
+
+      setupPersistence()
     }
   }, [queryClient, persister])
 
