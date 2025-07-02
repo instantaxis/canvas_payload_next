@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import './styles.css'
 import { QueryClientProviderWrapper } from './lib/QueryClientProviderWrapper'
+import ErrorBoundary from './components/ErrorBoundary'
+import { LoadingSpinner } from './components/LoadingSpinner'
 
 export const metadata = {
   description: 'A blank template using Payload in a Next.js app.',
@@ -19,7 +21,11 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
     <html lang="en">
       <body>
         <QueryClientProviderWrapper>
-          <main>{children}</main>
+          <ErrorBoundary fallback={<div>Something went wrong in the app!</div>}>
+            <Suspense fallback={<LoadingSpinner />}>
+              <main>{children}</main>
+            </Suspense>
+          </ErrorBoundary>
         </QueryClientProviderWrapper>
       </body>
     </html>
