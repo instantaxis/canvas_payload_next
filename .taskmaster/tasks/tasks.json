@@ -1186,11 +1186,67 @@
             "testStrategy": ""
           }
         ]
+      },
+      {
+        "id": 13,
+        "title": "Implement and Configure Payload Auditor for Comprehensive Audit Logging",
+        "description": "Integrate and configure a payload-auditor or equivalent audit logging mechanism to capture all critical admin actions (create, update, delete) with user and payload details, and define retention policies for audit logs.",
+        "details": "1. Integrate the payload-auditor plugin (or a similar audit logging solution) into the Payload CMS configuration. 2. Configure audit hooks on key collections (e.g., Users, Locations) to log create, update, and delete actions, ensuring each log entry includes user ID, operation type, timestamp, and relevant payload data. 3. Reference llm_context/payload3/best_practices.md to align with recommended audit logging standards and security practices. 4. Define and implement log retention policies (e.g., automatic deletion or archiving of logs older than a specified period) within the Payload CMS or via scheduled background jobs. 5. Ensure audit logs are stored securely and are queryable for compliance and troubleshooting. 6. Document the audit logging and retention configuration for future maintenance.",
+        "testStrategy": "1. Write unit tests to verify that create, update, and delete operations on Users and Locations collections generate audit log entries containing user ID, operation type, and payload data. 2. Use integration tests to simulate admin actions and confirm that logs are written as expected. 3. Test log retention by creating logs with timestamps outside the retention window and verifying their automatic deletion or archival. 4. Manually inspect audit logs for completeness and security. 5. Review documentation for clarity and accuracy.",
+        "status": "pending",
+        "dependencies": [
+          2,
+          8
+        ],
+        "priority": "medium",
+        "subtasks": []
+      },
+      {
+        "id": 14,
+        "title": "Establish and Enforce Strict TypeScript Typing Guidelines for Payload",
+        "description": "Define, document, and enforce strict TypeScript typing standards for Payload CMS hooks, access control functions, and field conditions, including automated linting rules and developer documentation.",
+        "details": "1. Review llm_context/responses/typescript_error_resolution_v2.md and llm_context/responses/typescript_errors.md to extract recommended strict typing patterns for Payload CMS, focusing on hooks, access control functions, and field condition callbacks. 2. Draft clear, actionable guidelines outlining required TypeScript types, generics, and best practices for Payload-specific code. 3. Update or create a dedicated section in CONTRIBUTING.md (or a similar developer guide) to document these guidelines, including code examples and rationale. 4. Configure or extend the project's ESLint setup to enforce these guidelines, using plugins such as @typescript-eslint and custom rules where necessary. 5. Integrate linting into the CI pipeline to ensure ongoing compliance. 6. Communicate changes to the team and provide migration instructions for existing code that does not meet the new standards.",
+        "testStrategy": "1. Update or create an ESLint configuration file with rules enforcing strict typing for Payload hooks, access control, and field conditions. 2. Run 'npm run lint' and verify that violations are reported for non-compliant code. 3. Confirm that CI fails on type guideline violations. 4. Review the updated CONTRIBUTING.md to ensure guidelines are clear, complete, and include relevant examples. 5. Validate that new and existing code is checked automatically by ESLint and that developers are aware of the new standards.",
+        "status": "pending",
+        "dependencies": [
+          10,
+          12
+        ],
+        "priority": "medium",
+        "subtasks": []
+      },
+      {
+        "id": 15,
+        "title": "Enforce Code Documentation Standards (Inline Comments & JSDoc/TSDoc)",
+        "description": "Establish and enforce code documentation standards using inline comments and JSDoc/TSDoc for all functions, classes, and interfaces, and update contributing guidelines accordingly.",
+        "details": "1. Define clear documentation standards for inline comments (focusing on explaining complex logic and intent) and for JSDoc/TSDoc usage on all exported functions, classes, and interfaces. 2. Update or create a dedicated documentation file (e.g., llm_context/documentation_standards.md) outlining these requirements, including examples and rationale. 3. Revise the project's CONTRIBUTING.md to reference these standards and set expectations for contributors. 4. Implement a pre-commit hook (e.g., using Husky and lint-staged) or a CI/CD check that uses tools like ESLint with plugins such as eslint-plugin-jsdoc to automatically flag missing or insufficient documentation in new or modified code. 5. Provide onboarding documentation or a quick reference guide for developers to adopt the standards efficiently. 6. Ensure that the documentation standards are compatible with existing TypeScript typing and testing guidelines.",
+        "testStrategy": "1. Review a representative sample of existing code files to identify and document areas lacking sufficient inline comments or JSDoc/TSDoc coverage. 2. Verify that the pre-commit hook or CI/CD check correctly detects and blocks commits with undocumented or poorly documented code. 3. Confirm that the updated CONTRIBUTING.md and documentation_standards.md are clear, accessible, and referenced in onboarding materials. 4. Run ESLint (with the relevant plugins) on the codebase and ensure that violations are reported for missing or inadequate documentation. 5. Solicit feedback from at least one developer to validate that the standards and enforcement mechanisms are practical and effective.",
+        "status": "pending",
+        "dependencies": [
+          10,
+          12
+        ],
+        "priority": "medium",
+        "subtasks": []
+      },
+      {
+        "id": 16,
+        "title": "Review and Refine Form Composition for Complex Forms",
+        "description": "Analyze and improve the architecture of complex forms, focusing on multi-step and dynamic scenarios, to enhance maintainability and user experience. Consider introducing a more structured state management approach or adopting a specialized form library if current patterns are insufficient.",
+        "details": "1. Audit existing form implementations, especially those that are multi-step or highly dynamic, referencing llm_context/forms/README.md for current patterns and submission flows.\n2. Identify pain points, redundancies, or limitations in the current form composition, state management, and validation strategies.\n3. Research best practices for complex form handling, such as using a state machine (e.g., XState) or adopting a more opinionated form library if React Hook Form and Zod prove insufficient for advanced scenarios.\n4. Select a representative complex form (or design a hypothetical one if none exist) and document its current structure, highlighting areas for improvement.\n5. Propose a refactored architecture, possibly implementing a proof-of-concept using the chosen structured approach (e.g., state machine, enhanced context management, or a new library).\n6. Document findings, recommendations, and implementation details in a new llm_context/forms/complex_forms.md file, including code samples and migration guidance if changes are recommended.",
+        "testStrategy": "1. Select a complex form within the application (or define a hypothetical one) and analyze its current implementation against modern best practices for form composition and state management.\n2. Document identified issues or limitations in the current approach.\n3. Implement a refactored version of the form using the proposed structured approach, ensuring feature parity and improved maintainability.\n4. Compare the original and refactored implementations in terms of code clarity, scalability, and user experience.\n5. Review and validate the new llm_context/forms/complex_forms.md documentation for completeness, clarity, and actionable recommendations.",
+        "status": "pending",
+        "dependencies": [
+          4,
+          6
+        ],
+        "priority": "medium",
+        "subtasks": []
       }
     ],
     "metadata": {
       "created": "2025-07-01T23:13:03.567Z",
-      "updated": "2025-07-02T01:54:50.124Z",
+      "updated": "2025-07-02T02:23:46.527Z",
       "description": "Tasks for master context"
     }
   }
