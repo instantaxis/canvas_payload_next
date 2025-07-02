@@ -16,6 +16,9 @@ export const QrFeedback: CollectionConfig = {
     delete: isAdmin,
   },
   fields: [
+    /**
+     * @description The rating given by the user (1-5).
+     */
     {
       name: 'rating',
       type: 'number',
@@ -23,16 +26,25 @@ export const QrFeedback: CollectionConfig = {
       max: 5,
       required: true,
     },
+    /**
+     * @description Optional comment from the user.
+     */
     {
       name: 'comment',
       type: 'textarea',
     },
+    /**
+     * @description The location where the feedback was given.
+     */
     {
       name: 'location',
       type: 'relationship',
       relationTo: 'locations',
       required: true,
     },
+    /**
+     * @description The user who provided the feedback.
+     */
     {
       name: 'user',
       type: 'relationship',

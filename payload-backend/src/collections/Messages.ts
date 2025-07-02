@@ -1,10 +1,7 @@
 /**
  * @description Messages collection configuration.
  */
-import type { CollectionConfig } from 'payload';
-import { isAdminOrManager, isAdmin } from '../access';
-
-export const Messages = {
+export const Messages: CollectionConfig = {
   slug: 'messages',
   admin: {
     useAsTitle: 'subject',

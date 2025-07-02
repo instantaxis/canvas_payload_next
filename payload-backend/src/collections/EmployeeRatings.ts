@@ -1,6 +1,9 @@
 import type { CollectionConfig } from 'payload'
 import { isAdmin, isAdminOrManager, canReadEmployeeRatings } from '../access';
 
+/**
+ * @description Employee Ratings collection configuration.
+ */
 export const EmployeeRatings: CollectionConfig = {
   slug: 'employee-ratings',
   admin: {
@@ -82,6 +85,13 @@ export const EmployeeRatings: CollectionConfig = {
   timestamps: true,
   hooks: {
     beforeChange: [
+      /**
+       * @description Hook to validate rating range before changing an employee rating.
+       * @param {object} args
+       * @param {object} args.data - The data being saved.
+       * @param {object} args.req - The Payload request object.
+       * @returns {object} The modified data.
+       */
       ({ data, req }) => {
         // Ensure rating is within valid range
         if (data.rating && (data.rating < 1 || data.rating > 5)) {

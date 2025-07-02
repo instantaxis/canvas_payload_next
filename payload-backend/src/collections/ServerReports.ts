@@ -16,22 +16,34 @@ export const ServerReports: CollectionConfig = {
     delete: isAdmin,
   },
   fields: [
+    /**
+     * @description The title of the server report.
+     */
     {
       name: 'title',
       type: 'text',
       required: true,
     },
+    /**
+     * @description The date of the server report.
+     */
     {
       name: 'date',
       type: 'date',
       required: true,
     },
+    /**
+     * @description The server who submitted the report.
+     */
     {
       name: 'server',
       type: 'relationship',
       relationTo: 'users',
       required: true,
     },
+    /**
+     * @description The location where the report was submitted.
+     */
     {
       name: 'location',
       type: 'relationship',

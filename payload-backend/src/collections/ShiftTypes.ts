@@ -13,6 +13,9 @@ export const ShiftTypes: CollectionConfig = {
     read: () => true,
   },
   fields: [
+    /**
+     * @description The name of the shift type.
+     */
     {
       name: 'name',
       type: 'text',

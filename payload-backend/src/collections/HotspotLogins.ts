@@ -58,6 +58,12 @@ export const HotspotLogins: CollectionConfig = {
   timestamps: true,
   hooks: {
     beforeChange: [
+      /**
+       * @description Hook to validate email format before changing a hotspot login.
+       * @param {object} args
+       * @param {object} args.data - The data being saved.
+       * @returns {object} The modified data.
+       */
       ({ data }) => {
         // Validate email format if provided
         if (data.customer_email && !data.customer_email.includes('@')) {
