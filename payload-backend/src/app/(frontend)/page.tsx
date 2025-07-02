@@ -7,6 +7,10 @@ import { fileURLToPath } from 'url'
 import config from '@/payload.config'
 import './styles.css'
 
+/**
+ * @description The home page for the frontend application.
+ * @returns {Promise<React.ReactElement>}
+ */
 export default async function HomePage() {
   const headers = await getHeaders()
   const payloadConfig = await config

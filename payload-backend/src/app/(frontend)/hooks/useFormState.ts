@@ -9,6 +9,12 @@ interface FormStateOptions<TFormValues extends FieldValues> {
   initialState?: Partial<TFormValues>;
 }
 
+/**
+ * @description A custom hook to manage form state, including dirty status, submission status, and submit count.
+ * @template TFormValues
+ * @param {FormStateOptions<TFormValues>} props
+ * @returns {object}
+ */
 export const useFormState = <TFormValues extends FieldValues>({
   form,
   initialState,

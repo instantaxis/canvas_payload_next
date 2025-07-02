@@ -10,6 +10,11 @@ export const metadata = {
 
 const queryClient = new QueryClient();
 
+/**
+ * @description The root layout for the frontend application.
+ * @param {{ children: React.ReactNode }} props
+ * @returns {Promise<React.ReactElement>}
+ */
 export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
 
