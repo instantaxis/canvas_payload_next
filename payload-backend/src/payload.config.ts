@@ -1,4 +1,4 @@
-const s3Adapter = (await import('@payloadcms/storage-s3')).s3Adapter;
+// 
 import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
 import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
@@ -29,11 +29,14 @@ import { Reviews } from './collections/Reviews'
 import { ServerReports } from './collections/ServerReports'
 import { ShiftTypes } from './collections/ShiftTypes'
 import { Upgrades } from './collections/Upgrades'
-import { UpgradeTypes } from './collections/UpgradeTypes'
+import { UpgradeTypes }m './collections/UpgradeTypes'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+/**
+ * @description Builds the Payload CMS configuration.
+ */
 export default buildConfig({
   admin: {
     user: Users.slug,

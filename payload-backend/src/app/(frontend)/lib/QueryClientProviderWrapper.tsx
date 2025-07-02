@@ -1,13 +1,13 @@
+'use client'
 
-'use client';
-
-import React, { useState } from 'react';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { persistQueryClient, createSyncStoragePersister } from '@tanstack/react-query-persist-client';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import React, { useState } from 'react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { persistQueryClient } from '@tanstack/react-query-persist-client'
+import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persister'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 interface QueryClientProviderWrapperProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 /**
@@ -23,17 +23,20 @@ interface QueryClientProviderWrapperProps {
 export const QueryClientProviderWrapper: React.FC<QueryClientProviderWrapperProps> = ({
   children,
 }) => {
-  const [queryClient] = useState(() => new QueryClient({
-    defaultOptions: {
-      queries: {
-        gcTime: 1000 * 60 * 60 * 24, // 24 hours
-      },
-    },
-  }));
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            gcTime: 1000 * 60 * 60 * 24, // 24 hours
+          },
+        },
+      }),
+  )
 
   const persister = createSyncStoragePersister({
     storage: typeof window !== 'undefined' ? window.localStorage : undefined,
-  });
+  })
 
   React.useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -41,17 +44,16 @@ export const QueryClientProviderWrapper: React.FC<QueryClientProviderWrapperProp
         queryClient,
         persister,
         maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
-        onSuccess: () => {
-          queryClient.resumePausedMutations();
-        },
-      });
+      }).then(() => {
+        queryClient.resumePausedMutations()
+      })
     }
-  }, [queryClient, persister]);
+  }, [queryClient, persister])
 
   return (
     <QueryClientProvider client={queryClient}>
       {children}
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
-  );
-};
+  )
+}

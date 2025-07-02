@@ -1,6 +1,8 @@
 {
 	"dependencies": {
 		"@radix-ui/react-label": "^2.1.7",
+		"@tanstack/query-sync-storage-persister": "^5.81.5",
+		"@tanstack/react-query-persist-client": "^5.81.5",
 		"js-cookie": "^3.0.5"
 	}
 }

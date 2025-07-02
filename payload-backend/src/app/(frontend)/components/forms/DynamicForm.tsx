@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useMemo, useState } from 'react'
-import { FieldValues } from 'react-hook-form'
+import { FieldValues, useFormContext } from 'react-hook-form'
 import { FormWrapper } from '@/app/(frontend)/components/forms/FormWrapper'
 import FieldRegistry from '@/app/(frontend)/components/forms/FieldRegistry'
 import { useCollectionSchema } from '@/app/(frontend)/hooks/useCollectionSchema'
@@ -55,16 +55,27 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ collectionSlug, onSubmit, cla
         }
 
         if (field.required) {
-          fieldSchema = fieldSchema.min(1, `${field.label || field.name} is required`)
+          if ('min' in fieldSchema) {
+            fieldSchema = (fieldSchema as z.ZodString | z.ZodArray<any>).min(
+              1,
+              `${field.label || field.name} is required`,
+            )
+          }
         }
 
         // Apply min/max for number fields
         if (field.type === 'number') {
           if (field.min !== undefined) {
-            fieldSchema = (fieldSchema as z.ZodNumber).min(field.min, `Must be at least ${field.min}`)
+            fieldSchema = (fieldSchema as z.ZodNumber).min(
+              field.min,
+              `Must be at least ${field.min}`,
+            )
           }
           if (field.max !== undefined) {
-            fieldSchema = (fieldSchema as z.ZodNumber).max(field.max, `Must be at most ${field.max}`)
+            fieldSchema = (fieldSchema as z.ZodNumber).max(
+              field.max,
+              `Must be at most ${field.max}`,
+            )
           }
         }
 
@@ -87,59 +98,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ collectionSlug, onSubmit, cla
     setIsMounted(true)
   }, [])
 
-  if (isLoading || !isMounted) {
-    return <div>Loading form schema...</div>
-  }
-
-  if (isError) {
-    return <div>Error loading form schema: {error?.message}</div>
-  }
-
-  if (!schema || schema.fields.length === 0) {
-    return <div>No schema found for {collectionSlug} or no fields defined.</div>
-  }
-
-  return (
-    <FormWrapper onSubmit={onSubmit} schema={dynamicZodSchema} className={className}>
-      {schema.fields.map((field) => (
-        <FieldRegistry key={field.name} field={field} />
-      ))}
-      <button type="submit">Submit</button>
-    </FormWrapper>
-  )
-}
-
-export default DynamicForm            fieldSchema = fieldSchema.min(1, `${field.label || field.name} is required`)
-        }
-
-        // Apply min/max for number fields
-        if (field.type === 'number') {
-          if (field.min !== undefined) {
-            fieldSchema = (fieldSchema as z.ZodNumber).min(field.min, `Must be at least ${field.min}`)
-          }
-          if (field.max !== undefined) {
-            fieldSchema = (fieldSchema as z.ZodNumber).max(field.max, `Must be at most ${field.max}`)
-          }
-        }
-
-        // Apply maxLength for text fields
-        if (field.type === 'text' || field.type === 'email' || field.type === 'password') {
-          if (field.maxLength !== undefined) {
-            fieldSchema = (fieldSchema as z.ZodString).max(
-              field.maxLength,
-              `Must be at most ${field.maxLength} characters`,
-            )
-          }
-        }
-
-        return { ...acc, [field.name]: fieldSchema }
-      }, {}),
-    )
-  }, [schema])
-
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
+  const formMethods = useFormContext<FieldValues>()
 
   if (isLoading || !isMounted) {
     return <div>Loading form schema...</div>
@@ -156,7 +115,7 @@ export default DynamicForm            fieldSchema = fieldSchema.min(1, `${field.
   return (
     <FormWrapper onSubmit={onSubmit} schema={dynamicZodSchema} className={className}>
       {schema.fields.map((field) => (
-        <FieldRegistry key={field.name} field={field} />
+        <FieldRegistry key={field.name} field={field} formMethods={formMethods} />
       ))}
       <button type="submit">Submit</button>
     </FormWrapper>
