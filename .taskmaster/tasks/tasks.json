@@ -1407,7 +1407,7 @@
         "description": "Introduce URL path versioning (e.g., /api/v1/) for all API routes by renaming route files and updating all internal and external references accordingly.",
         "details": "1. Audit all existing API route files and identify their current paths.\n2. Rename and reorganize API route files to include a version prefix (e.g., move /api/users to /api/v1/users) following Next.js 15 App Router conventions.\n3. Update all internal imports, links, and references in both backend and frontend code to use the new versioned paths. This includes data fetching hooks, TanStack Query endpoints, form submissions, and any direct API calls.\n4. Refactor any middleware or route handlers that rely on hardcoded paths to support the new versioned structure.\n5. Ensure that documentation and OpenAPI/Swagger specs (if present) reflect the new versioned endpoints.\n6. Consider backward compatibility: optionally, add redirects or legacy support for unversioned routes if required.\n7. Coordinate with the modularized middleware system to ensure all security, CORS, authentication, and rate limiting logic applies correctly to versioned routes.",
         "testStrategy": "1. Run automated integration tests to verify that all API endpoints are accessible via the new /api/v1/ path and return expected results.\n2. Manually test key user flows (authentication, CRUD operations, file uploads) to confirm they interact with versioned endpoints.\n3. Check that all internal references, hooks, and data fetching utilities use the updated paths and do not reference legacy routes.\n4. Validate that middleware (security, CORS, authentication, rate limiting) is correctly applied to versioned routes.\n5. If legacy support is implemented, ensure that requests to old paths are properly redirected or handled.\n6. Review API documentation to confirm all endpoints are accurately described with versioned paths.",
-        "status": "pending",
+        "status": "done",
         "dependencies": [
           5,
           22
@@ -1803,7 +1803,7 @@
     ],
     "metadata": {
       "created": "2025-07-01T23:13:03.567Z",
-      "updated": "2025-07-02T07:47:49.766Z",
+      "updated": "2025-07-02T08:05:19.052Z",
       "description": "Tasks for master context"
     }
   }
