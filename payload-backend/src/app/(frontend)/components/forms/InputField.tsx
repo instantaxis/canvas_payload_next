@@ -16,6 +16,11 @@ interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   labelClassName?: string;
 }
 
+/**
+ * @description A reusable input field component that integrates with react-hook-form.
+ * @param {InputFieldProps} props
+ * @returns {React.ReactElement}
+ */
 export const InputField = ({
   name,
   label,

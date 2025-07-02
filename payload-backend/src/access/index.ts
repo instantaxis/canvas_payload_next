@@ -1,3 +1,4 @@
+
 import { Access, PayloadRequest } from 'payload';
 import { User } from '../payload-types'; // Adjust path as needed
 
@@ -6,30 +7,65 @@ type UserWithRoles = User & {
   locations?: string[];
 };
 
+/**
+ * @description Access control function to check if the user is an admin
+ * @param {Access<any, UserWithRoles>} { req }
+ * @returns {boolean}
+ */
 export const isAdmin: Access<any, UserWithRoles> = ({ req }) => {
   return req.user?.roles?.includes('admin') || false;
 };
 
+/**
+ * @description Access control function to check if the user is a manager
+ * @param {Access<any, UserWithRoles>} { req }
+ * @returns {boolean}
+ */
 export const isManager: Access<any, UserWithRoles> = ({ req }) => {
   return req.user?.roles?.includes('manager') || false;
 };
 
+/**
+ * @description Access control function to check if the user is a foh employee
+ * @param {Access<any, UserWithRoles>} { req }
+ * @returns {boolean}
+ */
 export const isFohEmployee: Access<any, UserWithRoles> = ({ req }) => {
   return req.user?.roles?.includes('foh_employee') || false;
 };
 
+/**
+ * @description Access control function to check if the user is a store manager
+ * @param {Access<any, UserWithRoles>} { req }
+ * @returns {boolean}
+ */
 export const isStoreManager: Access<any, UserWithRoles> = ({ req }) => {
   return req.user?.roles?.includes('store_manager') || false;
 };
 
+/**
+ * @description Access control function to check if the user is a shift manager
+ * @param {Access<any, UserWithRoles>} { req }
+ * @returns {boolean}
+ */
 export const isShiftManager: Access<any, UserWithRoles> = ({ req }) => {
   return req.user?.roles?.includes('shift_manager') || false;
 };
 
+/**
+ * @description Access control function to check if the user is an admin or a manager
+ * @param {Access<any, UserWithRoles>} { req }
+ * @returns {boolean}
+ */
 export const isAdminOrManager: Access<any, UserWithRoles> = ({ req }) => {
   return isAdmin({ req }) || isManager({ req });
 };
 
+/**
+ * @description Access control function to check if the user is an admin or the owner of the document
+ * @param {Access<any, UserWithRoles>} { req, id, doc }
+ * @returns {boolean}
+ */
 export const isAdminOrSelf: Access<any, UserWithRoles> = ({ req, id, doc }) => {
   if (isAdmin({ req })) return true;
   if (req.user && id === req.user.id) return true;
@@ -37,6 +73,11 @@ export const isAdminOrSelf: Access<any, UserWithRoles> = ({ req, id, doc }) => {
   return false;
 };
 
+/**
+ * @description Access control function to check if the user is an admin or has access to the location
+ * @param {Access<any, UserWithRoles>} { req, doc }
+ * @returns {boolean}
+ */
 export const isAdminOrHasLocationAccess: Access<any, UserWithRoles> = ({ req, doc }) => {
   if (isAdmin({ req })) return true;
 
@@ -50,14 +91,29 @@ export const isAdminOrHasLocationAccess: Access<any, UserWithRoles> = ({ req, do
   return false;
 };
 
+/**
+ * @description Access control function to check if the user is authenticated
+ * @param {Access<any, UserWithRoles>} { req }
+ * @returns {boolean}
+ */
 export const isAuthenticated: Access<any, UserWithRoles> = ({ req }) => {
   return !!req.user;
 };
 
+/**
+ * @description Access control function to check if the user can manage users
+ * @param {Access<any, UserWithRoles>} { req }
+ * @returns {boolean}
+ */
 export const canManageUsers: Access<any, UserWithRoles> = ({ req }) => {
   return isAdmin({ req }) || isStoreManager({ req }) || isShiftManager({ req });
 };
 
+/**
+ * @description Access control function to check if the user can read employee ratings
+ * @param {Access<any, UserWithRoles>} { req, id, doc }
+ * @returns {boolean}
+ */
 export const canReadEmployeeRatings: Access<any, UserWithRoles> = ({ req, id, doc }) => {
   if (isAdmin({ req })) return true;
   if (isManager({ req })) return true;
@@ -69,6 +125,11 @@ export const canReadEmployeeRatings: Access<any, UserWithRoles> = ({ req, id, do
   return false;
 };
 
+/**
+ * @description Access control function to check if the user is the owner of the document or an admin
+ * @param {string} ownerField
+ * @returns {Access<any, UserWithRoles>}
+ */
 export const isOwnerOrAdmin = (ownerField: string): Access<any, UserWithRoles> => ({ req, doc }) => {
   if (isAdmin({ req })) return true;
 
@@ -78,3 +139,4 @@ export const isOwnerOrAdmin = (ownerField: string): Access<any, UserWithRoles> =
   }
   return false;
 };
+
