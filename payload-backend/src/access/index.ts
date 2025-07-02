@@ -2,6 +2,9 @@
 import { Access, PayloadRequest } from 'payload';
 import { User } from '../payload-types'; // Adjust path as needed
 
+/**
+ * @typedef {User & { roles?: string[]; locations?: string[]; }}
+ */
 type UserWithRoles = User & {
   roles?: string[];
   locations?: string[];
