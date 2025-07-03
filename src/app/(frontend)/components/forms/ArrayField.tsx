@@ -1,5 +1,5 @@
 import React from 'react'
-import { FieldValues, useFieldArray, UseFormReturn } from 'react-hook-form'
+import { FieldValues, useFieldArray, UseFormReturn, ArrayPath } from 'react-hook-form'
 import { PayloadField } from '@/app/(frontend)/hooks/useCollectionSchema'
 import FieldRegistry from './FieldRegistry'
 
@@ -14,7 +14,7 @@ export const ArrayField = <TFormValues extends FieldValues>({
 }: ArrayFieldProps<TFormValues>) => {
   const { fields, append, remove } = useFieldArray({
     control: formMethods.control,
-    name: field.name,
+    name: field.name as ArrayPath<TFormValues>,
   })
 
   if (field.type !== 'array' || !field.fields) {
@@ -26,7 +26,7 @@ export const ArrayField = <TFormValues extends FieldValues>({
       <label>{field.label}</label>
       {fields.map((item, index) => (
         <div key={item.id}>
-          {field.fields.map((subField) => (
+          {field.fields!.map((subField) => (
             <FieldRegistry
               key={subField.name}
               field={{
@@ -41,7 +41,20 @@ export const ArrayField = <TFormValues extends FieldValues>({
           </button>
         </div>
       ))}
-      <button type="button" onClick={() => append({})}>
+      <button
+        type="button"
+        onClick={() => {
+          // Generate default values for each subfield
+          const defaultItem = field.fields!.reduce(
+            (acc, subField) => {
+              acc[subField.name] = ''
+              return acc
+            },
+            {} as Record<string, any>,
+          )
+          append(defaultItem as any)
+        }}
+      >
         Add {field.label}
       </button>
     </div>

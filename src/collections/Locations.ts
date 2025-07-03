@@ -1,5 +1,5 @@
-import { CollectionConfig } from 'payload';
-import { isAdmin, isAdminOrManager, isAuthenticated } from '../access';
+import { CollectionConfig } from 'payload'
+import { isAdmin, isAdminOrStoreManager, isAuthenticated } from '../access'
 
 export const Locations: CollectionConfig = {
   slug: 'locations',
@@ -8,9 +8,9 @@ export const Locations: CollectionConfig = {
     defaultColumns: ['name', 'city', 'state', 'phone'],
   },
   access: {
-    create: isAdminOrManager,
+    create: isAdminOrStoreManager,
     read: isAuthenticated, // All authenticated users can read locations
-    update: isAdminOrManager,
+    update: isAdminOrStoreManager,
     delete: isAdmin,
   },
   fields: [
@@ -49,4 +49,4 @@ export const Locations: CollectionConfig = {
       type: 'email',
     },
   ],
-};
+}

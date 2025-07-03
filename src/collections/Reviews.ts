@@ -1,5 +1,5 @@
-import { CollectionConfig } from 'payload';
-import { isAdmin, isAdminOrManager, isAuthenticated } from '../access';
+import { CollectionConfig } from 'payload'
+import { isAdmin, isAdminOrStoreManager, isAuthenticated } from '../access'
 
 export const Reviews: CollectionConfig = {
   slug: 'reviews',
@@ -9,7 +9,7 @@ export const Reviews: CollectionConfig = {
   access: {
     create: isAuthenticated,
     read: isAuthenticated,
-    update: isAdminOrManager,
+    update: isAdminOrStoreManager,
     delete: isAdmin,
   },
   fields: [
@@ -48,4 +48,4 @@ export const Reviews: CollectionConfig = {
       hasMany: true,
     },
   ],
-};
+}

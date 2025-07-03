@@ -1,5 +1,5 @@
-import { CollectionConfig } from 'payload';
-import { isAdmin, isAdminOrManager, isAuthenticated } from '../access';
+import { CollectionConfig } from 'payload'
+import { isAdmin, isAdminOrStoreManager, isAuthenticated } from '../access'
 
 export const DietaryRestrictions: CollectionConfig = {
   slug: 'dietary-restrictions',
@@ -9,9 +9,9 @@ export const DietaryRestrictions: CollectionConfig = {
     description: 'Manage common dietary restrictions and allergies.',
   },
   access: {
-    create: isAdminOrManager,
+    create: isAdminOrStoreManager,
     read: isAuthenticated, // Authenticated read access for menu display, etc.
-    update: isAdminOrManager,
+    update: isAdminOrStoreManager,
     delete: isAdmin,
   },
   fields: [
@@ -37,4 +37,4 @@ export const DietaryRestrictions: CollectionConfig = {
       },
     },
   ],
-};
+}

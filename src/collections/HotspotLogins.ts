@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { isAdmin, isAdminOrManager, isAdminOrHasLocationAccess } from '../access';
+import { isAdmin, isAdminOrStoreManager, isAdminOrHasLocationAccess } from '../access'
 
 /**
  * @description Hotspot Logins collection configuration.
@@ -10,12 +10,12 @@ export const HotspotLogins: CollectionConfig = {
     useAsTitle: 'customer_name',
     defaultColumns: ['customer_name', 'customer_email', 'location', 'date_created'],
     group: 'Data',
-    description: 'WiFi hotspot login data and customer information'
+    description: 'WiFi hotspot login data and customer information',
   },
   access: {
     read: isAdminOrHasLocationAccess,
     create: () => true, // Public creation for hotspot logins
-    update: isAdminOrManager,
+    update: isAdminOrStoreManager,
     delete: isAdmin,
   },
   fields: [
@@ -26,24 +26,24 @@ export const HotspotLogins: CollectionConfig = {
       required: true,
       admin: {
         position: 'sidebar',
-        description: 'Location where the login occurred'
-      }
+        description: 'Location where the login occurred',
+      },
     },
     {
       name: 'customer_name',
       type: 'text',
       required: false,
       admin: {
-        description: 'Customer name provided during login (optional)'
-      }
+        description: 'Customer name provided during login (optional)',
+      },
     },
     {
       name: 'customer_email',
       type: 'email',
       required: false,
       admin: {
-        description: 'Customer email provided during login (optional)'
-      }
+        description: 'Customer email provided during login (optional)',
+      },
     },
     {
       name: 'marketing_consent',
@@ -51,9 +51,9 @@ export const HotspotLogins: CollectionConfig = {
       defaultValue: false,
       admin: {
         position: 'sidebar',
-        description: 'Customer consented to marketing communications'
-      }
-    }
+        description: 'Customer consented to marketing communications',
+      },
+    },
   ],
   timestamps: true,
   hooks: {
@@ -69,9 +69,9 @@ export const HotspotLogins: CollectionConfig = {
         if (data.customer_email && !data.customer_email.includes('@')) {
           throw new Error('Invalid email format')
         }
-        
+
         return data
-      }
-    ]
-  }
+      },
+    ],
+  },
 }

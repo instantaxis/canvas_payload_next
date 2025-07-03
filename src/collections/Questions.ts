@@ -1,22 +1,22 @@
 import type { CollectionConfig } from 'payload'
-import { isAdmin, isAdminOrManager, isAuthenticated } from '../access';
+import { isAdmin, isAdminOrStoreManager, isAuthenticated } from '../access'
 
 export const Questions: CollectionConfig = {
   slug: 'questions',
   labels: {
     singular: 'Custom Question',
-    plural: 'Custom Questions'
+    plural: 'Custom Questions',
   },
   admin: {
     useAsTitle: 'question',
     defaultColumns: ['question', 'shift_timing', 'shift_selection', 'status', 'sort'],
     group: 'Reports',
-    description: 'Custom questions to be displayed on server and manager reports'
+    description: 'Custom questions to be displayed on server and manager reports',
   },
   access: {
     read: isAuthenticated,
-    create: isAdminOrManager,
-    update: isAdminOrManager,
+    create: isAdminOrStoreManager,
+    update: isAdminOrStoreManager,
     delete: isAdmin,
   },
   fields: [
@@ -26,28 +26,28 @@ export const Questions: CollectionConfig = {
       options: [
         { label: 'Active', value: 'active' },
         { label: 'Inactive', value: 'inactive' },
-        { label: 'Archived', value: 'archived' }
+        { label: 'Archived', value: 'archived' },
       ],
       defaultValue: 'active',
       admin: {
-        position: 'sidebar'
-      }
+        position: 'sidebar',
+      },
     },
     {
       name: 'sort',
       type: 'number',
       admin: {
         position: 'sidebar',
-        description: 'Sort order for display'
-      }
+        description: 'Sort order for display',
+      },
     },
     {
       name: 'question',
       type: 'text',
       required: true,
       admin: {
-        description: 'The question text to display'
-      }
+        description: 'The question text to display',
+      },
     },
     {
       name: 'shift_timing',
@@ -55,12 +55,12 @@ export const Questions: CollectionConfig = {
       options: [
         { label: 'AM Only', value: 'am' },
         { label: 'PM Only', value: 'pm' },
-        { label: 'Any Shift Time', value: 'any' }
+        { label: 'Any Shift Time', value: 'any' },
       ],
       defaultValue: 'any',
       admin: {
-        description: 'When this question should be displayed'
-      }
+        description: 'When this question should be displayed',
+      },
     },
     {
       name: 'shift_selection',
@@ -71,19 +71,19 @@ export const Questions: CollectionConfig = {
         { label: 'Server', value: 'server' },
         { label: 'FOH Support', value: 'foh_support' },
         { label: 'Shift Manager', value: 'shift_manager' },
-        { label: 'Store Manager', value: 'store_manager' }
+        { label: 'Store Manager', value: 'store_manager' },
       ],
       admin: {
-        description: 'Which roles should see this question'
-      }
+        description: 'Which roles should see this question',
+      },
     },
     {
       name: 'min_characters',
       type: 'number',
       min: 0,
       admin: {
-        description: 'Minimum character count for answers'
-      }
+        description: 'Minimum character count for answers',
+      },
     },
     {
       name: 'locations',
@@ -91,9 +91,9 @@ export const Questions: CollectionConfig = {
       relationTo: 'locations',
       hasMany: true,
       admin: {
-        description: 'Locations where this question should appear (leave empty for all locations)'
-      }
-    }
+        description: 'Locations where this question should appear (leave empty for all locations)',
+      },
+    },
   ],
   timestamps: true,
   hooks: {
@@ -103,9 +103,9 @@ export const Questions: CollectionConfig = {
         if (data.min_characters && data.min_characters < 0) {
           throw new Error('Minimum characters cannot be negative')
         }
-        
+
         return data
-      }
-    ]
-  }
+      },
+    ],
+  },
 }

@@ -1,5 +1,5 @@
-import { CollectionConfig } from 'payload';
-import { isAdmin, isAdminOrManager } from '../access';
+import { CollectionConfig } from 'payload'
+import { isAdmin, isAdminOrStoreManager } from '../access'
 
 /**
  * @description QR Feedback collection configuration.
@@ -11,8 +11,8 @@ export const QrFeedback: CollectionConfig = {
   },
   access: {
     create: () => true,
-    read: isAdminOrManager,
-    update: isAdminOrManager,
+    read: isAdminOrStoreManager,
+    update: isAdminOrStoreManager,
     delete: isAdmin,
   },
   fields: [
@@ -51,4 +51,4 @@ export const QrFeedback: CollectionConfig = {
       relationTo: 'users',
     },
   ],
-};
+}

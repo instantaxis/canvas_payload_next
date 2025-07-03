@@ -1,5 +1,5 @@
-import { CollectionConfig } from 'payload';
-import { isAdmin, isAdminOrManager } from '../access';
+import { CollectionConfig } from 'payload'
+import { isAdmin, isAdminOrStoreManager } from '../access'
 
 export const ManagerReports: CollectionConfig = {
   slug: 'managerReports',
@@ -7,9 +7,9 @@ export const ManagerReports: CollectionConfig = {
     useAsTitle: 'title',
   },
   access: {
-    create: isAdminOrManager,
-    read: isAdminOrManager,
-    update: isAdminOrManager,
+    create: isAdminOrStoreManager,
+    read: isAdminOrStoreManager,
+    update: isAdminOrStoreManager,
     delete: isAdmin,
   },
   fields: [
@@ -40,4 +40,4 @@ export const ManagerReports: CollectionConfig = {
       type: 'textarea',
     },
   ],
-};
+}

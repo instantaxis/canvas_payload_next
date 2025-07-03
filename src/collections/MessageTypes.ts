@@ -1,5 +1,5 @@
-import { CollectionConfig } from 'payload';
-import { isAdmin, isAdminOrManager, isAuthenticated } from '../access';
+import { CollectionConfig } from 'payload'
+import { isAdmin, isAdminOrStoreManager, isAuthenticated } from '../access'
 
 export const MessageTypes: CollectionConfig = {
   slug: 'message-types',
@@ -9,9 +9,9 @@ export const MessageTypes: CollectionConfig = {
     description: 'Manage different types of customer messages (e.g., General Inquiry, Complaint).',
   },
   access: {
-    create: isAdminOrManager,
+    create: isAdminOrStoreManager,
     read: isAuthenticated, // Public read access
-    update: isAdminOrManager,
+    update: isAdminOrStoreManager,
     delete: isAdmin,
   },
   fields: [
@@ -25,4 +25,4 @@ export const MessageTypes: CollectionConfig = {
       maxLength: 100,
     },
   ],
-};
+}

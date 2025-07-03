@@ -1,5 +1,5 @@
 import React from 'react'
-import { FieldValues, UseFormReturn } from 'react-hook-form'
+import { FieldValues, UseFormReturn, Path } from 'react-hook-form'
 import { InputField } from './InputField'
 import { SelectField } from './SelectField'
 import { ArrayField } from './ArrayField' // Placeholder
@@ -34,12 +34,11 @@ const FieldRegistry = <TFormValues extends FieldValues>({
       return (
         <div>
           <InputField
-            name={field.name}
             label={field.label}
             type={field.type}
-            placeholder={field.admin?.placeholder || field.label}
+            placeholder={field.label}
             aria-invalid={!!error}
-            {...formMethods.register(field.name)}
+            {...formMethods.register(field.name as Path<TFormValues>)}
           />
           {error && (
             <span role="alert" style={{ color: 'red' }}>
@@ -55,7 +54,7 @@ const FieldRegistry = <TFormValues extends FieldValues>({
             name={field.name}
             label={field.label}
             options={field.options || []}
-            placeholder={field.admin?.placeholder || field.label}
+            placeholder={field.label}
             aria-invalid={!!error}
           />
           {error && (

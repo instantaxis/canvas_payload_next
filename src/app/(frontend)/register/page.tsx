@@ -4,8 +4,8 @@ import React from 'react'
 import { toast } from '@/components/ui/use-toast'
 import DynamicForm from '@/app/(frontend)/components/forms/DynamicForm'
 import { registerSchema } from '@/schemas/registerSchema'
-import { registerUserAction } from './actions';
-import { useCrudMutation } from '@/app/(frontend)/hooks/useCrudMutation';
+import { registerUserAction } from '../actions'
+import { useCrudMutation } from '@/app/(frontend)/hooks/useCrudMutation'
 
 /**
  * @description The user registration page.
@@ -22,13 +22,13 @@ export default function RegisterPage() {
         toast({
           title: 'Registration successful!',
           description: 'You can now log in with your new account.',
-        });
+        })
       } else {
         toast({
           title: 'Registration failed',
           description: data.error || 'An error occurred during registration.',
           variant: 'destructive',
-        });
+        })
       }
     },
     onError: (error: Error) => {
@@ -36,9 +36,9 @@ export default function RegisterPage() {
         title: 'Registration failed',
         description: error.message || 'An error occurred during registration.',
         variant: 'destructive',
-      });
+      })
     },
-  });
+  })
 
   /**
    * @description Handles the form submission for user registration.
@@ -46,12 +46,12 @@ export default function RegisterPage() {
    * @returns {Promise<void>}
    */
   const onSubmit = async (data: FieldValues) => {
-    const formData = new FormData();
+    const formData = new FormData()
     for (const key in data) {
-      formData.append(key, data[key]);
+      formData.append(key, data[key])
     }
-    mutate(formData);
-  };
+    mutate(formData)
+  }
 
   return (
     <div className="flex items-center justify-center min-h-screen">
@@ -60,12 +60,8 @@ export default function RegisterPage() {
           <h1 className="text-3xl font-bold">Register</h1>
           <p className="mt-2 text-sm text-gray-600">Create your account</p>
         </div>
-        <DynamicForm
-          collectionSlug="users"
-          onSubmit={onSubmit}
-          className="space-y-6"
-        />
+        <DynamicForm collectionSlug="users" onSubmit={onSubmit} className="space-y-6" />
       </div>
     </div>
-  );
+  )
 }

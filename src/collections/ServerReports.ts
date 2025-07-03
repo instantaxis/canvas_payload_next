@@ -1,5 +1,5 @@
-import { CollectionConfig } from 'payload';
-import { isAdmin, isAdminOrManager, isFohEmployee } from '../access';
+import { CollectionConfig } from 'payload'
+import { isAdmin, isAdminOrStoreManager, isFohEmployee } from '../access'
 
 /**
  * @description Server Reports collection configuration.
@@ -10,9 +10,9 @@ export const ServerReports: CollectionConfig = {
     useAsTitle: 'title',
   },
   access: {
-    create: ({ req: { user } }) => isAdminOrManager({ req: { user } }) || isFohEmployee({ req: { user } }),
-    read: ({ req: { user } }) => isAdminOrManager({ req: { user } }) || isFohEmployee({ req: { user } }),
-    update: ({ req: { user } }) => isAdminOrManager({ req: { user } }) || isFohEmployee({ req: { user } }),
+    create: ({ req }) => isAdminOrStoreManager({ req }) || isFohEmployee({ req }),
+    read: ({ req }) => isAdminOrStoreManager({ req }) || isFohEmployee({ req }),
+    update: ({ req }) => isAdminOrStoreManager({ req }) || isFohEmployee({ req }),
     delete: isAdmin,
   },
   fields: [
@@ -55,4 +55,4 @@ export const ServerReports: CollectionConfig = {
       type: 'textarea',
     },
   ],
-};
+}

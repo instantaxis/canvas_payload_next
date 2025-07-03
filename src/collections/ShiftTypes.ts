@@ -1,5 +1,5 @@
-import { CollectionConfig } from 'payload';
-import { isAdmin, isAdminOrManager } from '../access';
+import { CollectionConfig } from 'payload'
+import { isAdmin, isAdminOrStoreManager } from '../access'
 
 /**
  * @description Shift Types collection configuration.
@@ -23,4 +23,4 @@ export const ShiftTypes: CollectionConfig = {
       unique: true,
     },
   ],
-};
+}

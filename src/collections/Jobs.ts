@@ -1,5 +1,5 @@
-import { CollectionConfig } from 'payload';
-import { isAdmin, isAdminOrManager, isAuthenticated } from '../access';
+import { CollectionConfig } from 'payload'
+import { isAdmin, isAdminOrStoreManager, isAuthenticated } from '../access'
 
 /**
  * @description Jobs collection configuration.
@@ -20,4 +20,4 @@ export const Jobs: CollectionConfig = {
       unique: true,
     },
   ],
-};
+}

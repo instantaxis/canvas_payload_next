@@ -1,5 +1,10 @@
 import type { CollectionConfig } from 'payload'
-import { isAdmin, isAdminOrManager, isAdminOrHasLocationAccess, isAuthenticated } from '../access';
+import {
+  isAdmin,
+  isAdminOrStoreManager,
+  isAdminOrHasLocationAccess,
+  isAuthenticated,
+} from '../access'
 
 /**
  * @description Upgrades collection configuration.
@@ -10,7 +15,7 @@ export const Upgrades: CollectionConfig = {
     useAsTitle: 'name',
     defaultColumns: ['name', 'location', 'upgrade_type', 'status', 'date_created'],
     group: 'Data',
-    description: 'System and facility upgrades tracking'
+    description: 'System and facility upgrades tracking',
   },
   access: {
     read: isAuthenticated,
@@ -24,8 +29,8 @@ export const Upgrades: CollectionConfig = {
       type: 'text',
       required: true,
       admin: {
-        description: 'Name or title of the upgrade'
-      }
+        description: 'Name or title of the upgrade',
+      },
     },
     {
       name: 'location',
@@ -33,8 +38,8 @@ export const Upgrades: CollectionConfig = {
       relationTo: 'locations',
       admin: {
         position: 'sidebar',
-        description: 'Location where upgrade is being implemented'
-      }
+        description: 'Location where upgrade is being implemented',
+      },
     },
     {
       name: 'upgrade_type',
@@ -42,8 +47,8 @@ export const Upgrades: CollectionConfig = {
       relationTo: 'upgrade-types',
       required: true,
       admin: {
-        description: 'Type of upgrade being performed'
-      }
+        description: 'Type of upgrade being performed',
+      },
     },
     {
       name: 'status',
@@ -53,27 +58,27 @@ export const Upgrades: CollectionConfig = {
         { label: 'In Progress', value: 'in_progress' },
         { label: 'Completed', value: 'completed' },
         { label: 'On Hold', value: 'on_hold' },
-        { label: 'Cancelled', value: 'cancelled' }
+        { label: 'Cancelled', value: 'cancelled' },
       ],
       defaultValue: 'planned',
       admin: {
-        position: 'sidebar'
-      }
+        position: 'sidebar',
+      },
     },
     {
       name: 'description',
       type: 'richText',
       admin: {
-        description: 'Detailed description of the upgrade'
-      }
+        description: 'Detailed description of the upgrade',
+      },
     },
     {
       name: 'cost',
       type: 'number',
       min: 0,
       admin: {
-        description: 'Estimated or actual cost of the upgrade'
-      }
+        description: 'Estimated or actual cost of the upgrade',
+      },
     },
     {
       name: 'vendor',
@@ -89,9 +94,9 @@ export const Upgrades: CollectionConfig = {
       admin: {
         description: 'Scheduled start date for the upgrade',
         date: {
-          pickerAppearance: 'dayOnly'
-        }
-      }
+          pickerAppearance: 'dayOnly',
+        },
+      },
     },
     {
       name: 'completion_date',
@@ -99,17 +104,17 @@ export const Upgrades: CollectionConfig = {
       admin: {
         description: 'Actual completion date',
         date: {
-          pickerAppearance: 'dayOnly'
+          pickerAppearance: 'dayOnly',
         },
-        condition: (data) => data.status === 'completed'
-      }
+        condition: (data) => data.status === 'completed',
+      },
     },
     {
       name: 'notes',
       type: 'richText',
       admin: {
-        description: 'Additional notes and updates about the upgrade'
-      }
+        description: 'Additional notes and updates about the upgrade',
+      },
     },
     {
       name: 'attachments',
@@ -117,9 +122,9 @@ export const Upgrades: CollectionConfig = {
       relationTo: 'media',
       hasMany: true,
       admin: {
-        description: 'Related documents, photos, or files'
-      }
-    }
+        description: 'Related documents, photos, or files',
+      },
+    },
   ],
   timestamps: true,
   hooks: {
@@ -129,14 +134,14 @@ export const Upgrades: CollectionConfig = {
         if (data.status === 'completed' && !data.completion_date) {
           data.completion_date = new Date().toISOString().split('T')[0]
         }
-        
+
         // Validate cost
         if (data.cost && data.cost < 0) {
           throw new Error('Cost cannot be negative')
         }
-        
+
         return data
-      }
-    ]
-  }
+      },
+    ],
+  },
 }

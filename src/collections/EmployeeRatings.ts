@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { isAdmin, isAdminOrManager, canReadEmployeeRatings } from '../access';
+import { isAdmin, isAdminOrStoreManager, canReadEmployeeRatings } from '../access'
 
 /**
  * @description Employee Ratings collection configuration.
@@ -10,12 +10,12 @@ export const EmployeeRatings: CollectionConfig = {
     useAsTitle: 'employee_id',
     defaultColumns: ['employee_id', 'location_id', 'data_date', 'rating'],
     group: 'Reports',
-    description: 'Employee performance ratings from managers'
+    description: 'Employee performance ratings from managers',
   },
   access: {
     read: canReadEmployeeRatings,
-    create: isAdminOrManager,
-    update: isAdminOrManager,
+    create: isAdminOrStoreManager,
+    update: isAdminOrStoreManager,
     delete: isAdmin,
   },
   fields: [
@@ -25,8 +25,8 @@ export const EmployeeRatings: CollectionConfig = {
       relationTo: 'users',
       required: true,
       admin: {
-        description: 'Employee being rated'
-      }
+        description: 'Employee being rated',
+      },
     },
     {
       name: 'location_id',
@@ -34,8 +34,8 @@ export const EmployeeRatings: CollectionConfig = {
       relationTo: 'locations',
       required: true,
       admin: {
-        position: 'sidebar'
-      }
+        position: 'sidebar',
+      },
     },
     {
       name: 'data_date',
@@ -44,9 +44,9 @@ export const EmployeeRatings: CollectionConfig = {
       admin: {
         date: {
           pickerAppearance: 'dayOnly',
-          displayFormat: 'MMM d, yyyy'
-        }
-      }
+          displayFormat: 'MMM d, yyyy',
+        },
+      },
     },
     {
       name: 'rating',
@@ -56,31 +56,31 @@ export const EmployeeRatings: CollectionConfig = {
       required: true,
       admin: {
         description: 'Rating from 1-5 stars',
-        step: 1
-      }
+        step: 1,
+      },
     },
     {
       name: 'manager_report_id',
       type: 'relationship',
       relationTo: 'managerReports',
       admin: {
-        description: 'Associated manager report (if applicable)'
-      }
+        description: 'Associated manager report (if applicable)',
+      },
     },
     {
       name: 'employee_notes',
       type: 'richText',
       admin: {
-        description: 'Notes about employee performance'
-      }
+        description: 'Notes about employee performance',
+      },
     },
     {
       name: 'internal_notes',
       type: 'textarea',
       admin: {
-        description: 'Internal management notes (not visible to employee)'
-      }
-    }
+        description: 'Internal management notes (not visible to employee)',
+      },
+    },
   ],
   timestamps: true,
   hooks: {
@@ -98,7 +98,7 @@ export const EmployeeRatings: CollectionConfig = {
           throw new Error('Rating must be between 1 and 5')
         }
         return data
-      }
-    ]
-  }
+      },
+    ],
+  },
 }

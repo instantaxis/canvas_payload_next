@@ -1,5 +1,5 @@
-import { CollectionConfig } from 'payload';
-import { isAdmin, isAdminOrManager } from '../access';
+import { CollectionConfig } from 'payload'
+import { isAdmin, isAdminOrStoreManager } from '../access'
 
 /**
  * @description Messages collection configuration.
@@ -10,12 +10,12 @@ export const Messages: CollectionConfig = {
     useAsTitle: 'subject',
     defaultColumns: ['subject', 'from_name', 'from_email', 'status', 'date_created'],
     group: 'Communications',
-    description: 'Customer messages and inquiries'
+    description: 'Customer messages and inquiries',
   },
   access: {
-    read: isAdminOrManager,
+    read: isAdminOrStoreManager,
     create: () => true, // Public can create (contact form submissions)
-    update: isAdminOrManager,
+    update: isAdminOrStoreManager,
     delete: isAdmin,
   },
   fields: [
@@ -26,12 +26,12 @@ export const Messages: CollectionConfig = {
         { label: 'New', value: 'new' },
         { label: 'In Progress', value: 'in_progress' },
         { label: 'Resolved', value: 'resolved' },
-        { label: 'Archived', value: 'archived' }
+        { label: 'Archived', value: 'archived' },
       ],
       defaultValue: 'new',
       admin: {
-        position: 'sidebar' as const
-      }
+        position: 'sidebar' as const,
+      },
     },
     {
       name: 'priority',
@@ -40,20 +40,20 @@ export const Messages: CollectionConfig = {
         { label: 'Low', value: 'low' },
         { label: 'Normal', value: 'normal' },
         { label: 'High', value: 'high' },
-        { label: 'Urgent', value: 'urgent' }
+        { label: 'Urgent', value: 'urgent' },
       ],
       defaultValue: 'normal',
       admin: {
-        position: 'sidebar'
-      }
+        position: 'sidebar',
+      },
     },
     {
       name: 'subject',
       type: 'text',
       required: true,
       admin: {
-        description: 'Message subject line'
-      }
+        description: 'Message subject line',
+      },
     },
     {
       type: 'row',
@@ -63,18 +63,18 @@ export const Messages: CollectionConfig = {
           type: 'text',
           required: true,
           admin: {
-            width: '50%'
-          }
+            width: '50%',
+          },
         },
         {
           name: 'from_email',
           type: 'email',
           required: true,
           admin: {
-            width: '50%'
-          }
-        }
-      ]
+            width: '50%',
+          },
+        },
+      ],
     },
     {
       type: 'row',
@@ -83,8 +83,8 @@ export const Messages: CollectionConfig = {
           name: 'from_phone',
           type: 'text',
           admin: {
-            width: '50%'
-          }
+            width: '50%',
+          },
         },
         {
           name: 'location',
@@ -92,10 +92,10 @@ export const Messages: CollectionConfig = {
           relationTo: 'locations',
           admin: {
             width: '50%',
-            description: 'Related location (if applicable)'
-          }
-        }
-      ]
+            description: 'Related location (if applicable)',
+          },
+        },
+      ],
     },
     {
       name: 'message_type',
@@ -111,31 +111,31 @@ export const Messages: CollectionConfig = {
       type: 'richText',
       required: true,
       admin: {
-        description: 'Customer message content'
-      }
+        description: 'Customer message content',
+      },
     },
     {
       name: 'internal_notes',
       type: 'richText',
       admin: {
-        description: 'Internal staff notes (not visible to customer)'
-      }
+        description: 'Internal staff notes (not visible to customer)',
+      },
     },
     {
       name: 'assigned_to',
       type: 'relationship',
       relationTo: 'users',
       admin: {
-        description: 'Staff member assigned to handle this message'
-      }
+        description: 'Staff member assigned to handle this message',
+      },
     },
     {
       name: 'response_sent',
       type: 'checkbox',
       defaultValue: false,
       admin: {
-        position: 'sidebar'
-      }
+        position: 'sidebar',
+      },
     },
     {
       name: 'response_date',
@@ -143,9 +143,9 @@ export const Messages: CollectionConfig = {
       admin: {
         position: 'sidebar',
         date: {
-          pickerAppearance: 'dayAndTime'
-        }
-      }
+          pickerAppearance: 'dayAndTime',
+        },
+      },
     },
     {
       name: 'attachments',
@@ -153,9 +153,9 @@ export const Messages: CollectionConfig = {
       relationTo: 'media',
       hasMany: true,
       admin: {
-        description: 'Files attached to the message'
-      }
-    }
+        description: 'Files attached to the message',
+      },
+    },
   ],
   timestamps: true,
   hooks: {
@@ -172,14 +172,14 @@ export const Messages: CollectionConfig = {
         if (data.response_sent && !data.response_date) {
           data.response_date = new Date().toISOString()
         }
-        
+
         // Validate email format
         if (data.from_email && !data.from_email.includes('@')) {
           throw new Error('Invalid email format')
         }
-        
+
         return data
-      }
+      },
     ],
     afterChange: [
       /**
@@ -195,7 +195,7 @@ export const Messages: CollectionConfig = {
           // TODO: Implement email notification system
           console.log(`New message assigned to user ${doc.assigned_to}`)
         }
-      }
-    ]
-  }
+      },
+    ],
+  },
 }

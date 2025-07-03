@@ -1,5 +1,5 @@
-import { CollectionConfig } from 'payload';
-import { isAdmin, isAdminOrManager, isAuthenticated } from '../access';
+import { CollectionConfig } from 'payload'
+import { isAdmin, isAdminOrStoreManager, isAuthenticated } from '../access'
 
 export const ReviewKeywords: CollectionConfig = {
   slug: 'reviewKeywords',
@@ -7,9 +7,9 @@ export const ReviewKeywords: CollectionConfig = {
     useAsTitle: 'keyword',
   },
   access: {
-    create: isAdminOrManager,
+    create: isAdminOrStoreManager,
     read: isAuthenticated,
-    update: isAdminOrManager,
+    update: isAdminOrStoreManager,
     delete: isAdmin,
   },
   fields: [
@@ -20,4 +20,4 @@ export const ReviewKeywords: CollectionConfig = {
       unique: true,
     },
   ],
-};
+}
