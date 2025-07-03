@@ -1,6 +1,4 @@
-
-
-// 
+//
 import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
 import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
@@ -9,7 +7,6 @@ import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 import { s3Storage } from '@payloadcms/storage-s3'
-
 
 import Users from './collections/Users'
 import { Media } from './collections/Media'
@@ -49,12 +46,7 @@ export default buildConfig({
     },
   },
   auth: {
-    tokenExpiration: parseInt(process.env.PAYLOAD_TOKEN_EXPIRATION || '7200'), // 2 hours
-    cookies: {
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: process.env.PAYLOAD_COOKIE_SAMESITE as 'Lax' | 'Strict' | 'None' || 'Lax',
-      domain: process.env.PAYLOAD_PUBLIC_SERVER_URL ? new URL(process.env.PAYLOAD_PUBLIC_SERVER_URL).hostname : undefined,
-    },
+    jwtOrder: ['cookie', 'Bearer', 'JWT'],
   },
   collections: [
     Users,
@@ -91,9 +83,8 @@ export default buildConfig({
       connectionString: process.env.POSTGRES_URL || '',
     },
   }),
-  
 
-sharp,
+  sharp,
   plugins: [
     payloadCloudPlugin(),
     s3Storage({
@@ -108,6 +99,4 @@ sharp,
       forcePathStyle: true,
     }),
   ],
-  
-  
 })

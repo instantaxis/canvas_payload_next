@@ -1,6 +1,6 @@
 ---
-description: Guidelines for creating and maintaining Roo Code rules to ensure consistency and effectiveness.
-globs: .roo/rules/*.md
+description: Guidelines for creating and maintaining shared agent rules to ensure consistency and effectiveness.
+globs: .architect_rules/*.md
 alwaysApply: true
 ---
 
@@ -19,7 +19,7 @@ alwaysApply: true
 
 - **File References:**
   - Use `[filename](mdc:path/to/file)` ([filename](mdc:filename)) to reference files
-  - Example: [prisma.md](.roo/rules/prisma.md) for rule references
+  - Example: [prisma.md](.architect_rules/prisma.md) for rule references
   - Example: [schema.prisma](mdc:prisma/schema.prisma) for code references
 
 - **Code Examples:**
@@ -50,4 +50,5 @@ alwaysApply: true
   - Keep descriptions concise
   - Include both DO and DON'T examples
   - Reference actual code over theoretical examples
-  - Use consistent formatting across rules 
+  - Use consistent formatting across rules
+Follow [rule_structure.md](.architect_rules/rule_structure.md) for proper rule formatting and structure.

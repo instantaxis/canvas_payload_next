@@ -1,4 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { getPayloadClient } from '@/lib/payloadClient'
+import { AUTH_COOKIE_NAME } from '@/lib/constants'
+import { cookies } from 'next/headers'
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl

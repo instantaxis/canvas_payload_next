@@ -6,7 +6,7 @@ alwaysApply: true
 
 # Taskmaster Tool & Command Reference
 
-This document provides a detailed reference for interacting with Taskmaster, covering both the recommended MCP tools, suitable for integrations like Roo Code, and the corresponding `task-master` CLI commands, designed for direct user interaction or fallback.
+This document provides a detailed reference for interacting with Taskmaster, covering both the recommended MCP tools, suitable for integrations with AI agents, and the corresponding `task-master` CLI commands, designed for direct user interaction or fallback.
 
 **Note:** For interacting with Taskmaster programmatically or via integrated tools, using the **MCP tools is strongly recommended** due to better performance, structured data, and error handling. The CLI commands serve as a user-friendly alternative and fallback. 
 
@@ -38,12 +38,11 @@ This document provides a detailed reference for interacting with Taskmaster, cov
     *   `skipInstall`: `Skip installing dependencies. Default is false.` (CLI: `--skip-install`)
     *   `addAliases`: `Add shell aliases tm and taskmaster. Default is false.` (CLI: `--aliases`)
     *   `yes`: `Skip prompts and use defaults/provided arguments. Default is false.` (CLI: `-y, --yes`)
-*   **Usage:** Run this once at the beginning of a new project, typically via an integrated tool like Roo Code. Operates on the current working directory of the MCP server. 
+*   **Usage:** Run this once at the beginning of a new project, typically via an integrated tool. Operates on the current working directory of the MCP server. 
 *   **Important:** Once complete, you *MUST* parse a prd in order to generate tasks. There will be no tasks files until then. The next step after initializing should be to create a PRD using the example PRD in .taskmaster/templates/example_prd.txt. 
 *   **Tagging:** Use the `--tag` option to parse the PRD into a specific, non-default tag context. If the tag doesn't exist, it will be created automatically. Example: `task-master parse-prd spec.txt --tag=new-feature`.
 
 ### 2. Parse PRD (`parse_prd`)
-
 *   **MCP Tool:** `parse_prd`
 *   **CLI Command:** `task-master parse-prd [file] [options]`
 *   **Description:** `Parse a Product Requirements Document, PRD, or text file with Taskmaster to automatically generate an initial set of tasks in tasks.json.`
@@ -92,7 +91,6 @@ This document provides a detailed reference for interacting with Taskmaster, cov
 ## Task Listing & Viewing
 
 ### 3. Get Tasks (`get_tasks`)
-
 *   **MCP Tool:** `get_tasks`
 *   **CLI Command:** `task-master list [options]`
 *   **Description:** `List your Taskmaster tasks, optionally filtering by status and showing subtasks.`
@@ -104,7 +102,6 @@ This document provides a detailed reference for interacting with Taskmaster, cov
 *   **Usage:** Get an overview of the project status, often used at the start of a work session.
 
 ### 4. Get Next Task (`next_task`)
-
 *   **MCP Tool:** `next_task`
 *   **CLI Command:** `task-master next [options]`
 *   **Description:** `Ask Taskmaster to show the next available task you can work on, based on status and completed dependencies.`
@@ -114,7 +111,6 @@ This document provides a detailed reference for interacting with Taskmaster, cov
 *   **Usage:** Identify what to work on next according to the plan.
 
 ### 5. Get Task Details (`get_task`)
-
 *   **MCP Tool:** `get_task`
 *   **CLI Command:** `task-master show [id] [options]`
 *   **Description:** `Display detailed information for one or more specific Taskmaster tasks or subtasks by ID.`
@@ -130,7 +126,6 @@ This document provides a detailed reference for interacting with Taskmaster, cov
 ## Task Creation & Modification
 
 ### 6. Add Task (`add_task`)
-
 *   **MCP Tool:** `add_task`
 *   **CLI Command:** `task-master add-task [options]`
 *   **Description:** `Add a new task to Taskmaster by describing it; AI will structure it.`
@@ -145,7 +140,6 @@ This document provides a detailed reference for interacting with Taskmaster, cov
 *   **Important:** This MCP tool makes AI calls and can take up to a minute to complete. Please inform users to hang tight while the operation is in progress.
 
 ### 7. Add Subtask (`add_subtask`)
-
 *   **MCP Tool:** `add_subtask`
 *   **CLI Command:** `task-master add-subtask [options]`
 *   **Description:** `Add a new subtask to a Taskmaster parent task, or convert an existing task into a subtask.`
@@ -163,7 +157,6 @@ This document provides a detailed reference for interacting with Taskmaster, cov
 *   **Usage:** Break down tasks manually or reorganize existing tasks.
 
 ### 8. Update Tasks (`update`)
-
 *   **MCP Tool:** `update`
 *   **CLI Command:** `task-master update [options]`
 *   **Description:** `Update multiple upcoming tasks in Taskmaster based on new context or changes, starting from a specific task ID.`
@@ -177,7 +170,6 @@ This document provides a detailed reference for interacting with Taskmaster, cov
 *   **Important:** This MCP tool makes AI calls and can take up to a minute to complete. Please inform users to hang tight while the operation is in progress.
 
 ### 9. Update Task (`update_task`)
-
 *   **MCP Tool:** `update_task`
 *   **CLI Command:** `task-master update-task [options]`
 *   **Description:** `Modify a specific Taskmaster task by ID, incorporating new information or changes. By default, this replaces the existing task details.`
@@ -192,7 +184,6 @@ This document provides a detailed reference for interacting with Taskmaster, cov
 *   **Important:** This MCP tool makes AI calls and can take up to a minute to complete. Please inform users to hang tight while the operation is in progress.
 
 ### 10. Update Subtask (`update_subtask`)
-
 *   **MCP Tool:** `update_subtask`
 *   **CLI Command:** `task-master update-subtask [options]`
 *   **Description:** `Append timestamped notes or details to a specific Taskmaster subtask without overwriting existing content. Intended for iterative implementation logging.`
@@ -206,7 +197,6 @@ This document provides a detailed reference for interacting with Taskmaster, cov
 *   **Important:** This MCP tool makes AI calls and can take up to a minute to complete. Please inform users to hang tight while the operation is in progress.
 
 ### 11. Set Task Status (`set_task_status`)
-
 *   **MCP Tool:** `set_task_status`
 *   **CLI Command:** `task-master set-status [options]`
 *   **Description:** `Update the status of one or more Taskmaster tasks or subtasks, e.g., 'pending', 'in-progress', 'done'.`
@@ -218,7 +208,6 @@ This document provides a detailed reference for interacting with Taskmaster, cov
 *   **Usage:** Mark progress as tasks move through the development cycle.
 
 ### 12. Remove Task (`remove_task`)
-
 *   **MCP Tool:** `remove_task`
 *   **CLI Command:** `task-master remove-task [options]`
 *   **Description:** `Permanently remove a task or subtask from the Taskmaster tasks list.`
@@ -235,7 +224,6 @@ This document provides a detailed reference for interacting with Taskmaster, cov
 ## Task Structure & Breakdown
 
 ### 13. Expand Task (`expand_task`)
-
 *   **MCP Tool:** `expand_task`
 *   **CLI Command:** `task-master expand [options]`
 *   **Description:** `Use Taskmaster's AI to break down a complex task into smaller, manageable subtasks. Appends subtasks by default.`
@@ -251,7 +239,6 @@ This document provides a detailed reference for interacting with Taskmaster, cov
 *   **Important:** This MCP tool makes AI calls and can take up to a minute to complete. Please inform users to hang tight while the operation is in progress.
 
 ### 14. Expand All Tasks (`expand_all`)
-
 *   **MCP Tool:** `expand_all`
 *   **CLI Command:** `task-master expand --all [options]` (Note: CLI uses the `expand` command with the `--all` flag)
 *   **Description:** `Tell Taskmaster to automatically expand all eligible pending/in-progress tasks based on complexity analysis or defaults. Appends subtasks by default.`
@@ -266,7 +253,6 @@ This document provides a detailed reference for interacting with Taskmaster, cov
 *   **Important:** This MCP tool makes AI calls and can take up to a minute to complete. Please inform users to hang tight while the operation is in progress.
 
 ### 15. Clear Subtasks (`clear_subtasks`)
-
 *   **MCP Tool:** `clear_subtasks`
 *   **CLI Command:** `task-master clear-subtasks [options]`
 *   **Description:** `Remove all subtasks from one or more specified Taskmaster parent tasks.`
@@ -278,7 +264,6 @@ This document provides a detailed reference for interacting with Taskmaster, cov
 *   **Usage:** Used before regenerating subtasks with `expand_task` if the previous breakdown needs replacement.
 
 ### 16. Remove Subtask (`remove_subtask`)
-
 *   **MCP Tool:** `remove_subtask`
 *   **CLI Command:** `task-master remove-subtask [options]`
 *   **Description:** `Remove a subtask from its Taskmaster parent, optionally converting it into a standalone task.`
@@ -291,7 +276,6 @@ This document provides a detailed reference for interacting with Taskmaster, cov
 *   **Usage:** Delete unnecessary subtasks or promote a subtask to a top-level task.
 
 ### 17. Move Task (`move_task`)
-
 *   **MCP Tool:** `move_task`
 *   **CLI Command:** `task-master move [options]`
 *   **Description:** `Move a task or subtask to a new position within the task hierarchy.`
@@ -306,10 +290,10 @@ This document provides a detailed reference for interacting with Taskmaster, cov
     *   Moving a subtask to a different parent
     *   Reordering subtasks within the same parent
     *   Moving a task to a new, non-existent ID (automatically creates placeholders)
-    *   Moving multiple tasks at once with comma-separated IDs
+    - Moving multiple tasks at once using comma-separated IDs (e.g., `--from=10,11,12 --to=16,17,18`)
 *   **Validation Features:**
     *   Allows moving tasks to non-existent destination IDs (creates placeholder tasks)
-    *   Prevents moving to existing task IDs that already have content (to avoid overwriting)
+    *   Prevents moving to existing task IDs that have content (to avoid overwriting)
     *   Validates that source tasks exist before attempting to move them
     *   Maintains proper parent-child relationships
 *   **Example CLI:** `task-master move --from=5.2 --to=7.3` to move subtask 5.2 to become subtask 7.3.
@@ -321,7 +305,6 @@ This document provides a detailed reference for interacting with Taskmaster, cov
 ## Dependency Management
 
 ### 18. Add Dependency (`add_dependency`)
-
 *   **MCP Tool:** `add_dependency`
 *   **CLI Command:** `task-master add-dependency [options]`
 *   **Description:** `Define a dependency in Taskmaster, making one task a prerequisite for another.`
@@ -333,7 +316,6 @@ This document provides a detailed reference for interacting with Taskmaster, cov
 *   **Usage:** Establish the correct order of execution between tasks.
 
 ### 19. Remove Dependency (`remove_dependency`)
-
 *   **MCP Tool:** `remove_dependency`
 *   **CLI Command:** `task-master remove-dependency [options]`
 *   **Description:** `Remove a dependency relationship between two Taskmaster tasks.`
@@ -345,7 +327,6 @@ This document provides a detailed reference for interacting with Taskmaster, cov
 *   **Usage:** Update task relationships when the order of execution changes.
 
 ### 20. Validate Dependencies (`validate_dependencies`)
-
 *   **MCP Tool:** `validate_dependencies`
 *   **CLI Command:** `task-master validate-dependencies [options]`
 *   **Description:** `Check your Taskmaster tasks for dependency issues (like circular references or links to non-existent tasks) without making changes.`
@@ -355,7 +336,6 @@ This document provides a detailed reference for interacting with Taskmaster, cov
 *   **Usage:** Audit the integrity of your task dependencies.
 
 ### 21. Fix Dependencies (`fix_dependencies`)
-
 *   **MCP Tool:** `fix_dependencies`
 *   **CLI Command:** `task-master fix-dependencies [options]`
 *   **Description:** `Automatically fix dependency issues (like circular references or links to non-existent tasks) in your Taskmaster tasks.`
@@ -369,7 +349,6 @@ This document provides a detailed reference for interacting with Taskmaster, cov
 ## Analysis & Reporting
 
 ### 22. Analyze Project Complexity (`analyze_project_complexity`)
-
 *   **MCP Tool:** `analyze_project_complexity`
 *   **CLI Command:** `task-master analyze-complexity [options]`
 *   **Description:** `Have Taskmaster analyze your tasks to determine their complexity and suggest which ones need to be broken down further.`
@@ -383,7 +362,6 @@ This document provides a detailed reference for interacting with Taskmaster, cov
 *   **Important:** This MCP tool makes AI calls and can take up to a minute to complete. Please inform users to hang tight while the operation is in progress.
 
 ### 23. View Complexity Report (`complexity_report`)
-
 *   **MCP Tool:** `complexity_report`
 *   **CLI Command:** `task-master complexity-report [options]`
 *   **Description:** `Display the task complexity analysis report in a readable format.`
@@ -397,7 +375,6 @@ This document provides a detailed reference for interacting with Taskmaster, cov
 ## File Management
 
 ### 24. Generate Task Files (`generate`)
-
 *   **MCP Tool:** `generate`
 *   **CLI Command:** `task-master generate [options]`
 *   **Description:** `Create or update individual Markdown files for each task based on your tasks.json.`
@@ -412,7 +389,6 @@ This document provides a detailed reference for interacting with Taskmaster, cov
 ## AI-Powered Research
 
 ### 25. Research (`research`)
-
 *   **MCP Tool:** `research`
 *   **CLI Command:** `task-master research [options]`
 *   **Description:** `Perform AI-powered research queries with project context to get fresh, up-to-date information beyond the AI's knowledge cutoff.`
@@ -452,10 +428,7 @@ This document provides a detailed reference for interacting with Taskmaster, cov
 
 ## Tag Management
 
-This new suite of commands allows you to manage different task contexts (tags).
-
 ### 26. List Tags (`tags`)
-
 *   **MCP Tool:** `list_tags`
 *   **CLI Command:** `task-master tags [options]`
 *   **Description:** `List all available tags with task counts, completion status, and other metadata.`
@@ -464,7 +437,6 @@ This new suite of commands allows you to manage different task contexts (tags).
     *   `--show-metadata`: `Include detailed metadata in the output (e.g., creation date, description).` (CLI: `--show-metadata`)
 
 ### 27. Add Tag (`add_tag`)
-
 *   **MCP Tool:** `add_tag`
 *   **CLI Command:** `task-master add-tag <tagName> [options]`
 *   **Description:** `Create a new, empty tag context, or copy tasks from another tag.`
@@ -477,7 +449,6 @@ This new suite of commands allows you to manage different task contexts (tags).
     *   `file`: `Path to your Taskmaster 'tasks.json' file. Default relies on auto-detection.` (CLI: `-f, --file <file>`)
 
 ### 28. Delete Tag (`delete_tag`)
-
 *   **MCP Tool:** `delete_tag`
 *   **CLI Command:** `task-master delete-tag <tagName> [options]`
 *   **Description:** `Permanently delete a tag and all of its associated tasks.`
@@ -487,7 +458,6 @@ This new suite of commands allows you to manage different task contexts (tags).
     *   `file`: `Path to your Taskmaster 'tasks.json' file. Default relies on auto-detection.` (CLI: `-f, --file <file>`)
 
 ### 29. Use Tag (`use_tag`)
-
 *   **MCP Tool:** `use_tag`
 *   **CLI Command:** `task-master use-tag <tagName>`
 *   **Description:** `Switch your active task context to a different tag.`
@@ -496,7 +466,6 @@ This new suite of commands allows you to manage different task contexts (tags).
     *   `file`: `Path to your Taskmaster 'tasks.json' file. Default relies on auto-detection.` (CLI: `-f, --file <file>`)
 
 ### 30. Rename Tag (`rename_tag`)
-
 *   **MCP Tool:** `rename_tag`
 *   **CLI Command:** `task-master rename-tag <oldName> <newName>`
 *   **Description:** `Rename an existing tag.`
@@ -506,7 +475,6 @@ This new suite of commands allows you to manage different task contexts (tags).
     *   `file`: `Path to your Taskmaster 'tasks.json' file. Default relies on auto-detection.` (CLI: `-f, --file <file>`)
 
 ### 31. Copy Tag (`copy_tag`)
-
 *   **MCP Tool:** `copy_tag`
 *   **CLI Command:** `task-master copy-tag <sourceName> <targetName> [options]`
 *   **Description:** `Copy an entire tag context, including all its tasks and metadata, to a new tag.`
@@ -520,7 +488,6 @@ This new suite of commands allows you to manage different task contexts (tags).
 ## Miscellaneous
 
 ### 32. Sync Readme (`sync-readme`) -- experimental
-
 *   **MCP Tool:** N/A
 *   **CLI Command:** `task-master sync-readme [options]`
 *   **Description:** `Exports your task list to your project's README.md file, useful for showcasing progress.`
@@ -555,4 +522,5 @@ Environment variables are used **only** for sensitive API keys related to AI pro
 
 ---
 
-For details on how these commands fit into the development process, see the [dev_workflow.md](.roo/rules/dev_workflow.md).
+For details on how these commands fit into the development process, see the [dev_workflow.md](.roo/rules/dev_workflow.md).</custom_instructions>
+</environment_details>
